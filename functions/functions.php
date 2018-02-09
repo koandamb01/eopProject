@@ -29,6 +29,7 @@ function header_Nav($page){?>
                     <li class="active"><a href="index.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
@@ -44,6 +45,7 @@ function header_Nav($page){?>
                     <li><a href="index.php">Dashboard</a></li>
                     <li class="active"><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
@@ -59,6 +61,23 @@ function header_Nav($page){?>
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li class="active"><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
+                    <li><a href="reports.php">Reports</a></li>
+                    <li><a href="users.php">Users</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Welcome, Med</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </div>
+
+    <?php elseif($page == 'Mentors'): ?>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="students.php">Students</a></li>
+                    <li><a href="sessions.php">Sessions</a></li>
+                    <li class="active"><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
@@ -74,6 +93,7 @@ function header_Nav($page){?>
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
                     <li class="active"><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
@@ -89,6 +109,7 @@ function header_Nav($page){?>
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li class="active"><a href="users.php">Users</a></li>
                 </ul>
@@ -104,11 +125,12 @@ function header_Nav($page){?>
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
+                    <li><a>Welcome, Med</a></li>
                     <li><a href="login.html">Logout</a></li>
                 </ul>
             </div>
@@ -239,6 +261,7 @@ function header_Nav($page){?>
         <a href="index.php" class="list-group-item active main-color-bg">Dashboard</a>
         <a href="students.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Students <span class="badge">208</span> </a>
         <a href="sessions.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Sessions <span class="badge">56</span> </a>
+        <a href="mentors.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mentors <span class="badge">26</span> </a>
         <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">12</span> </a>
     </div>
 
@@ -295,41 +318,70 @@ function header_Nav($page){?>
                 </div>
             </div>
         </div>
+
+
 <!-- Student Info -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>First name</label>
-                    <input type="text" class="form-control" placeholder="First Name">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" class="form-control" placeholder="Last Name">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Last name</label>
-                    <input type="text" class="form-control" placeholder="Last Name">
+    <!-- Academic Year -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Academic Year</label>
+                        <select class="form-control">
+                            <option value="#">Freshman</option>
+                            <option value="#">Shopomore</option>
+                            <option value="#">Junior</option>
+                            <option value="#">Senior</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </div>
-<!-- Academic Year -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Academic Year</label>
-                    <select class="form-control">
-                        <option value="#">Freshman</option>
-                        <option value="#">Shopomore</option>
-                        <option value="#">Junior</option>
-                        <option value="#">Senior</option>
-                    </select>
+
+                <div class="col-md-6">
+                    <div class="checkbox"><br>
+                        <label><input type="checkbox"> Checked If Non-EOP</label>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="checkbox"><br>
-                    <label><input type="checkbox"> Checked If Non-EOP</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Student Buffalo State Email</label>
+                        <input type="text" class="form-control" placeholder="someone@mail.buffalostate.edu">
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Counselor</label>
+                        <select class="form-control">
+                            <option value="#">Counselor</option>
+                            <option value="Canestrari">Canestrari</option>
+                            <option value="Jude">Jude</option>
+                            <option value="Maria">Maria</option>
+                            <option value="abdi">Abdi</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
 
 <!-- Tutor and Counselor -->
         <div class="row">
@@ -339,33 +391,26 @@ function header_Nav($page){?>
                     <input type="text" class="form-control" placeholder="Tutor Name">
                 </div>
             </div>
+        </div>
 
+
+
+
+<!-- Sesstion type -->
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Counselor</label>
+                    <label>Session Type</label>
                     <select class="form-control">
-                        <option value="#">Counselor</option>
-                        <option value="Canestrari">Canestrari</option>
-                        <option value="Jude">Jude</option>
-                        <option value="Maria">Maria</option>
-                        <option value="abdi">Abdi</option>
+                        <option value="#">Session Type</option>
+                        <option value="#">Academic Mentoring</option>
+                        <option value="#">AEGIS</option>
+                        <option value="#">Independent Study</option>
+                        <option value="#">Study group</option>
                     </select>
                 </div>
             </div>
-        </div>
-<!-- Sesstion type -->
-        <div class="form-group">
-            <label>Session Type</label>
-            <select class="form-control">
-                <option value="#">Session Type</option>
-                <option value="#">Academic Mentoring</option>
-                <option value="#">AEGIS</option>
-                <option value="#">Independent Study</option>
-                <option value="#">Study group</option>
-            </select>
-        </div>
 
-        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session Time</label>
@@ -374,6 +419,8 @@ function header_Nav($page){?>
             </div>
         </div>
 
+
+        
         <div class="form-group">
             <label>Academic Mentor Notes</label>
             <textarea class="form-control" rows="3" cols="50" placeholder="Page Body"></textarea>
@@ -431,127 +478,132 @@ function header_Nav($page){?>
 
         <div class="row">
             <div class="col-md-6">
+                <label>Buffalo State Email</label>
+                <input type="text" class="form-control" placeholder="someone@mail.buffalostate.edu...">
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Academic Year</label>
                     <select class="form-control">
                             <option value="#">Freshman</option>
-                            <option value="#">Shopomore</option>
-                            <option value="#">Junior</option>
-                            <option value="#">Senior</option>
-                        </select>
+                        <option value="#">Shopomore</option>
+                        <option value="#">Junior</option>
+                        <option value="#">Senior</option>
+                    </select>
                 </div>
             </div>
-
-            <div class="col-md-6">
-                <div class="checkbox"><br>
-                    <label><input type="checkbox"> Checked If Non-EOP</label>
-                </div>
-            </div>
-        </div>
-
-    
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" placeholder="something@mail.com">
-        </div>
+        </div><br>
         
 
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label>Monday</label>
-                    <input type="time" class="form-control">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Monday</label><br>
+                        FROM<input type="time" class="form-control">
+                        TO<input type="time" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Tuesday</label><br>
+                        FROM<input type="time" class="form-control">
+                        TO<input type="time" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Wednesday</label><br>
+                        FROM<input type="time" class="form-control">
+                        TO<input type="time" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Thursday</label><br>
+                        FROM<input type="time" class="form-control">
+                        TO<input type="time" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Friday</label><br>
+                        FROM<input type="time" class="form-control">
+                        TO<input type="time" class="form-control">
+                    </div>
                 </div>
             </div>
+        </div><br>
 
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label>Tuesday</label>
-                    <input type="time" class="form-control">
+
+        <div class="well">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 1</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 2</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 3</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 4</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
                 </div>
             </div>
+        
 
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label>Wednesday</label>
-                    <input type="time" class="form-control">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 5</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label>Thursday</label>
-                    <input type="time" class="form-control">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 6</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label>Friday</label>
-                    <input type="time" class="form-control">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 7</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 8</label>
+                        <input type="text" class="form-control" placeholder="CRS 101...">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 1</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 2</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 3</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 4</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 5</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 6</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 7</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Course 8</label>
-                    <input type="text" class="form-control" placeholder="CRS 101...">
-                </div>
-            </div>
-        </div>
         <div class="form-group">
             <label>Notes</label>
             <textarea class="form-control" rows="3" cols="50" placeholder="Page Body"></textarea>
