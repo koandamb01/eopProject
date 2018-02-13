@@ -11,90 +11,92 @@ breadcrumb($page);
 
     <section id="main">
         <div class="container">
-            <!-- Websitte overview -->
-            <div class="panel panel-default">
-                <div class="panel-heading main-color-bg">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <h3 class="panel-title">Mentors</h3>
-                        </div>
+           <form id="myForm" action="mentor.php" method="post">
+                <!-- Websitte overview -->
+                <div class="panel panel-default">
+                    <div class="panel-heading main-color-bg">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3 class="panel-title">Mentors</h3>
+                            </div>
 
-                        <div class="col-md-1 pull-right">
-                            <button class="btn btn-primary">Reset</button>
-                        </div>
+                            <div class="col-md-1 pull-right">
+                                <button class="btn btn-primary" type="submit" name="reset">Reset</button>
+                            </div>
 
-                        <div class="col-md-1 pull-right">
-                            <button class="btn btn-success">Filter</button>
-                        </div>
+                            <div class="col-md-1 pull-right">
+                                <button class="btn btn-success" type="submit" name="filter">Filter</button>
+                            </div>
 
-                        <!-- pull right/left align column items to the right/left -->
-                        <div class="col-md-4 pull-right">
-                            <select class="form-control">
-                                <option value="#">Academic Major</option>
-                                <option value="#">Comuter Informations System</option>
-                                <option value="#">Mathematics</option>
-                                <option value="#">History</option>
-                                <option value="#">Chemistry</option>
-                            </select>
-                        </div>
+                            <!-- pull right/left align column items to the right/left -->
+                            <div class="col-md-4 pull-right">
+                                <select class="form-control">
+                                    <option value="#">Academic Major</option>
+                                    <option value="#">Comuter Informations System</option>
+                                    <option value="#">Mathematics</option>
+                                    <option value="#">History</option>
+                                    <option value="#">Chemistry</option>
+                                </select>
+                            </div>
 
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-11">
-                            <input class="form-control" type="text" placeholder="First Name...">
-                        </div>
-
-                        <div class="col-md-1">
-                            <button class="btn btn-success">Search</button>
                         </div>
                     </div>
-                    <br>
-                    <table class="table table-striped table-hover">
-                        <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>AcadYear</th>
-                            <th>Email</th>
-                            <th>Available Today?</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr>
-                            <td>Jill </td>
-                            <td>Smith</td>
-                            <td>Freshman</td>
-                            <td>jillsmith@gmail.com</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
-                        </tr>
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td>
-                            <td>Freshman</td>
-                            <td>ejackson@yahoo.com</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">schedule</a></td>
-                        </tr>
-                        <tr>
-                            <td>John </td>
-                            <td>Doe</td>
-                            <td>Junior</td>
-                            <td>jdoe@gmail.com</td>
-                            <td>No</td>
-                            <td><a class="btn btn-success" href="#">schedule</a></td>
-                        </tr>
-                        <tr>
-                            <td>Stephanie</td>
-                            <td>Landon</td>
-                            <td>Shopomore</td>
-                            <td>landon@yahoo.com</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">schedule</a></td>
-                        </tr>
-                    </table>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <input class="form-control" type="text" name="searchInput" placeholder="First Name...">
+                            </div>
+
+                            <div class="col-md-1">
+                                <button class="btn btn-success" type="submit" name="search">Search</button>
+                            </div>
+                        </div>
+                        <br>
+                        <table class="table table-striped table-hover">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>AcadYear</th>
+                                <th>Email</th>
+                                <th>Available Today?</th>
+                                <th>Action</th>
+                            </tr>
+                            <tr>
+                                <td>Jill </td>
+                                <td>Smith</td>
+                                <td>Freshman</td>
+                                <td>jillsmith@gmail.com</td>
+                                <td>Yes</td>
+                                <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>Freshman</td>
+                                <td>ejackson@yahoo.com</td>
+                                <td>Yes</td>
+                                <td><a class="btn btn-success" href="#">schedule</a></td>
+                            </tr>
+                            <tr>
+                                <td>John </td>
+                                <td>Doe</td>
+                                <td>Junior</td>
+                                <td>jdoe@gmail.com</td>
+                                <td>No</td>
+                                <td><a class="btn btn-success" href="#">schedule</a></td>
+                            </tr>
+                            <tr>
+                                <td>Stephanie</td>
+                                <td>Landon</td>
+                                <td>Shopomore</td>
+                                <td>landon@yahoo.com</td>
+                                <td>Yes</td>
+                                <td><a class="btn btn-success" href="#">schedule</a></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 

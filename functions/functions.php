@@ -301,8 +301,8 @@ function header_Nav($page){?>
 
 
 <!-- Begin of sessionForm function -->
-<?php function sessionsForm(){?>
-<form>
+<?php function sessionsForm($page){?>
+<form <?php echo 'action="'.$page.'".php"'; ?> method="post">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
