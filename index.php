@@ -5,7 +5,7 @@ $page = 'Dashboard';
 /*start html beginning tags and display page navigation bar */
 header_Nav($page);
 
-/* Display section breadcrumb */
+/* Display section breadcrumb Side Menu*/
 breadcrumb($page);
 ?>
 
@@ -57,56 +57,168 @@ breadcrumb($page);
                         <h3 class="panel-title">Latest Students Attendance</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-striped table-hover">
-                            <tr>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>AcadYear</th>
-                                <th>Email</th>
-                                <th>Conselor</th>
-                                <th>Date</th>
-                            </tr>
-                            <tr>
-                                <td>Jill </td>
-                                <td>Smith</td>
-                                <td>Freshman</td>
-                                <td>jillsmith@gmail.com</td>
-                                <td>Canestrari</td>
-                                <td>Dec 12, 2016</td>
-                            </tr>
-                            <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td>
-                                <td>Freshman</td>
-                                <td>ejackson@yahoo.com</td>
-                                <td>Jude</td>
-                                <td>Dec 13, 2016</td>
-                            </tr>
-                            <tr>
-                                <td>John </td>
-                                <td>Doe</td>
-                                <td>Junior</td>
-                                <td>jdoe@gmail.com</td>
-                                <td>Maria</td>
-                                <td>Dec 13, 2016</td>
-                            </tr>
-                            <tr>
-                                <td>Stephanie</td>
-                                <td>Landon</td>
-                                <td>Shopomore</td>
-                                <td>landon@yahoo.com</td>
-                                <td>Canestrari</td>
-                                <td>Dec 14, 2016</td>
-                            </tr>
-                            <tr>
-                                <td>Mike</td>
-                                <td>Johnson</td>
-                                <td>Senior</td>
-                                <td>mjohnson@gmail.com</td>
-                                <td>Jude</td>
-                                <td>Dec 15, 2016</td>
-                            </tr>
-                        </table>
+                        <section>
+                            <div class="table-container">
+                                <table class="table table-striped table-hover">
+                                   <thead>
+                                        <tr>
+                                            <th>Firstname<div>Firstname</div></th>
+                                            <th>Lastname<div>Lastname</div></th>
+                                            <th>AcadYear<div>AcadYear</div></th>
+                                            <th>Email<div>Email</div></th>
+                                            <th>Counselor<div>Counselor</div></th>
+                                            <th>Date<div>Date</div></th>
+                                        </tr>
+                                    </thead>
+
+
+
+
+
+
+                                    <!--tr>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>AcadYear</th>
+                                        <th>Email</th>
+                                        <th>Conselor</th>
+                                        <th>Date</th>
+                                    </tr-->
+
+
+
+
+
+
+                            <tbody>
+                                
+                            
+                                    <tr>
+                                        <td>Jill </td>
+                                        <td>Smith</td>
+                                        <td>Freshman</td>
+                                        <td>jillsmith@gmail.com</td>
+                                        <td>Canestrari</td>
+                                        <td>Dec 12, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eve</td>
+                                        <td>Jackson</td>
+                                        <td>Freshman</td>
+                                        <td>ejackson@yahoo.com</td>
+                                        <td>Jude</td>
+                                        <td>Dec 13, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>John </td>
+                                        <td>Doe</td>
+                                        <td>Junior</td>
+                                        <td>jdoe@gmail.com</td>
+                                        <td>Maria</td>
+                                        <td>Dec 13, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stephanie</td>
+                                        <td>Landon</td>
+                                        <td>Shopomore</td>
+                                        <td>landon@yahoo.com</td>
+                                        <td>Canestrari</td>
+                                        <td>Dec 14, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mike</td>
+                                        <td>Johnson</td>
+                                        <td>Senior</td>
+                                        <td>mjohnson@gmail.com</td>
+                                        <td>Jude</td>
+                                        <td>Dec 15, 2016</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Jill </td>
+                                        <td>Smith</td>
+                                        <td>Freshman</td>
+                                        <td>jillsmith@gmail.com</td>
+                                        <td>Canestrari</td>
+                                        <td>Dec 12, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eve</td>
+                                        <td>Jackson</td>
+                                        <td>Freshman</td>
+                                        <td>ejackson@yahoo.com</td>
+                                        <td>Jude</td>
+                                        <td>Dec 13, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>John </td>
+                                        <td>Doe</td>
+                                        <td>Junior</td>
+                                        <td>jdoe@gmail.com</td>
+                                        <td>Maria</td>
+                                        <td>Dec 13, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stephanie</td>
+                                        <td>Landon</td>
+                                        <td>Shopomore</td>
+                                        <td>landon@yahoo.com</td>
+                                        <td>Canestrari</td>
+                                        <td>Dec 14, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mike</td>
+                                        <td>Johnson</td>
+                                        <td>Senior</td>
+                                        <td>mjohnson@gmail.com</td>
+                                        <td>Jude</td>
+                                        <td>Dec 15, 2016</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Jill </td>
+                                        <td>Smith</td>
+                                        <td>Freshman</td>
+                                        <td>jillsmith@gmail.com</td>
+                                        <td>Canestrari</td>
+                                        <td>Dec 12, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eve</td>
+                                        <td>Jackson</td>
+                                        <td>Freshman</td>
+                                        <td>ejackson@yahoo.com</td>
+                                        <td>Jude</td>
+                                        <td>Dec 13, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>John </td>
+                                        <td>Doe</td>
+                                        <td>Junior</td>
+                                        <td>jdoe@gmail.com</td>
+                                        <td>Maria</td>
+                                        <td>Dec 13, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stephanie</td>
+                                        <td>Landon</td>
+                                        <td>Shopomore</td>
+                                        <td>landon@yahoo.com</td>
+                                        <td>Canestrari</td>
+                                        <td>Dec 14, 2016</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mike</td>
+                                        <td>Johnson</td>
+                                        <td>Senior</td>
+                                        <td>mjohnson@gmail.com</td>
+                                        <td>Jude</td>
+                                        <td>Dec 15, 2016</td>
+                                    </tr>
+                            </tbody>
+                                </table>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>

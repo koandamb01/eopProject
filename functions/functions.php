@@ -33,11 +33,6 @@ function header_Nav($page){?>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php elseif ($page == 'Students'):?>
             <div id="navbar" class="collapse navbar-collapse">
@@ -49,11 +44,6 @@ function header_Nav($page){?>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php elseif($page == 'Sessions'): ?>
             <div id="navbar" class="collapse navbar-collapse">
@@ -65,11 +55,6 @@ function header_Nav($page){?>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php elseif($page == 'Mentors'): ?>
             <div id="navbar" class="collapse navbar-collapse">
@@ -81,11 +66,6 @@ function header_Nav($page){?>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php elseif($page == 'Reports'): ?>
             <div id="navbar" class="collapse navbar-collapse">
@@ -97,11 +77,6 @@ function header_Nav($page){?>
                     <li class="active"><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php elseif($page == 'Users'): ?>
             <div id="navbar" class="collapse navbar-collapse">
@@ -113,11 +88,6 @@ function header_Nav($page){?>
                     <li><a href="reports.php">Reports</a></li>
                     <li class="active"><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php else: ?>
             <div id="navbar" class="collapse navbar-collapse">
@@ -129,13 +99,13 @@ function header_Nav($page){?>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a>Welcome, Med</a></li>
-                    <li><a href="login.html">Logout</a></li>
-                </ul>
-            </div>
 
     <?php endif; ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Welcome, Med</a></li>
+                    <li><a href="login.php">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -157,9 +127,7 @@ function header_Nav($page){?>
             <div class="col-md-2">
                 <div class="dropdown">
         <?php if ($page == 'Reports'): ?>
-                    <button class="btn btn-default" type="button" id="printReport">
-                        Print Report
-                    </button>
+                    <button class="btn btn-default" type="button" id="printReport">Print Report</button>
         <?php else: ?>
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Create Content
@@ -301,14 +269,13 @@ function header_Nav($page){?>
 
 
 <!-- Begin of sessionForm function -->
-<?php function sessionsForm($page){?>
-<form <?php echo 'action="'.$page.'".php"'; ?> method="post">
+<?php function sessionsForm(){?>
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="date" class="form-control" placeholder="Page Title">
+                    <input type="date" class="form-control" name="date" placeholder="Page Title">
                 </div>
             </div>
 
@@ -326,13 +293,13 @@ function header_Nav($page){?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>First name</label>
-                        <input type="text" class="form-control" placeholder="First Name">
+                        <input type="text" class="form-control" name="fname" placeholder="First Name">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Last name</label>
-                        <input type="text" class="form-control" placeholder="Last Name">
+                        <input type="text" class="form-control" name="lname" placeholder="Last Name">
                     </div>
                 </div>
             </div>
@@ -352,7 +319,7 @@ function header_Nav($page){?>
 
                 <div class="col-md-6">
                     <div class="checkbox"><br>
-                        <label><input type="checkbox"> Checked If Non-EOP</label>
+                        <label><input type="checkbox" name="IsEOP" value="no"> Checked If Non-EOP</label>
                     </div>
                 </div>
             </div>
@@ -361,7 +328,7 @@ function header_Nav($page){?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Student Buffalo State Email</label>
-                        <input type="text" class="form-control" placeholder="someone@mail.buffalostate.edu">
+                        <input type="text" class="form-control" name="email" placeholder="someone@mail.buffalostate.edu">
                     </div>
                 </div>
                 
@@ -382,22 +349,21 @@ function header_Nav($page){?>
 
 
 
-
-<!-- Tutor and Counselor -->
+<!-- Tutor -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Tutor name</label>
-                    <input type="text" class="form-control" placeholder="Tutor Name">
+                    <label>Tutor Name</label>
+                    <select class="form-control">
+                        <option value="#">Tutor</option>
+                        <option value="Canestrari">Sarah</option>
+                        <option value="Jude">Mohamed</option>
+                        <option value="Maria">Adam</option>
+                        <option value="abdi">Kedi</option>
+                    </select>
                 </div>
             </div>
-        </div>
 
-
-
-
-<!-- Sesstion type -->
-        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session Type</label>
@@ -410,30 +376,35 @@ function header_Nav($page){?>
                     </select>
                 </div>
             </div>
+        </div>
 
+
+<!-- Sesstion type -->
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session Time</label>
-                    <input type="text" class="form-control" placeholder="Session time (hours)">
+                    <input type="time" name="time" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Total Time Spent</label>
+                    <input type="text" class="form-control" name="timeSpent" placeholder="Session time (hours)">
                 </div>
             </div>
         </div>
 
 
-        
         <div class="form-group">
             <label>Academic Mentor Notes</label>
-            <textarea class="form-control" rows="3" cols="50" placeholder="Page Body"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Work Completed</label>
-            <textarea class="form-control" rows="3" cols="50" placeholder="Page Body"></textarea>
+            <textarea class="form-control" rows="3" cols="50" name="notes" placeholder="Page Body"></textarea>
         </div>
     </div>
 
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" name="saveChanges" class="btn btn-primary">Save changes</button>
     </div>
 </form>
 <?php }?>
@@ -443,13 +414,12 @@ function header_Nav($page){?>
 
 <!-- Begin mentor form function -->
 <?php function mentorForm(){?>
-<form>
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="date" class="form-control" placeholder="Page Title">
+                    <input type="date" class="form-control" name="date" placeholder="Page Title">
                 </div>
             </div>
 
@@ -465,13 +435,13 @@ function header_Nav($page){?>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>First name</label>
-                    <input type="text" class="form-control" placeholder="First Name">
+                    <input type="text" class="form-control" name="fname" placeholder="First Name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Last name</label>
-                    <input type="text" class="form-control" placeholder="Last Name">
+                    <input type="text" class="form-control" name="lname" placeholder="Last Name">
                 </div>
             </div>
         </div>
@@ -479,7 +449,7 @@ function header_Nav($page){?>
         <div class="row">
             <div class="col-md-6">
                 <label>Buffalo State Email</label>
-                <input type="text" class="form-control" placeholder="someone@mail.buffalostate.edu...">
+                <input type="text" class="form-control" name="email" placeholder="someone@mail.buffalostate.edu...">
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -494,79 +464,80 @@ function header_Nav($page){?>
             </div>
         </div><br>
         
-
+        <label>Mentor Weekly Schedule</label>
         <div class="well">
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Monday</label><br>
-                        FROM<input type="time" class="form-control">
-                        TO<input type="time" class="form-control">
+                        FROM<input type="time" class="form-control" name="MonFrom" >
+                        TO<input type="time" class="form-control" name="MonTo">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tuesday</label><br>
-                        FROM<input type="time" class="form-control">
-                        TO<input type="time" class="form-control">
+                        FROM<input type="time" class="form-control" name="TuesFrom" >
+                        TO<input type="time" class="form-control" name="TueTo">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Wednesday</label><br>
-                        FROM<input type="time" class="form-control">
-                        TO<input type="time" class="form-control">
+                        FROM<input type="time" class="form-control" name="WedFrom" >
+                        TO<input type="time" class="form-control" name="WedTo">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Thursday</label><br>
-                        FROM<input type="time" class="form-control">
-                        TO<input type="time" class="form-control">
+                        FROM<input type="time" class="form-control" name="ThuFrom" >
+                        TO<input type="time" class="form-control" name="ThuTo">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Friday</label><br>
-                        FROM<input type="time" class="form-control">
-                        TO<input type="time" class="form-control">
+                        FROM<input type="time" class="form-control" name="FriFrom" >
+                        TO<input type="time" class="form-control" name="FriTo">
                     </div>
                 </div>
             </div>
         </div><br>
 
-
+        
+        <label>Mentor Courses Tutor</label>
         <div class="well">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 1</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs1" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 2</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs2" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 3</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs3" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 4</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs4" placeholder="CRS 101...">
                     </div>
                 </div>
             </div>
@@ -576,28 +547,58 @@ function header_Nav($page){?>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 5</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs5" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 6</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs6" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 7</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs7" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Course 8</label>
-                        <input type="text" class="form-control" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="crs8" placeholder="CRS 101...">
+                    </div>
+                </div>
+            </div>
+
+             <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 9</label>
+                        <input type="text" class="form-control" name="crs9" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 10</label>
+                        <input type="text" class="form-control" name="crs10" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 11</label>
+                        <input type="text" class="form-control" name="crs11" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Course 12</label>
+                        <input type="text" class="form-control" name="crs12" placeholder="CRS 101...">
                     </div>
                 </div>
             </div>
@@ -606,12 +607,12 @@ function header_Nav($page){?>
 
         <div class="form-group">
             <label>Notes</label>
-            <textarea class="form-control" rows="3" cols="50" placeholder="Page Body"></textarea>
+            <textarea class="form-control" rows="3" cols="50" name="notes" placeholder="Page Body"></textarea>
         </div>
     </div>
 
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="sbmit" name="saveChanges" class="btn btn-primary">Save changes</button>
     </div>
 </form>
 <?php } ?>

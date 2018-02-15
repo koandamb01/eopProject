@@ -26,6 +26,7 @@ header_Nav($page);
                   <h3 class="panel-title">Edit Page</h3>
                 </div>
                 <div class="panel-body">
+                  <form action="new_session.php" method="post">
                   <?php sessionsForm() ?>
                 </div>
             </div>

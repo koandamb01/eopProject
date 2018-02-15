@@ -49,7 +49,7 @@ breadcrumb($page);
                             </div>
 
                             <div class="col-md-2 pull-right">
-                                <input type="checkbox" name="isEOP" value="yes"> Non-EOP
+                                <input type="checkbox" name="isEOP" value="no"> Non-EOP
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
 
@@ -62,10 +61,6 @@
     <footer id="footer">
       <p>Copyright AdminStrap, &copy; 2017</p>
     </footer>
-
-  <script>
-     CKEDITOR.replace( 'editor1' );
- </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -12,7 +12,7 @@ reportsBreadcrumb($menu);
 
 <section id="main">
     <div class="container">
-        <form>
+        <form action="reports.php" method="post">
             <!-- Websitte overview -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
