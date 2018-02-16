@@ -61,50 +61,90 @@ breadcrumb($page);
                         </div>
                     </div>
                     <br>
-                    <table class="table table-striped table-hover">
-                        <tr>
-                            <th>Title</th>
-                            <th>Course</th>
-                            <th>Student</th>
-                            <th>Mentor</th>
-                            <th>Created</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 475</td>
-                            <td>Salif Kabore</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
-                        </tr>
+                    <table class="table table-striped table-hover table-height">
+                       <thead>
+                           <tr>
+                                <th>Title</th>
+                                <th>Course</th>
+                                <th>Student</th>
+                                <th>Mentor</th>
+                                <th>Created</th>
+                                <th>Action</th>
+                            </tr>
+                       </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
 
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 475</td>
-                            <td>Salif Kabore</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
-                        </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
 
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 475</td>
-                            <td>Salif Kabore</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
-                        </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
 
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 475</td>
-                            <td>Salif Kabore</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
-                        </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

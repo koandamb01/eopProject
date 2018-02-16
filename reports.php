@@ -72,51 +72,136 @@ reportsBreadcrumb($menu);
                         </div>
                     </div -->
                     <br>
-                    <table class="table table-striped table-hover">
-                        <tr>
-                            <th>Title</th>
-                            <th>Course</th>
-                            <th>Hours</th>
-                            <th>Student</th>
-                            <th>Mentor</th>
-                            <th>Created</th>
-                        </tr>
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 475</td>
-                            <th>11</th>
-                            <td>Salif Kabore</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                        </tr>
+                    <table class="table table-striped table-hover table-height">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Course</th>
+                                <th>Hours</th>
+                                <th>Student</th>
+                                <th>Mentor</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>34</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
 
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>MAT 103</td>
-                            <th>20</th>
-                            <td>Mouni Tabsoba</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                        </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>MAT 103</td>
+                                <td>34</td>
+                                <td>Mouni Tabsoba</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
 
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>HIS 116</td>
-                            <th>16</th>
-                            <td>Jenifer Lopez</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                        </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>HIS 116</td>
+                                <td>34</td>
+                                <td>Jenifer Lopez</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
 
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 400</td>
-                            <th>34</th>
-                            <td>Samsoudine Sawadogo</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                        </tr>
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 400</td>
+                                <td>34</td>
+                                <td>Samsoudine Sawadogo</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+        
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>34</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
 
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>MAT 103</td>
+                                <td>34</td>
+                                <td>Mouni Tabsoba</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>HIS 116</td>
+                                <td>34</td>
+                                <td>Jenifer Lopez</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 400</td>
+                                <td>34</td>
+                                <td>Samsoudine Sawadogo</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 400</td>
+                                <td>34</td>
+                                <td>Samsoudine Sawadogo</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+        
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 475</td>
+                                <td>34</td>
+                                <td>Salif Kabore</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>MAT 103</td>
+                                <td>34</td>
+                                <td>Mouni Tabsoba</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>HIS 116</td>
+                                <td>34</td>
+                                <td>Jenifer Lopez</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+
+                            <tr>
+                                <td>Tutorial</td>
+                                <td>CIS 400</td>
+                                <td>34</td>
+                                <td>Samsoudine Sawadogo</td>
+                                <td>Mohamed Koanda</td>
+                                <td>Dec 12, 2016</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

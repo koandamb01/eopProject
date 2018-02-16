@@ -145,40 +145,23 @@ body{
 /* Table CSS */
 /*table Style css */
 
-thead{
-  position: relative;
-  padding-top: 37;
+table thead tr{
+  display: block;
   background: #e74c3c;
 }
+table th{
+  color: white;
+}
+table th, table td{
+  width: 200px;
+}
 
-.table-container{
-  height: 250px; 
+table tbody{
+  display: block;
+  height: 190px;
   overflow-y: auto;
 }
 
-
-table td {
-  transition: all .5s;
-}
-
-
-th{
-  height: 0;
-  line-height: 0;
-  padding-top: 0; 
-  padding-bottom: 0;
-  color: transparent;
-  border: none;
-  white-space: nowrap;
-}
-
-
-th div {
-  position: absolute;
-  background: transparent;
-  color: #fff;
-  padding: 8px 30px;
-  margin-top: -30px;
-  margin-left: -24px;
-  line-height: 1px solid #800;
+.table-height tbody{
+  height: 370px;
 }

@@ -64,52 +64,93 @@ breadcrumb($page);
                             </div>
                         </div>
                         <br>
-                        <table class="table table-striped table-hover">
-                            <tr>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>AcadYear</th>
-                                <th>Email</th>
-                                <th>Conselor</th>
-                                <th>IsEOP</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                <td>Jill </td>
-                                <td>Smith</td>
-                                <td>Freshman</td>
-                                <td>jillsmith@gmail.com</td>
-                                <td>Canestrari</td>
-                                <td>Yes</td>
-                                <td><a class="btn btn-success" href="#">New Session</a></td>
-                            </tr>
-                            <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td>
-                                <td>Freshman</td>
-                                <td>ejackson@yahoo.com</td>
-                                <td>Jude</td>
-                                <td>Yes</td>
-                                <td><a class="btn btn-success" href="#">New Session</a></td>
-                            </tr>
-                            <tr>
-                                <td>John </td>
-                                <td>Doe</td>
-                                <td>Junior</td>
-                                <td>jdoe@gmail.com</td>
-                                <td>Maria</td>
-                                <td>No</td>
-                                <td><a class="btn btn-success" href="#">New Session</a></td>
-                            </tr>
-                            <tr>
-                                <td>Stephanie</td>
-                                <td>Landon</td>
-                                <td>Shopomore</td>
-                                <td>landon@yahoo.com</td>
-                                <td>Canestrari</td>
-                                <td>Yes</td>
-                                <td><a class="btn btn-success" href="#">New Session</a></td>
-                            </tr>
+                        <table class="table table-striped table-hover table-height">
+                            <thead>
+                                <tr>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>AcadYear</th>
+                                    <th>Email</th>
+                                    <th>Conselor</th>
+                                    <th>IsEOP</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>Jill </td>
+                                    <td>Smith</td>
+                                    <td>Freshman</td>
+                                    <td>jillsmith@gmail.com</td>
+                                    <td>Canestrari</td>
+                                    <td>Yes</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Eve</td>
+                                    <td>Jackson</td>
+                                    <td>Freshman</td>
+                                    <td>ejackson@yahoo.com</td>
+                                    <td>Jude</td>
+                                    <td>Yes</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                <tr>
+                                    <td>John </td>
+                                    <td>Doe</td>
+                                    <td>Junior</td>
+                                    <td>jdoe@gmail.com</td>
+                                    <td>Maria</td>
+                                    <td>No</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Stephanie</td>
+                                    <td>Landon</td>
+                                    <td>Shopomore</td>
+                                    <td>landon@yahoo.com</td>
+                                    <td>Canestrari</td>
+                                    <td>Yes</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                 <tr>
+                                    <td>Jill </td>
+                                    <td>Smith</td>
+                                    <td>Freshman</td>
+                                    <td>jillsmith@gmail.com</td>
+                                    <td>Canestrari</td>
+                                    <td>Yes</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Eve</td>
+                                    <td>Jackson</td>
+                                    <td>Freshman</td>
+                                    <td>ejackson@yahoo.com</td>
+                                    <td>Jude</td>
+                                    <td>Yes</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                <tr>
+                                    <td>John </td>
+                                    <td>Doe</td>
+                                    <td>Junior</td>
+                                    <td>jdoe@gmail.com</td>
+                                    <td>Maria</td>
+                                    <td>No</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Stephanie</td>
+                                    <td>Landon</td>
+                                    <td>Shopomore</td>
+                                    <td>landon@yahoo.com</td>
+                                    <td>Canestrari</td>
+                                    <td>Yes</td>
+                                    <td><a class="btn btn-success" href="#">New Session</a></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
