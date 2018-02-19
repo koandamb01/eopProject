@@ -11,7 +11,6 @@ function header_Nav($page){?>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -222,8 +221,8 @@ function header_Nav($page){?>
 
 
 
-<!-- Begin of data overview function -->
-<?php function dataOverview(){?>
+<!-- Begin of Side Menu function -->
+<?php function sideMenu(){?>
 <div class="col-md-3">
     <div class="list-group">
         <a href="index.php" class="list-group-item active main-color-bg">Dashboard</a>
@@ -231,7 +230,7 @@ function header_Nav($page){?>
         <a href="sessions.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Sessions <span class="badge">56</span> </a>
         <a href="mentors.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mentors <span class="badge">26</span> </a>
         <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">12</span> </a>
-    </div>
+    </div><br>
 
     <div class="well">
         <h4>Freshman Attendance</h4>
@@ -264,7 +263,7 @@ function header_Nav($page){?>
     </div>
 </div>
 <?php }; ?>
-<!-- End of dadta overview function -->
+<!-- End of Side Menu function -->
 
 
 

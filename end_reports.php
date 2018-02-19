@@ -73,7 +73,8 @@ reportsBreadcrumb($menu);
             </div><br><br>
 
 
-
+            
+            <label>Free Terms Choice</label>
             <!-- End of Year reports by sessions and Semester-->
             <div class="row">
                 <!-- EOP students section-->
@@ -84,15 +85,15 @@ reportsBreadcrumb($menu);
                             <div class="row">
                                 <form>
                                     <div class="col-md-3 pull-right">
-                                       <input type="radio" name="semester" value="summer"> Summer
+                                       <input type="checkbox" name="semester" value="summer"> Summer
                                     </div>
 
                                     <div class="col-md-3 pull-right">
-                                       <input type="radio" name="semester" value="spring"> Spring
+                                       <input type="checkbox" name="semester" value="spring"> Spring
                                     </div>
 
                                     <div class="col-md-3 pull-right">
-                                       <input type="radio" name="semester" value="fall"> Fall
+                                       <input type="checkbox" name="semester" value="fall"> Fall
                                     </div>
                                 </form>
                             </div>
@@ -127,15 +128,15 @@ reportsBreadcrumb($menu);
                             <div class="row">
                                 <form>
                                     <div class="col-md-3 pull-right">
-                                       <input type="radio" name="semester" value="summer"> Summer
+                                       <input type="checkbox" name="semester" value="summer"> Summer
                                     </div>
 
                                     <div class="col-md-3 pull-right">
-                                       <input type="radio" name="semester" value="spring"> Spring
+                                       <input type="checkbox" name="semester" value="spring"> Spring
                                     </div>
 
                                     <div class="col-md-3 pull-right">
-                                       <input type="radio" name="semester" value="fall"> Fall
+                                       <input type="checkbox" name="semester" value="fall"> Fall
                                     </div>
                                 </form>
                             </div>

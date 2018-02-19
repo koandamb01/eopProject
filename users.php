@@ -9,12 +9,11 @@ header_Nav($page);
 breadcrumb($page);
 ?>
 
-
 <!-- body -->
 <section id="main">
     <div class="container">
         <div class="row">
-        <?php dataOverview();?>
+        <?php sideMenu();?>
             <div class="col-md-9">
                 <form action="users.php">
                     <!-- Counselors -->
@@ -100,4 +99,6 @@ breadcrumb($page);
         </div>
     </div>
 </section>
-<!-- End body -->
+
+<!-- Footer -->
+<?php footer(); ?>

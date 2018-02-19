@@ -210,6 +210,4 @@ reportsBreadcrumb($menu);
 </section>
 
 <!-- Footer -->
-<footer id="footer">
-    <p>Copyright EOP Database, &copy; 2018</p>
-</footer>
+<?php footer(); ?>
