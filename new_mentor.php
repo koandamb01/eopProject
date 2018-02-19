@@ -18,7 +18,7 @@ header_Nav($page);
 <section id="main">
     <div class="container">
       <div class="row">
-        <?php dataOverview();?>
+        <?php sideMenu();?>
         <div class="col-md-9">
           <!-- Websitte overview -->
             <div class="panel panel-default">
@@ -26,7 +26,6 @@ header_Nav($page);
                   <h3 class="panel-title">Edit Page</h3>
                 </div>
                 <div class="panel-body">
-                  <form action="new_mentor.php" method="post">
                   <?php mentorForm();?>
                 </div>
             </div>

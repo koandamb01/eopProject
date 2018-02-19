@@ -1,9 +1,12 @@
 <?php include 'functions/functions.php';
 /* declare page variable */
-$page = 'Edit Session';
+$page = 'Edit Mentor';
 
 /*start html beginning tags and display page navigation bar */
 header_Nav($page);
+
+/* Declarer form variables */
+$firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
 ?>
 <section id="breadcrumb">
     <div class="container">
@@ -18,7 +21,7 @@ header_Nav($page);
 <section id="main">
     <div class="container">
       <div class="row">
-        <?php dataOverview();?>
+        <?php sideMenu();?>
         <div class="col-md-9">
           <!-- Websitte overview -->
             <div class="panel panel-default">
@@ -26,9 +29,9 @@ header_Nav($page);
                   <h3 class="panel-title">Edit Page</h3>
                 </div>
                 <div class="panel-body">
-                  <?php sessionsForm() ?>
+                  <?php mentorForm();?>
                 </div>
-              </div>
+            </div>
         </div>
       </div>
     </div>

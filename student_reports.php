@@ -10,7 +10,6 @@ $menu  = 'Each Students';
 reportsBreadcrumb($menu);
 ?>
 
-
 <section id="main">
     <div class="container">
         <form action="student_reports.php" method="post">
@@ -63,7 +62,6 @@ reportsBreadcrumb($menu);
                           </select>
                         </div>
     					
-
                         <!-- pull right/left align column items to the right/left -->
                         <div class="col-md-1">
                            <input type="checkbox" name="semester" value="fall"> Fall
@@ -80,12 +78,6 @@ reportsBreadcrumb($menu);
                 </div>
                 
                 <div class="panel-body">
-                    <!--div class="row">
-                        <div class="col-md-12">
-                            <input class="form-control" type="text" placeholder="Filter Sessions...">
-                        </div>
-                    </div -->
-                   
                     <table class="table table-striped table-hover table-height">
                         <thead>
                             <tr>
@@ -220,5 +212,30 @@ reportsBreadcrumb($menu);
     </div>
 </section>
 
+<!-- Modal for Printing -->
+<div class="modal fade bs-example-modal-lg" id="printReport" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Reports</h4>
+        </div>
+
+        <div class="modal-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Print</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Footer -->
 <?php footer(); ?>

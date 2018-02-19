@@ -1,10 +1,9 @@
 <?php include 'functions/functions.php';
 /* declare page variable */
-$page = 'New Session';
+$page = 'Edit Session';
 
 /*start html beginning tags and display page navigation bar */
 header_Nav($page);
-
 
 /* Declarer form variables */
 $firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
@@ -37,11 +36,9 @@ $formVars = array('firstname' => $firstname, 'lastname' => $lastname, 'user' => 
                   <h3 class="panel-title">Edit Page</h3>
                 </div>
                 <div class="panel-body">
-
-                  <?php
-                    sessionsForm($formVars); ?>
+                  <?php sessionsForm($formVars) ?>
                 </div>
-            </div>
+              </div>
         </div>
       </div>
     </div>

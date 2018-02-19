@@ -80,7 +80,7 @@ breadcrumb($page);
                                 <td>Salif Kabore</td>
                                 <td>Mohamed Koanda</td>
                                 <td>Dec 12, 2016</td>
-                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                                <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
                             </tr>
 
                             <tr>
@@ -89,7 +89,7 @@ breadcrumb($page);
                                 <td>Salif Kabore</td>
                                 <td>Mohamed Koanda</td>
                                 <td>Dec 12, 2016</td>
-                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                                <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
                             </tr>
 
                             <tr>
@@ -98,7 +98,7 @@ breadcrumb($page);
                                 <td>Salif Kabore</td>
                                 <td>Mohamed Koanda</td>
                                 <td>Dec 12, 2016</td>
-                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                                <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
                             </tr>
 
                             <tr>
@@ -107,7 +107,7 @@ breadcrumb($page);
                                 <td>Salif Kabore</td>
                                 <td>Mohamed Koanda</td>
                                 <td>Dec 12, 2016</td>
-                                <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                                <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
                             </tr>
                             <tr>
                                 <td>Tutorial</td>

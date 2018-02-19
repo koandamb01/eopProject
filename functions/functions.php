@@ -120,13 +120,13 @@ function header_Nav($page){?>
             <?php endif ?>
                     
             </div>
-        <?php if ($page == 'Edit Session' OR $page == 'New Session' OR $page == 'Users'): ?>
+        <?php if ($page == 'Edit Session' OR $page == 'New Session' OR $page == 'New Mentor' OR $page == 'Edit Mentor' OR $page == 'Users'): ?>
                 <!-- Nothing -->
         <?php else: ?>
             <div class="col-md-2">
                 <div class="dropdown">
         <?php if ($page == 'Reports'): ?>
-                    <button class="btn btn-default" type="button" id="printReport">Print Report</button>
+                    <button class="btn btn-default" type="button" data-toggle="modal" data-target="#printReport">Print Report</button>
         <?php else: ?>
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Create Content
@@ -148,7 +148,6 @@ function header_Nav($page){?>
 <!--End of the header_navigation function -->
 
 
-
 <!-- Begin Session Breadcrumb function -->
 <?php function breadcrumb($page){?>
     <section id="breadcrumb">
@@ -165,7 +164,6 @@ function header_Nav($page){?>
     </section>
 <?php }?>
 <!-- End Session Breadcrumb function -->
-
 
 
 <!-- Begin report Breadcrumb function-->
@@ -207,7 +205,6 @@ function header_Nav($page){?>
 <footer id="footer">
     <p>Copyright EOP Database, &copy; 2018</p>
 </footer>
-
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -268,7 +265,16 @@ function header_Nav($page){?>
 
 
 <!-- Begin of sessionForm function -->
-<?php function sessionsForm(){?>
+<?php function sessionsForm($formVars){
+
+$acad_select_option = $formVars['academic'];
+$acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior'); // array for the academic dropdown menu options
+   
+$sessionType_select_option = $formVars['sessionType'];                 
+$sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Independent Study', 'Study Group'); // araay for the session type dropdown menu options
+
+?>
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validationForms()">  
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
@@ -285,20 +291,19 @@ function header_Nav($page){?>
             </div>
         </div>
 
-
 <!-- Student Info -->
         <div class="well">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>First name</label>
-                        <input type="text" class="form-control" name="fname" placeholder="First Name">
+                        <input type="text" class="form-control" name="firstname" value="<?php echo $formVars['firstname'];?>" placeholder="First Name">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Last name</label>
-                        <input type="text" class="form-control" name="lname" placeholder="Last Name">
+                        <input type="text" class="form-control" name="lastname" value="<?php echo $formVars['lastname'];?>" placeholder="Last Name">
                     </div>
                 </div>
             </div>
@@ -307,18 +312,24 @@ function header_Nav($page){?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Academic Year</label>
-                        <select class="form-control">
-                            <option value="#">Freshman</option>
-                            <option value="#">Shopomore</option>
-                            <option value="#">Junior</option>
-                            <option value="#">Senior</option>
+                        <select class="form-control" name="academic">
+                        <?php
+                            foreach ($acad_options as $value) {
+                                if ($value == $acad_select_option) {
+                                    $selected = 'selected = "selected"';
+                                }else{
+                                    $selected = '';
+                                }
+                                echo "<option value='$value' $selected>$value</option>";
+                            }
+                         ?>
                         </select>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="checkbox"><br>
-                        <label><input type="checkbox" name="IsEOP" value="no"> Checked If Non-EOP</label>
+                        <label><input type="checkbox" name="iseop" value="<?php echo $formVars['iseop'];?>" <?php if($formVars['iseop'] == 'yes'){echo "checked";} ?> > Checked If Non-EOP</label>
                     </div>
                 </div>
             </div>
@@ -327,7 +338,7 @@ function header_Nav($page){?>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Student Buffalo State Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="someone@mail.buffalostate.edu">
+                        <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
                     </div>
                 </div>
                 
@@ -348,13 +359,13 @@ function header_Nav($page){?>
 
 
 
-<!-- Tutor -->
+<!-- Mentor -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Tutor Name</label>
+                    <label>Mentor Name</label>
                     <select class="form-control">
-                        <option value="#">Tutor</option>
+                        <option value="#">Mentor</option>
                         <option value="Canestrari">Sarah</option>
                         <option value="Jude">Mohamed</option>
                         <option value="Maria">Adam</option>
@@ -366,12 +377,17 @@ function header_Nav($page){?>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session Type</label>
-                    <select class="form-control">
-                        <option value="#">Session Type</option>
-                        <option value="#">Academic Mentoring</option>
-                        <option value="#">AEGIS</option>
-                        <option value="#">Independent Study</option>
-                        <option value="#">Study group</option>
+                    <select class="form-control" name="sessionType">
+                    <?php
+                        foreach ($sessionType_options as $value) {
+                            if ($value == $sessionType_select_option) {
+                                $selected = 'selected = "selected"';
+                            }else{
+                                $selected = '';
+                            }
+                            echo "<option value='$value' $selected>$value</option>";
+                        }
+                     ?>
                     </select>
                 </div>
             </div>
@@ -382,15 +398,15 @@ function header_Nav($page){?>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Session Time</label>
-                    <input type="time" name="time" class="form-control">
+                    <label>Session Start</label>
+                    <input type="text" class="form-control" name="sessionStart" value="<?php echo $formVars['sessionStart'];?>" placeholder="Example: 9:30PM">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Total Time Spent</label>
-                    <input type="text" class="form-control" name="timeSpent" placeholder="Session time (hours)">
+                    <label>Session End</label>
+                    <input type="text" class="form-control" name="sessionEnd" value="<?php echo $formVars['sessionEnd'];?>" placeholder="Example: 11:45PM">
                 </div>
             </div>
         </div>
@@ -398,7 +414,7 @@ function header_Nav($page){?>
 
         <div class="form-group">
             <label>Academic Mentor Notes</label>
-            <textarea class="form-control" rows="3" cols="50" name="notes" placeholder="Page Body"></textarea>
+            <textarea class="form-control" rows="3" cols="50" name="sessionNotes" value="<?php echo $formVars['sessionNotes'];?>" placeholder="Any notes regarding this session"></textarea>
         </div>
     </div>
 
@@ -413,6 +429,7 @@ function header_Nav($page){?>
 
 <!-- Begin mentor form function -->
 <?php function mentorForm(){?>
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validationForms()">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
