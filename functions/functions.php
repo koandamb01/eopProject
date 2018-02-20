@@ -116,7 +116,7 @@ function header_Nav($page){?>
             <?php if ($page== 'Edit Session' OR $page == 'New Session' OR $page == 'New Mentor' OR $page == 'Edit Mentor'): ?>
                 <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo $page; ?></h1>
             <?php else: ?>
-                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo $page; ?><small> Manage <?php echo $page; ?></small></h1>
+                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo $page; ?><small> Manage</small></h1>
             <?php endif ?>
                     
             </div>

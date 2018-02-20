@@ -15,7 +15,7 @@ breadcrumb($page);
         <div class="row">
         <?php sideMenu();?>
             <div class="col-md-9">
-                <form action="users.php">
+                <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF']));?>" method="post">
                     <!-- Counselors -->
                      <div class="panel panel-default">
                         <div class="panel-heading main-color-bg">
@@ -28,8 +28,9 @@ breadcrumb($page);
                                         <th>Firstname</th>
                                         <th>Lastname</th>
                                         <th>Email</th>
-                                        <th>Active</th>
+                                        <th>Status</th>
                                         <th>Action</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 
@@ -39,6 +40,7 @@ breadcrumb($page);
                                         <td>Smith</td>
                                         <td>jillsmith@gmail.com</td>
                                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-warning" href="#">Deactived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
@@ -46,6 +48,7 @@ breadcrumb($page);
                                         <td>Jackson</td>
                                         <td>ejackson@yahoo.com</td>
                                         <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-success" href="#">Actived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
@@ -53,13 +56,15 @@ breadcrumb($page);
                                         <td>Doe</td>
                                         <td>jdoe@gmail.com</td>
                                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-warning" href="#">Deactived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
                                         <td>Stephanie</td>
                                         <td>Landon</td>
                                         <td>landon@yahoo.com</td>
-                                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-success" href="#">Actived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
@@ -67,6 +72,7 @@ breadcrumb($page);
                                         <td>Smith</td>
                                         <td>jillsmith@gmail.com</td>
                                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-warning" href="#">Deactived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
@@ -74,6 +80,7 @@ breadcrumb($page);
                                         <td>Jackson</td>
                                         <td>ejackson@yahoo.com</td>
                                         <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-success" href="#">Actived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
@@ -81,6 +88,7 @@ breadcrumb($page);
                                         <td>Doe</td>
                                         <td>jdoe@gmail.com</td>
                                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-warning" href="#">Deactived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                     <tr>
@@ -88,6 +96,7 @@ breadcrumb($page);
                                         <td>Landon</td>
                                         <td>landon@yahoo.com</td>
                                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                                        <td><a class="btn btn-warning" href="#">Deactived</a></td>
                                         <td><a class="btn btn-danger" href="#">Delete</a></td>
                                     </tr>
                                 </tbody>
