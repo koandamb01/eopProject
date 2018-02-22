@@ -83,19 +83,17 @@ reportsBreadcrumb($menu);
                         <div class="panel-heading main-color-bg">
                             <h3 class="panel-title">EOP Students</h3>
                             <div class="row">
-                                <form>
-                                    <div class="col-md-3 pull-right">
-                                       <input type="checkbox" name="semester" value="summer"> Summer
-                                    </div>
+                                <div class="col-md-3 pull-right">
+                                   <input type="checkbox" name="semester" value="summer"> Summer
+                                </div>
 
-                                    <div class="col-md-3 pull-right">
-                                       <input type="checkbox" name="semester" value="spring"> Spring
-                                    </div>
+                                <div class="col-md-3 pull-right">
+                                   <input type="checkbox" name="semester" value="spring"> Spring
+                                </div>
 
-                                    <div class="col-md-3 pull-right">
-                                       <input type="checkbox" name="semester" value="fall"> Fall
-                                    </div>
-                                </form>
+                                <div class="col-md-3 pull-right">
+                                   <input type="checkbox" name="semester" value="fall"> Fall
+                                </div>
                             </div>
                         </div>
 

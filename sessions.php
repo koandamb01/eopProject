@@ -58,7 +58,7 @@ breadcrumb($page);
                     </div>
                 </div>
             </div>
-            </form>
+        </form>
 
             <div class="panel-body">
                 <br>
@@ -81,7 +81,7 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit_session.php">Edit Session</a></td>
                         </tr>
 
                         <tr>
@@ -90,7 +90,7 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit_session.php">Edit Session</a></td>
                         </tr>
 
                         <tr>
@@ -99,7 +99,7 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit_session.php">Edit Session</a></td>
                         </tr>
 
                         <tr>
@@ -108,7 +108,7 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit_session.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit_session.php">Edit Session</a></td>
                         </tr>
                         <tr>
                             <td>Tutorial</td>
@@ -116,16 +116,7 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
-                        </tr>
-
-                        <tr>
-                            <td>Tutorial</td>
-                            <td>CIS 475</td>
-                            <td>Salif Kabore</td>
-                            <td>Mohamed Koanda</td>
-                            <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit.php">Edit Session</a></td>
                         </tr>
 
                         <tr>
@@ -134,7 +125,7 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit.php">Edit Session</a></td>
                         </tr>
 
                         <tr>
@@ -143,7 +134,16 @@ breadcrumb($page);
                             <td>Salif Kabore</td>
                             <td>Mohamed Koanda</td>
                             <td>Dec 12, 2016</td>
-                            <td><a class="btn btn-warning" href="edit.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-warning" href="edit.php">Edit Session</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Tutorial</td>
+                            <td>CIS 475</td>
+                            <td>Salif Kabore</td>
+                            <td>Mohamed Koanda</td>
+                            <td>Dec 12, 2016</td>
+                            <td><a class="btn btn-sm btn-warning" href="edit.php">Edit Session</a></td>
                         </tr>
                     </tbody>
                 </table>

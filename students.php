@@ -89,7 +89,7 @@ breadcrumb($page);
                             <td>jillsmith@gmail.com</td>
                             <td>Canestrari</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                         <tr>
                             <td>Eve</td>
@@ -98,7 +98,7 @@ breadcrumb($page);
                             <td>ejackson@yahoo.com</td>
                             <td>Jude</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                         <tr>
                             <td>John </td>
@@ -107,7 +107,7 @@ breadcrumb($page);
                             <td>jdoe@gmail.com</td>
                             <td>Maria</td>
                             <td>No</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                         <tr>
                             <td>Stephanie</td>
@@ -116,7 +116,7 @@ breadcrumb($page);
                             <td>landon@yahoo.com</td>
                             <td>Canestrari</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                          <tr>
                             <td>Jill </td>
@@ -125,7 +125,7 @@ breadcrumb($page);
                             <td>jillsmith@gmail.com</td>
                             <td>Canestrari</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                         <tr>
                             <td>Eve</td>
@@ -134,7 +134,7 @@ breadcrumb($page);
                             <td>ejackson@yahoo.com</td>
                             <td>Jude</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                         <tr>
                             <td>John </td>
@@ -143,7 +143,7 @@ breadcrumb($page);
                             <td>jdoe@gmail.com</td>
                             <td>Maria</td>
                             <td>No</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                         <tr>
                             <td>Stephanie</td>
@@ -152,7 +152,7 @@ breadcrumb($page);
                             <td>landon@yahoo.com</td>
                             <td>Canestrari</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">New Session</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
                         </tr>
                     </tbody>
                 </table>

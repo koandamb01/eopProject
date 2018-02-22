@@ -157,10 +157,14 @@ table th, table td{
 
 table tbody{
   display: block;
-  height: 200px;
+  height: 178px;
   overflow-y: auto;
 }
 
 .table-height tbody{
   height: 370px;
+}
+
+.well-bg{
+  background-color: #f7b353;
 }

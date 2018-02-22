@@ -8,13 +8,13 @@ header_Nav($page);
 
 /* Declarer form variables */
 $firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
-$mentor = $sessionType = $sessionStart = $sessionEnd = $sessionNotes = "";
+$mentor = $sessionType = $sessionStart = $sessionEnd = $sessionCourse = $sessionNotes = "";
 
 
 // declare an array to record the form value
 $formVars = array('firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic,
                   'iseop' => $iseop, 'email' => $email, 'counselor' => $counselor, 'mentor' => $mentor,
-                  'sessionType' => $sessionType, 'sessionStart' => $sessionStart, 'sessionEnd' => $sessionEnd, 'sessionNotes' => $sessionNotes);
+                  'sessionType' => $sessionType, 'sessionStart' => $sessionStart, 'sessionEnd' => $sessionEnd, 'sessionCourse' => $sessionCourse, 'sessionNotes' => $sessionNotes);
 ?>
 <section id="breadcrumb">
     <div class="container">

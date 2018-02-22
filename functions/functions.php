@@ -237,7 +237,7 @@ function header_Nav($page){?>
             </div>
         </div>
 
-        <h4>Shopomore Attendance</h4>
+        <h4>Sophomore Attendance</h4>
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
                 30%
@@ -268,10 +268,16 @@ function header_Nav($page){?>
 <?php function sessionsForm($formVars){
 
 $acad_select_option = $formVars['academic'];
-$acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior'); // array for the academic dropdown menu options
+$acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'); // array for the academic dropdown menu options
    
 $sessionType_select_option = $formVars['sessionType'];                 
-$sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Independent Study', 'Study Group'); // araay for the session type dropdown menu options
+$sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Peer Mentoring', 'Study Group'); // array for the session type dropdown menu options
+
+$counselor_select_option = $formVars['counselor'];
+$counselor_options = array('', 'Maria', 'Canestrari', 'Jude', 'Hanick'); // array for counselor type dropdown menu options
+
+$mentor_select_option = $formVars['mentor'];
+$mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
 ?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validationForms()">  
@@ -346,30 +352,38 @@ $sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Independent Stud
                     <div class="form-group">
                         <label>Counselor</label>
                         <select class="form-control">
-                            <option value="#">Counselor</option>
-                            <option value="Canestrari">Canestrari</option>
-                            <option value="Jude">Jude</option>
-                            <option value="Maria">Maria</option>
-                            <option value="abdi">Abdi</option>
+                            <?php
+                             foreach ($counselor_options as $value) {
+                                if ($value == $counselor_select_option) {
+                                    $selected = 'selected = "selected"';
+                                }else{
+                                    $selected = '';
+                                }
+                                echo "<option value='$value' $selected>$value</option>";
+                            }
+                         ?>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
 <!-- Mentor -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Mentor Name</label>
+                    <label>Mentor Name</label name="mentor">
                     <select class="form-control">
-                        <option value="#">Mentor</option>
-                        <option value="Canestrari">Sarah</option>
-                        <option value="Jude">Mohamed</option>
-                        <option value="Maria">Adam</option>
-                        <option value="abdi">Kedi</option>
+                       <?php
+                        foreach ($mentor_options as $value) {
+                            if ($value == $mentor_select_option) {
+                                $selected = 'selected = "selected"';
+                            }else{
+                                $selected = '';
+                            }
+                            echo "<option value='$value' $selected>$value</option>";
+                        }
+                     ?>
                     </select>
                 </div>
             </div>
@@ -393,7 +407,6 @@ $sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Independent Stud
             </div>
         </div>
 
-
 <!-- Sesstion type -->
         <div class="row">
             <div class="col-md-6">
@@ -410,7 +423,32 @@ $sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Independent Stud
                 </div>
             </div>
         </div>
+        
 
+        <div class="form-group">
+            <label>Course</label>
+            <input type="text" class="form-control" name="sessionCourse" value="<?php echo $formVars['sessionCourse'];?>" placeholder="Example: CIS101">
+        </div>
+       
+
+        <br>
+        
+        <div class="well well-bg">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="radio" name="semester" value="fall"> Fall
+                </div>
+
+                <div class="col-md-4">
+                    <input type="radio" name="semester" value="spring"> Spring
+                </div>
+
+                <div class="col-md-4">
+                    <input type="radio" name="semester" value="summer"> Summer
+                </div>
+            </div>
+        </div>
+        
 
         <div class="form-group">
             <label>Academic Mentor Notes</label>

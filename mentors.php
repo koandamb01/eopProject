@@ -54,76 +54,76 @@ breadcrumb($page);
 
                     <tbody>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>Jill </td>
                             <td>Smith</td>
                             <td>Freshman</td>
                             <td>jillsmith@gmail.com</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>Eve</td>
                             <td>Jackson</td>
                             <td>Freshman</td>
                             <td>ejackson@yahoo.com</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>John </td>
                             <td>Doe</td>
                             <td>Junior</td>
                             <td>jdoe@gmail.com</td>
                             <td>No</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>Stephanie</td>
                             <td>Landon</td>
                             <td>Shopomore</td>
                             <td>landon@yahoo.com</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>Jill </td>
                             <td>Smith</td>
                             <td>Freshman</td>
                             <td>jillsmith@gmail.com</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>Eve</td>
                             <td>Jackson</td>
                             <td>Freshman</td>
                             <td>ejackson@yahoo.com</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>John </td>
                             <td>Doe</td>
                             <td>Junior</td>
                             <td>jdoe@gmail.com</td>
                             <td>No</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                         <tr>
-                            <td><a class="btn btn-danger" href="edit_mentor.php">Edit</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="edit_mentor.php">Edit</a></td>
                             <td>Stephanie</td>
                             <td>Landon</td>
                             <td>Shopomore</td>
                             <td>landon@yahoo.com</td>
                             <td>Yes</td>
-                            <td><a class="btn btn-success" href="#">Schedule</a></td>
+                            <td><a class="btn btn-sm btn-success" href="#">Schedule</a></td>
                         </tr>
                     </tbody>
                 </table>
