@@ -108,7 +108,7 @@ function header_Nav($page){?>
         </div>
     </nav>
 
-    <header id="header">
+<header id="header">
     <div class="container">
         <div class="row">
             <div class="col-md-10">
@@ -210,6 +210,8 @@ function header_Nav($page){?>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 
 </html>
@@ -280,7 +282,7 @@ $mentor_select_option = $formVars['mentor'];
 $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
 ?>
-<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validationForms()">  
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms()">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
@@ -303,12 +305,14 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>First name</label>
+                        <span id="fnameErr"></span>
                         <input type="text" class="form-control" name="firstname" value="<?php echo $formVars['firstname'];?>" placeholder="First Name">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Last name</label>
+                        <span id="lnameErr"></span>
                         <input type="text" class="form-control" name="lastname" value="<?php echo $formVars['lastname'];?>" placeholder="Last Name">
                     </div>
                 </div>
@@ -318,6 +322,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Academic Year</label>
+                        <span id="academicErr"></span>
                         <select class="form-control" name="academic">
                         <?php
                             foreach ($acad_options as $value) {
@@ -343,6 +348,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
+                        <span id="emailErr"></span>
                         <label>Student Buffalo State Email</label>
                         <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
                     </div>
@@ -351,7 +357,8 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Counselor</label>
-                        <select class="form-control">
+                        <span id="counselorErr"></span>
+                        <select class="form-control" name="counselor">
                             <?php
                              foreach ($counselor_options as $value) {
                                 if ($value == $counselor_select_option) {
@@ -361,7 +368,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                                 }
                                 echo "<option value='$value' $selected>$value</option>";
                             }
-                         ?>
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -372,8 +379,9 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Mentor Name</label name="mentor">
-                    <select class="form-control">
+                    <label>Mentor Name</label>
+                    <span id="mentorErr"></span>
+                    <select class="form-control" name="mentor">
                        <?php
                         foreach ($mentor_options as $value) {
                             if ($value == $mentor_select_option) {
@@ -391,6 +399,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session Type</label>
+                    <span id="sessionTypeErr"></span>
                     <select class="form-control" name="sessionType">
                     <?php
                         foreach ($sessionType_options as $value) {
@@ -426,7 +435,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
         
 
         <div class="form-group">
-            <label>Course</label>
+            <label>Course Name</label>
             <input type="text" class="form-control" name="sessionCourse" value="<?php echo $formVars['sessionCourse'];?>" placeholder="Example: CIS101">
         </div>
        
@@ -666,7 +675,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
     </div>
 
     <div class="modal-footer">
-        <button type="sbmit" name="saveChanges" class="btn btn-primary">Save changes</button>
+        <button type="submit" name="saveChanges" class="btn btn-primary">Save changes</button>
     </div>
 </form>
 <?php } ?>

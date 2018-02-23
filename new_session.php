@@ -5,7 +5,6 @@ $page = 'New Session';
 /*start html beginning tags and display page navigation bar */
 header_Nav($page);
 
-
 /* Declarer form variables */
 $firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
 $mentor = $sessionType = $sessionStart = $sessionEnd = $sessionCourse = $sessionNotes = "";
