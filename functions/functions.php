@@ -421,14 +421,16 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session Start</label>
-                    <input type="text" class="form-control" name="sessionStart" value="<?php echo $formVars['sessionStart'];?>" placeholder="Example: 9:30PM">
+                    <span id="sessionStartErr"></span>
+                    <input type="time" class="form-control" name="sessionStart" value="<?php echo $formVars['sessionStart'];?>">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Session End</label>
-                    <input type="text" class="form-control" name="sessionEnd" value="<?php echo $formVars['sessionEnd'];?>" placeholder="Example: 11:45PM">
+                    <span id="sessionEndErr"></span>
+                    <input type="time" class="form-control" name="sessionEnd" value="<?php echo $formVars['sessionEnd'];?>">
                 </div>
             </div>
         </div>
@@ -436,12 +438,14 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
         <div class="form-group">
             <label>Course Name</label>
+            <span id="sessionCourseErr"></span>
             <input type="text" class="form-control" name="sessionCourse" value="<?php echo $formVars['sessionCourse'];?>" placeholder="Example: CIS101">
         </div>
        
 
         <br>
         
+        <span id="semesterErr"></span>
         <div class="well well-bg">
             <div class="row">
                 <div class="col-md-4">
