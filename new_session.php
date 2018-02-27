@@ -9,9 +9,11 @@ header_Nav($page);
 $firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
 $mentor = $sessionType = $sessionStart = $sessionEnd = $sessionCourse = $sessionNotes = "";
 
+$timestamp = time();
+$date = date('Y-m-d', $timestamp);
 
 // declare an array to record the form value
-$formVars = array('firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic,
+$formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic,
                   'iseop' => $iseop, 'email' => $email, 'counselor' => $counselor, 'mentor' => $mentor,
                   'sessionType' => $sessionType, 'sessionStart' => $sessionStart, 'sessionEnd' => $sessionEnd, 'sessionCourse' => $sessionCourse, 'sessionNotes' => $sessionNotes);
 ?>

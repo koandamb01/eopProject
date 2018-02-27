@@ -288,7 +288,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="date" class="form-control" name="date" placeholder="Page Title">
+                    <input type="date" class="form-control" name="date" value="<?php echo $formVars['date'];?>" placeholder="Page Title">
                 </div>
             </div>
 
@@ -473,14 +473,34 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
         <button type="submit" name="saveChanges" class="btn btn-primary">Save changes</button>
     </div>
 </form>
+
+<script type="text/javascript">
+    // event lister to the checkbox IsEOP
+    // Disabled the Counselor dropdown menu if Iseop checkbox is check
+
+    var checkbox = document.querySelector("input[name=iseop]");
+    checkbox.addEventListener( 'change', function() {
+        if(this.checked) {
+            document.forms['myForm']['counselor'].style.border = "1px solid #ccc";
+            document.getElementById("counselorErr").style.display = 'none';
+            document.forms['myForm']['counselor'].disabled = true;
+        } else {
+            document.forms['myForm']['counselor'].disabled = false;
+        }
+    });
+</script>
 <?php }?>
 <!-- End of sessionForm function -->
 
 
 
 <!-- Begin mentor form function -->
-<?php function mentorForm(){?>
-<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validationForms()">
+<?php function mentorForm($formVars){
+
+    $acad_select_option = $formVars['academic'];
+    $acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'); // array for the academic dropdown menu options
+?>
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms()">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
@@ -502,30 +522,40 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
             <div class="col-md-6">
                 <div class="form-group">
                     <label>First name</label>
-                    <input type="text" class="form-control" name="fname" placeholder="First Name">
+                    <span id="fnameErr"></span>
+                    <input type="text" class="form-control" name="firstname" value="<?php echo $formVars['firstname'];?>" placeholder="First Name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Last name</label>
-                    <input type="text" class="form-control" name="lname" placeholder="Last Name">
+                    <span id="lnameErr"></span>
+                    <input type="text" class="form-control" name="lastname" value="<?php echo $formVars['lastname'];?>" placeholder="Last Name">
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                <label>Buffalo State Email</label>
-                <input type="text" class="form-control" name="email" placeholder="someone@mail.buffalostate.edu...">
+                <span id="emailErr"></span>
+                <label>Student Buffalo State Email</label>
+                <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Academic Year</label>
-                    <select class="form-control">
-                            <option value="#">Freshman</option>
-                        <option value="#">Shopomore</option>
-                        <option value="#">Junior</option>
-                        <option value="#">Senior</option>
+                    <span id="academicErr"></span>
+                    <select class="form-control" name="academic">
+                    <?php
+                        foreach ($acad_options as $value) {
+                            if ($value == $acad_select_option) {
+                                $selected = 'selected = "selected"';
+                            }else{
+                                $selected = '';
+                            }
+                            echo "<option value='$value' $selected>$value</option>";
+                        }
+                     ?>
                     </select>
                 </div>
             </div>
@@ -578,99 +608,51 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
         
         <label>Mentor Courses Tutor</label>
+        <span id="CourseErr"></span>
         <div class="well">
+                <div class="row" id="fields">
+                    <div class="col-md-3" id="field1">
+                        <div class="form-group">
+                            <label>Course 1</label>
+                            <input type="text" class="form-control" name="course1" placeholder="CRS 101...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="field2">
+                        <div class="form-group">
+                            <label>Course 2</label>
+                            <input type="text" class="form-control" name="course2" placeholder="CRS 101...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="field3">
+                        <div class="form-group">
+                            <label>Course 3</label>
+                            <input type="text" class="form-control" name="course3" placeholder="CRS 101...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group" id="field4">
+                            <label>Course 4</label>
+                            <input type="text" class="form-control" name="course4" placeholder="CRS 101...">
+                        </div>
+                    </div>
+                </div>
+
+
             <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 1</label>
-                        <input type="text" class="form-control" name="crs1" placeholder="CRS 101...">
-                    </div>
+                <div class="col-md-6">
+                    <a class="glyphicon glyphicon-minus" onclick="removefields()"></a>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 2</label>
-                        <input type="text" class="form-control" name="crs2" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 3</label>
-                        <input type="text" class="form-control" name="crs3" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 4</label>
-                        <input type="text" class="form-control" name="crs4" placeholder="CRS 101...">
-                    </div>
+                <div class="col-md-6">
+                    <a class="glyphicon glyphicon-plus pull-right" onclick="addfields()"></a>
                 </div>
             </div>
-        
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 5</label>
-                        <input type="text" class="form-control" name="crs5" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 6</label>
-                        <input type="text" class="form-control" name="crs6" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 7</label>
-                        <input type="text" class="form-control" name="crs7" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 8</label>
-                        <input type="text" class="form-control" name="crs8" placeholder="CRS 101...">
-                    </div>
-                </div>
-            </div>
-
-             <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 9</label>
-                        <input type="text" class="form-control" name="crs9" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 10</label>
-                        <input type="text" class="form-control" name="crs10" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 11</label>
-                        <input type="text" class="form-control" name="crs11" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>Course 12</label>
-                        <input type="text" class="form-control" name="crs12" placeholder="CRS 101...">
-                    </div>
-                </div>
-            </div>
+             
         </div>
-
+        
 
         <div class="form-group">
             <label>Notes</label>
