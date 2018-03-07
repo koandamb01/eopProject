@@ -431,20 +431,29 @@ function validateSemester(){
 }
 
 
-function validateForms(){
+function validateForms(x){
 	var error = 0;
 
+if(x == 0){
 	if(!validateFirstName()) {error = 1;}
 	if(!validateLastName()) {error = 1;}
 	if(!validateAcademic()) {error = 1;}
-	if(!validateCounselor()) {error = 1;}
 	if(!validateEmail()) {error = 1;}
+}
+
+if(x == 1){
+	if(!validateFirstName()) {error = 1;}
+	if(!validateLastName()) {error = 1;}
+	if(!validateAcademic()) {error = 1;}
+	if(!validateEmail()) {error = 1;}
+	if(!validateCounselor()) {error = 1;}
 	if(!validateMentor()) {error = 1;}
 	if(!validateSessionType()) {error = 1;}
 	if(!validateSessionStart()) {error = 1;}
 	if(!validateSessionEnd()) {error = 1;}
 	if(!validateCourse()) {error = 1;}
 	if(!validateSemester()) {error = 1;}
+}
 
 	
 	if (error == 1){return false}

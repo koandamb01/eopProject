@@ -1,3 +1,62 @@
+function addHours(){
+    var x = document.getElementById("hours").childElementCount; // get the number of the element in this section
+    x += 1;
+
+    var newfield = '';
+
+    newfield = `<div class="col-md-2">
+                    <div class="form-group">
+                        <label>Monday</label><br>
+                        FROM<input type="time" class="form-control" name="MonFrom">
+                        TO<input type="time" class="form-control" name="MonTo1`+x+`">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Tuesday</label><br>
+                        FROM<input type="time" class="form-control" name="TuesFrom">
+                        TO<input type="time" class="form-control" name="TueTo1`+x+`">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Wednesday</label><br>
+                        FROM<input type="time" class="form-control" name="WedFrom">
+                        TO<input type="time" class="form-control" name="WedTo1`+x+`">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Thursday</label><br>
+                        FROM<input type="time" class="form-control" name="ThuFrom">
+                        TO<input type="time" class="form-control" name="ThuTo1`+x+`">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Friday</label><br>
+                        FROM<input type="time" class="form-control" name="FriFrom">
+                        TO<input type="time" class="form-control" name="FriTo1`+x+`">
+                    </div>
+                </div>`;
+
+    document.getElementById("hours").innerHTML += newfield;
+
+}
+
+
+
+
+
+
+
+
+
+
 // function to add new course if the user press the plus button
 function addfields(){
 	var x = document.getElementById("fields").childElementCount; // get the number of the element in this section

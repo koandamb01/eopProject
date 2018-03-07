@@ -282,7 +282,7 @@ $mentor_select_option = $formVars['mentor'];
 $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
 ?>
-<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms()">
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(1)">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
@@ -444,7 +444,6 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
        
 
         <br>
-        
         <span id="semesterErr"></span>
         <div class="well well-bg">
             <div class="row">
@@ -500,13 +499,13 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
     $acad_select_option = $formVars['academic'];
     $acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'); // array for the academic dropdown menu options
 ?>
-<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms()">
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(0)">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Date</label>
-                    <input type="date" class="form-control" name="date" placeholder="Page Title">
+                    <input type="date" class="form-control" name="date" value="<?php echo $formVars['date'];?>" placeholder="Page Title">
                 </div>
             </div>
 
@@ -537,9 +536,11 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
         <div class="row">
             <div class="col-md-6">
-                <span id="emailErr"></span>
-                <label>Student Buffalo State Email</label>
-                <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
+                <div class="form-group">
+                    <span id="emailErr"></span>
+                    <label>Student Buffalo State Email</label>
+                    <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -563,45 +564,56 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
         
         <label>Mentor Weekly Schedule</label>
         <div class="well">
-            <div class="row">
+            <div class="row" id="hours">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Monday</label><br>
-                        FROM<input type="time" class="form-control" name="MonFrom" >
-                        TO<input type="time" class="form-control" name="MonTo">
+                        FROM<input type="time" class="form-control" name="MonFrom">
+                        TO<input type="time" class="form-control" name="MonTo1">
                     </div>
+
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tuesday</label><br>
-                        FROM<input type="time" class="form-control" name="TuesFrom" >
-                        TO<input type="time" class="form-control" name="TueTo">
+                        FROM<input type="time" class="form-control" name="TuesFrom">
+                        TO<input type="time" class="form-control" name="TueTo1">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Wednesday</label><br>
-                        FROM<input type="time" class="form-control" name="WedFrom" >
-                        TO<input type="time" class="form-control" name="WedTo">
+                        FROM<input type="time" class="form-control" name="WedFrom">
+                        TO<input type="time" class="form-control" name="WedTo1">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Thursday</label><br>
-                        FROM<input type="time" class="form-control" name="ThuFrom" >
-                        TO<input type="time" class="form-control" name="ThuTo">
+                        FROM<input type="time" class="form-control" name="ThuFrom">
+                        TO<input type="time" class="form-control" name="ThuTo1">
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Friday</label><br>
-                        FROM<input type="time" class="form-control" name="FriFrom" >
-                        TO<input type="time" class="form-control" name="FriTo">
+                        FROM<input type="time" class="form-control" name="FriFrom">
+                        TO<input type="time" class="form-control" name="FriTo1">
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="glyphicon glyphicon-minus" onclick="removeHours()"></a>
+                </div>
+
+                <div class="col-md-6">
+                    <a class="glyphicon glyphicon-plus pull-right" onclick="addHours()"></a>
                 </div>
             </div>
         </div><br>
@@ -652,7 +664,6 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
             </div>
              
         </div>
-        
 
         <div class="form-group">
             <label>Notes</label>

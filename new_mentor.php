@@ -7,7 +7,7 @@ header_Nav($page);
 
 
 /* Declarer form variables */
-$firstname = $lastname = $user = $academic = $email = "";
+$date = $firstname = $lastname = $user = $academic = $email = "";
 
 $timestamp = time();
 $date = date('Y-m-d', $timestamp);
