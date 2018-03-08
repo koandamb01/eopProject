@@ -1,4 +1,6 @@
 <?php 
+
+include 'vars.php';
 /* -- Start of the header_navigation function -- */
 function header_Nav($page){?>
 <!DOCTYPE html>
@@ -18,14 +20,14 @@ function header_Nav($page){?>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
-                <a class="navbar-brand" href="index.php">EOP Database</a>
+                <a class="navbar-brand" href="home.php">EOP Database</a>
             </div>
 
     <?php if($page == 'Dashboard'): ?>
 
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Dashboard</a></li>
+                    <li class="active"><a href="home.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
                     <li><a href="mentors.php">Mentors</a></li>
@@ -36,7 +38,7 @@ function header_Nav($page){?>
     <?php elseif ($page == 'Students'):?>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="home.php">Dashboard</a></li>
                     <li class="active"><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
                     <li><a href="mentors.php">Mentors</a></li>
@@ -47,7 +49,7 @@ function header_Nav($page){?>
     <?php elseif($page == 'Sessions'): ?>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="home.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li class="active"><a href="sessions.php">Sessions</a></li>
                     <li><a href="mentors.php">Mentors</a></li>
@@ -58,7 +60,7 @@ function header_Nav($page){?>
     <?php elseif($page == 'Mentors'): ?>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="home.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
                     <li class="active"><a href="mentors.php">Mentors</a></li>
@@ -69,7 +71,7 @@ function header_Nav($page){?>
     <?php elseif($page == 'Reports'): ?>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="home.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
                     <li><a href="mentors.php">Mentors</a></li>
@@ -80,7 +82,7 @@ function header_Nav($page){?>
     <?php elseif($page == 'Users'): ?>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="home.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
                     <li><a href="mentors.php">Mentors</a></li>
@@ -91,7 +93,7 @@ function header_Nav($page){?>
     <?php else: ?>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="home.php">Dashboard</a></li>
                     <li><a href="students.php">Students</a></li>
                     <li><a href="sessions.php">Sessions</a></li>
                     <li><a href="mentors.php">Mentors</a></li>
@@ -153,7 +155,7 @@ function header_Nav($page){?>
     <section id="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="index.php">Dashboard</a></li>
+                <li><a href="home.php">Dashboard</a></li>
     <?php if($page == 'Dashboard'): ?>
         <!-- do nothing -->
     <?php else: ?>
@@ -174,19 +176,19 @@ function header_Nav($page){?>
             <ol class="breadcrumb">
 
         <?php if ($menu == 'All Students'): ?>
-            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="home.php">Dashboard</a></li>
             <li class="active"><?php echo $menu; ?></li>
             <li><a href="student_reports.php">Each Student</a></li>
             <li><a href="end_reports.php">Year Breakdown</a></li>
 
         <?php elseif($menu  == 'Each Students'): ?>
-            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="home.php">Dashboard</a></li>
             <li><a href="reports.php">All Students</a></li>
             <li class="active"><?php echo $menu; ?></li>
             <li><a href="end_reports.php">Year Breakdown</a></li>
         
         <?php elseif($menu == 'Year Breakdown'): ?>
-            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="home.php">Dashboard</a></li>
             <li><a href="reports.php">All Students</a></li>
             <li><a href="student_reports">Each Student</a></li>
             <li class="active"><?php echo $menu; ?></li>
@@ -224,7 +226,7 @@ function header_Nav($page){?>
 <?php function sideMenu(){?>
 <div class="col-md-3">
     <div class="list-group">
-        <a href="index.php" class="list-group-item active main-color-bg">Dashboard</a>
+        <a href="home.php" class="list-group-item active main-color-bg">Dashboard</a>
         <a href="students.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Students <span class="badge">208</span> </a>
         <a href="sessions.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Sessions <span class="badge">56</span> </a>
         <a href="mentors.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mentors <span class="badge">26</span> </a>
@@ -267,21 +269,7 @@ function header_Nav($page){?>
 
 
 <!-- Begin of sessionForm function -->
-<?php function sessionsForm($formVars){
-
-$acad_select_option = $formVars['academic'];
-$acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'); // array for the academic dropdown menu options
-   
-$sessionType_select_option = $formVars['sessionType'];                 
-$sessionType_options = array('','Academic Mentoring', 'AEGIS', 'Peer Mentoring', 'Study Group'); // array for the session type dropdown menu options
-
-$counselor_select_option = $formVars['counselor'];
-$counselor_options = array('', 'Maria', 'Canestrari', 'Jude', 'Hanick'); // array for counselor type dropdown menu options
-
-$mentor_select_option = $formVars['mentor'];
-$mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
-
-?>
+<?php function sessionsForm($formVars){?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(1)">
     <div class="modal-body">
         <div class="row">
@@ -325,7 +313,11 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                         <span id="academicErr"></span>
                         <select class="form-control" name="academic">
                         <?php
-                            foreach ($acad_options as $value) {
+
+                            $acad_select_option = $formVars['academic'];
+                            global $academicYear;
+   
+                            foreach ($academicYear as $value) {
                                 if ($value == $acad_select_option) {
                                     $selected = 'selected = "selected"';
                                 }else{
@@ -360,14 +352,17 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                         <span id="counselorErr"></span>
                         <select class="form-control" name="counselor">
                             <?php
-                             foreach ($counselor_options as $value) {
-                                if ($value == $counselor_select_option) {
-                                    $selected = 'selected = "selected"';
-                                }else{
-                                    $selected = '';
+                                $counselor_select_option = $formVars['counselor'];
+                                global $counselorsList;
+
+                                 foreach ($counselorsList as $value) {
+                                    if ($value == $counselor_select_option) {
+                                        $selected = 'selected = "selected"';    
+                                    }else{
+                                        $selected = '';
+                                    }
+                                    echo "<option value='$value' $selected>$value</option>";
                                 }
-                                echo "<option value='$value' $selected>$value</option>";
-                            }
                             ?>
                         </select>
                     </div>
@@ -383,14 +378,17 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                     <span id="mentorErr"></span>
                     <select class="form-control" name="mentor">
                        <?php
-                        foreach ($mentor_options as $value) {
-                            if ($value == $mentor_select_option) {
-                                $selected = 'selected = "selected"';
-                            }else{
-                                $selected = '';
+                            $mentor_select_option = $formVars['mentor'];
+                            global $mentorsList;
+
+                            foreach ($mentorsList as $value) {
+                                if ($value == $mentor_select_option) {
+                                    $selected = 'selected = "selected"';
+                                }else{
+                                    $selected = '';
+                                }
+                                echo "<option value='$value' $selected>$value</option>";
                             }
-                            echo "<option value='$value' $selected>$value</option>";
-                        }
                      ?>
                     </select>
                 </div>
@@ -402,7 +400,9 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                     <span id="sessionTypeErr"></span>
                     <select class="form-control" name="sessionType">
                     <?php
-                        foreach ($sessionType_options as $value) {
+                        $sessionType_select_option = $formVars['sessionType']; 
+                        global $sessionsList;
+                        foreach ($sessionsList as $value) {
                             if ($value == $sessionType_select_option) {
                                 $selected = 'selected = "selected"';
                             }else{
@@ -494,11 +494,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
 
 
 <!-- Begin mentor form function -->
-<?php function mentorForm($formVars){
-
-    $acad_select_option = $formVars['academic'];
-    $acad_options = array('','Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'); // array for the academic dropdown menu options
-?>
+<?php function mentorForm($formVars){?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(0)">
     <div class="modal-body">
         <div class="row">
@@ -548,7 +544,10 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                     <span id="academicErr"></span>
                     <select class="form-control" name="academic">
                     <?php
-                        foreach ($acad_options as $value) {
+                        $acad_select_option = $formVars['academic'];
+                        global $academicYear;
+
+                        foreach ($academicYear as $value) {
                             if ($value == $acad_select_option) {
                                 $selected = 'selected = "selected"';
                             }else{
@@ -563,12 +562,13 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
         </div><br>
         
         <label>Mentor Weekly Schedule</label>
+        <span id="hoursErr"></span>
         <div class="well">
-            <div class="row" id="hours">
-                <div class="col-md-2">
+            <div class="row">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Monday</label><br>
-                        FROM<input type="time" class="form-control" name="MonFrom">
+                        FROM<input type="time" class="form-control" name="MonFrom1">
                         TO<input type="time" class="form-control" name="MonTo1">
                     </div>
 
@@ -577,7 +577,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tuesday</label><br>
-                        FROM<input type="time" class="form-control" name="TuesFrom">
+                        FROM<input type="time" class="form-control" name="TuesFrom1">
                         TO<input type="time" class="form-control" name="TueTo1">
                     </div>
                 </div>
@@ -585,7 +585,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Wednesday</label><br>
-                        FROM<input type="time" class="form-control" name="WedFrom">
+                        FROM<input type="time" class="form-control" name="WedFrom1">
                         TO<input type="time" class="form-control" name="WedTo1">
                     </div>
                 </div>
@@ -593,7 +593,7 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Thursday</label><br>
-                        FROM<input type="time" class="form-control" name="ThuFrom">
+                        FROM<input type="time" class="form-control" name="ThuFrom1">
                         TO<input type="time" class="form-control" name="ThuTo1">
                     </div>
                 </div>
@@ -601,11 +601,13 @@ $mentor_options = array('', 'Mohamed', 'Sarah', 'Kadi', 'Adam');
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Friday</label><br>
-                        FROM<input type="time" class="form-control" name="FriFrom">
+                        FROM<input type="time" class="form-control" name="FriFrom1">
                         TO<input type="time" class="form-control" name="FriTo1">
                     </div>
                 </div>
             </div>
+            <hr>
+            <div class="row" id="secondHours"></div>
 
             <div class="row">
                 <div class="col-md-6">

@@ -6,7 +6,13 @@ $page = 'Edit Mentor';
 header_Nav($page);
 
 /* Declarer form variables */
-$firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
+$date = $firstname = $lastname = $user = $academic = $email = "";
+
+$timestamp = time();
+$date = date('Y-m-d', $timestamp);
+
+// declare an array to record the form value
+$formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic, 'email' => $email);
 ?>
 <section id="breadcrumb">
     <div class="container">
@@ -29,7 +35,7 @@ $firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
                   <h3 class="panel-title">Edit Page</h3>
                 </div>
                 <div class="panel-body">
-                  <?php mentorForm();?>
+                  <?php mentorForm($formVars);?>
                 </div>
             </div>
         </div>

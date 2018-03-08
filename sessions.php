@@ -12,15 +12,6 @@ breadcrumb($page);
 <section id="main">
     <div class="container">
         <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF']));?>" method="post">
-            <div class="row">
-                <div class="col-md-11">
-                    <input class="form-control" type="text" name="searchInput" placeholder="Search Sessions...">
-                </div>
-
-                <div class="col-md-1">
-                    <button class="btn btn-success" name="search">Search</button>
-                </div>
-            </div><br>
         <div class="panel panel-default">
             <div class="panel-heading main-color-bg">
                 <div class="row">
