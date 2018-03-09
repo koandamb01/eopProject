@@ -1,4 +1,4 @@
-<?php include 'functions/functions.php';
+<?php require 'functions/functions.php';
 /* declare page variable */
 $page = 'New Session';
 
@@ -22,7 +22,7 @@ $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $las
         <ol class="breadcrumb">
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="sessions.php">Sessions</a></li>
-            <li class="active">Edit Session</li>
+            <li class="active">New Session</li>
         </ol>
     </div>
 </section>
@@ -35,7 +35,7 @@ $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $las
           <!-- Websitte overview -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                  <h3 class="panel-title">Edit Page</h3>
+                  <h3 class="panel-title">New Session</h3>
                 </div>
                 <div class="panel-body">
 

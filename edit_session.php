@@ -1,4 +1,4 @@
-<?php include 'functions/functions.php';
+<?php require 'functions/functions.php';
 /* declare page variable */
 $page = 'Edit Session';
 
@@ -35,7 +35,7 @@ $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $las
           <!-- Websitte overview -->
             <div class="panel panel-default">
                 <div class="panel-heading main-color-bg">
-                  <h3 class="panel-title">Edit Page</h3>
+                  <h3 class="panel-title">Edit Session</h3>
                 </div>
                 <div class="panel-body">
                   <?php sessionsForm($formVars) ?>

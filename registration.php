@@ -1,3 +1,4 @@
+<?php require 'functions/functions.php';?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,20 +42,23 @@
     <section id="main">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <form id="login" action="index.php" class="well">
+          <div class="col-md-6 col-md-offset-3">
+            <form id="myForm" class="well" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('r')">
                 <div class="form-group">
                   <label>Firstname</label>
-                  <input type="text" class="form-control" placeholder="Enter Firstname">
+                  <span id="fnameErr"></span>
+                  <input type="text" class="form-control" name="firstname" placeholder="Enter Firstname">
                 </div>
 
                 <div class="form-group">
                   <label>Lastname</label>
-                  <input type="text" class="form-control" placeholder="Enter Lastname">
+                  <span id="lnameErr"></span>
+                  <input type="text" class="form-control" name="lastname" placeholder="Enter Lastname">
                 </div>
                 
                 <div class="form-group">
                   <label>Title</label>
+                  <span id="titleErr"></span>
                   <select class="form-control" name="title">
                     <option value=""></option>
                     <option value="counselor">I'm a Counselor</option>
@@ -64,13 +68,15 @@
     
 
                 <div class="form-group">
+                  <span id="emailErr"></span>
                   <label>Email Address</label>
-                  <input type="text" class="form-control" placeholder="Enter Email">
+                  <input type="text" class="form-control" name="email" placeholder="Enter Email">
                 </div>
 
                 <div class="form-group">
+                  <span id="passwordErr"></span>
                   <label>Password</label>
-                  <input type="password" class="form-control" placeholder="Password">
+                  <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 
                 <button type="submit" class="btn btn-default btn-block">Create Account</button>
@@ -80,14 +86,4 @@
       </div>
     </section>
 
-    <footer id="footer">
-      <p>Copyright AdminStrap, &copy; 2017</p>
-    </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+<?php footer(); ?>

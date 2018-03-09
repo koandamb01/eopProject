@@ -1,4 +1,4 @@
-<?php include 'functions/functions.php';
+<?php require 'functions/functions.php';
 /* declare page variable */
 $page = 'Mentors';
 
