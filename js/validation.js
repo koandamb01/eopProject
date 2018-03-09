@@ -508,6 +508,7 @@ if(x == 's'){
 	if(!validateSemester()) {error = 1;}
 }
 
+// registration validations
 if(x == 'r'){
 	if(!validateFirstName()) {error = 1;}
 	if(!validateLastName()) {error = 1;}
