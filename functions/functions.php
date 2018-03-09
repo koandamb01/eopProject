@@ -104,7 +104,7 @@ function header_Nav($page){?>
     <?php endif; ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="login.php">Logout</a></li>
+                    <li><a href="index.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -270,7 +270,7 @@ function header_Nav($page){?>
 
 <!-- Begin of sessionForm function -->
 <?php function sessionsForm($formVars){?>
-<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(1)">
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('s')">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
@@ -495,7 +495,7 @@ function header_Nav($page){?>
 
 <!-- Begin mentor form function -->
 <?php function mentorForm($formVars){?>
-<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(0)">
+<form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('m')">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">

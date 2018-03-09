@@ -245,6 +245,39 @@ function validateEmail(){
 }
 
 
+// Validation the Password
+function validatePassword(){
+	var pass = document.forms['myForm']['password'].value;
+	var pattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	
+	document.forms['myForm']['password'].style.background = "#fff";
+	if(pass.length == 0){
+		document.forms['myForm']['password'].style.border = "1px solid red";
+		document.forms['myForm']['password'].focus;
+		document.getElementById("passwordErr").innerHTML = "* Password required";
+		document.getElementById("passwordErr").style.display = 'block';
+		document.getElementById("passwordErr").style.color = 'red';
+		document.getElementById("passwordErr").style.textAlign = 'right';
+		document.getElementById("passwordErr").style.float = 'right';
+		return false;
+	}
+	else if(pass.match(pattern)){
+		document.forms['myForm']['password'].style.border = "1px solid #ccc";
+		document.getElementById("passwordErr").style.display = 'none';
+		return true;
+	}else{
+		document.forms['myForm']['password'].style.border = "1px solid red";
+		document.forms['myForm']['password'].focus;
+		document.getElementById("passwordErr").innerHTML = "* Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
+		document.getElementById("passwordErr").style.display = 'block';
+		document.getElementById("passwordErr").style.color = 'red';
+		document.getElementById("passwordErr").style.textAlign = 'right';
+		document.getElementById("passwordErr").style.float = 'right';
+		return false;
+	}
+}
+
+
 // Validating the counselor dropdown
 function validateCounselor(){
 	var counselor = document.forms['myForm']['counselor'].value;
@@ -412,6 +445,28 @@ function validateCourse(){
 }
 
 
+// Validating the Title Type dropdown
+function validateTitle(){
+	var title = document.forms['myForm']['tilte'].value;
+	
+	if(title.length == 0){
+		document.forms['myForm']['title'].style.border = "1px solid red";
+		document.forms['myForm']['title'].focus;
+		document.getElementById("titleErr").innerHTML = "* Title Type required";
+		document.getElementById("titleErr").style.display = 'block';
+		document.getElementById("titleErr").style.color = 'red';
+		document.getElementById("titleErr").style.textAlign = 'right';
+		document.getElementById("titleErr").style.float = 'right';
+		return false;
+	}
+	else{
+		document.forms['myForm']['title'].style.border = "1px solid #ccc";
+		document.getElementById("titleErr").style.display = 'none';
+		return true;
+	}
+}
+
+// Valida
 
 function validateSemester(){
 	var semester = document.forms['myForm']['semester'];
@@ -434,14 +489,14 @@ function validateSemester(){
 function validateForms(x){
 	var error = 0;
 
-if(x == 0){
+if(x == 'm'){
 	if(!validateFirstName()) {error = 1;}
 	if(!validateLastName()) {error = 1;}
 	if(!validateAcademic()) {error = 1;}
 	if(!validateEmail()) {error = 1;}
 }
 
-if(x == 1){
+if(x == 's'){
 	if(!validateFirstName()) {error = 1;}
 	if(!validateLastName()) {error = 1;}
 	if(!validateAcademic()) {error = 1;}
@@ -455,6 +510,13 @@ if(x == 1){
 	if(!validateSemester()) {error = 1;}
 }
 
+if(x == 'r'){
+	if(!validateFirstName()) {error = 1;}
+	if(!validateLastName()) {error = 1;}
+	if(!validateEmail()) {error = 1;}
+	if(!validateTitle()){error = 1;}
+	if(!validatePassword()){error = 1;}
+}
 	
 	if (error == 1){return false}
 	return true;
