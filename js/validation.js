@@ -277,7 +277,6 @@ function validatePassword(){
 	}
 }
 
-
 // Validating the counselor dropdown
 function validateCounselor(){
 	var counselor = document.forms['myForm']['counselor'].value;
@@ -394,7 +393,6 @@ function validateSessionEnd(){
 		return true;
 	}
 }
-
 
 
 // Validating the Session Course Name
