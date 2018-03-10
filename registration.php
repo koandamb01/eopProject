@@ -1,4 +1,11 @@
-<?php require 'functions/functions.php';?>
+<?php
+/* Main page with two forms: sign up and log in */
+require 'functions/db.php';
+session_start();
+
+include 'functions/functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,8 +17,19 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
-  <body>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+    // User Login
+    if(isset($_POST['register'])){ // user registration
+
+      require 'register.php';
+    }
+ } 
+ ?>
+
+  <body>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -70,7 +88,7 @@
                 <div class="form-group">
                   <span id="emailErr"></span>
                   <label>Email Address</label>
-                  <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                  <input type="text" class="form-control" name="email" placeholder="Enter Email...">
                 </div>
 
                 <div class="form-group">
@@ -79,7 +97,10 @@
                   <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 
-                <button type="submit" class="btn btn-default btn-block">Create Account</button>
+                <button type="submit" name="register" class="btn btn-default btn-block">Create Account</button>
+
+                <br>
+                <p class="text-center"><a href="index.php">Login</a></p>
               </form>
           </div>
         </div>

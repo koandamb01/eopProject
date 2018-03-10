@@ -268,7 +268,7 @@ function validatePassword(){
 	}else{
 		document.forms['myForm']['password'].style.border = "1px solid red";
 		document.forms['myForm']['password'].focus;
-		document.getElementById("passwordErr").innerHTML = "* Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
+		document.getElementById("passwordErr").innerHTML = "* Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters";
 		document.getElementById("passwordErr").style.display = 'block';
 		document.getElementById("passwordErr").style.color = 'red';
 		document.getElementById("passwordErr").style.textAlign = 'right';
@@ -445,7 +445,7 @@ function validateCourse(){
 
 // Validating the Title Type dropdown
 function validateTitle(){
-	var title = document.forms['myForm']['tilte'].value;
+	var title = document.forms['myForm']['title'].value;
 	
 	if(title.length == 0){
 		document.forms['myForm']['title'].style.border = "1px solid red";

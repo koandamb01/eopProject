@@ -1,4 +1,8 @@
-<?php require 'functions/functions.php';?>
+<?php require 'functions/functions.php';
+/* Main page with two forms: sign up and log in */
+require 'functions/db.php';
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +15,20 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
-  <body>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+    // User Login
+    if(isset($_POST['login'])){
+
+      require 'login.php';
+
+    }
+ } 
+ ?>
+
+  <body>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -41,7 +57,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
-            <form id="myForm" class="well" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms(1)">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
                   <div class="form-group">
                     <label>Email Address</label>
                     <input type="text" class="form-control" name="email" placeholder="Enter Email">
@@ -50,9 +66,12 @@
                     <label>Password</label>
                     <input type="password" class="form-control" name="password" placeholder="Password">
                   </div>
-                  <button type="submit" class="btn btn-default btn-block">Login</button>
-                  <br>
                   <p class="text-right"><a href="forgot.php">Forgot Password?</a></p>
+                  <button type="submit" name="login" class="btn btn-default btn-block">Login</button>
+                  <br>
+                  <p class="text-center"><a href="registration.php">Create Account</a></p>
+                  
+                  
               </form>
           </div>
         </div>

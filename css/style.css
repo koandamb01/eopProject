@@ -168,3 +168,26 @@ table tbody{
 .well-bg{
   background-color: #f7b353;
 }
+
+
+.success-box{
+  background-color: #333333;
+  color: #ffffff;
+  width: 40%;
+  height: 400px;
+  margin-top: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+.success-box a button {
+  background-color: #e74c3c;
+  margin-top: 140px;
+}
+
+.success-box h1, .success-box p{
+  padding: 20px;
+}
