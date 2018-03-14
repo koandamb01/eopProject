@@ -9,8 +9,8 @@ if ( $_SESSION['logged_in'] != 1 ) {
 }
 else {
     // Makes it easier to read
-    $first_name = $_SESSION['first_name'];
-    $last_name = $_SESSION['last_name'];
+    $firstname = $_SESSION['first_name'];
+    $lastname = $_SESSION['last_name'];
     $email = $_SESSION['email'];
     $active = $_SESSION['active'];
 }
@@ -30,25 +30,37 @@ else {
         background-image: url("img/bg.jpg");
         background-size: 100%;
       }
+      
+      .link{
+        width: 80%;
+        padding: 8px;
+        margin: auto;
+        background-color: #64141E;
+
+      }
+
+      h2{
+        color: #28B088;
+        font-weight: bold;
+      }
     </style>
   </head>
   
   <body>
 
     <section class="well success-box">
-      <h1>Profile</h1>
-
-      
+      <h1>Welcome</h1>
+      <br>
       <p>
-        <?php 
-    // Display message about account verification link only once
+        <?php
+          // Display message about account verification link only once
           if ( isset($_SESSION['message']) )
           {
               echo $_SESSION['message'];
               
               // Don't annoy the user with more messages upon page refresh
               unset( $_SESSION['message'] );
-          }*/
+          }
         ?>
       </p>
 
@@ -56,17 +68,17 @@ else {
           // Keep reminding the user this account is not active, until they activate
           if ( !$active ){
               echo
-              '<div>
+              '<div class="link">
                   Account is unverified, please confirm your email by clicking
                   on the email link!
               </div>';
           }
           ?>
           
-          <h2><?php echo $first_name.' '.$last_name; ?></h2>
+          <h2><?php echo $firstname.' '.$lastname; ?></h2>
           <p><?= $email ?></p>
-
-      <a href="#"><button class="btn btn-default btn-block">Home</button></a>
+      <br>
+      <a href="index.php"><button class="btn btn-default btn-block">Home</button></a>
     </section>
     
 

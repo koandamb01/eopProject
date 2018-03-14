@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="index.php">EOP Database</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
-            <form id="myForm" class="well" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('r')">
+            <form id="myForm" class="well" action="registration.php" method="post" onsubmit="return validateForms('r')">
                 <div class="form-group">
                   <label>Firstname</label>
                   <span id="fnameErr"></span>

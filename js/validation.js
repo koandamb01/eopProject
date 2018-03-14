@@ -487,6 +487,10 @@ function validateSemester(){
 function validateForms(x){
 	var error = 0;
 
+if(x == 'l'){
+	if(!validateEmail()) {error = 1;}
+}
+
 if(x == 'm'){
 	if(!validateFirstName()) {error = 1;}
 	if(!validateLastName()) {error = 1;}

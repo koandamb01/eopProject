@@ -1,4 +1,12 @@
-<?php require 'functions/functions.php';
+<?php 
+session_start();
+// Check if user is logged in using the session variable
+if ( $_SESSION['logged_in'] != 1 ) {
+  $_SESSION['message'] = "You must log in before viewing registration page!";
+  header("location: error.php");    
+}
+
+require 'functions/functions.php';
 /* declare page variable */
 $page = 'Dashboard';
 

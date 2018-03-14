@@ -104,7 +104,7 @@ function header_Nav($page){?>
     <?php endif; ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Welcome, Med</a></li>
-                    <li><a href="index.php">Logout</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>

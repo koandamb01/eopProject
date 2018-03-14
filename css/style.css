@@ -171,10 +171,10 @@ table tbody{
 
 
 .success-box{
-  background-color: #333333;
+  background-color: #7E7F81;
   color: #ffffff;
-  width: 40%;
-  height: 400px;
+  width: 35%;
+  height: auto;
   margin-top: 8%;
   margin-left: auto;
   margin-right: auto;
@@ -185,9 +185,9 @@ table tbody{
 
 .success-box a button {
   background-color: #e74c3c;
-  margin-top: 140px;
+  padding-top: 8px;
 }
 
 .success-box h1, .success-box p{
-  padding: 20px;
+  padding: 10px;
 }

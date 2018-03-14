@@ -18,7 +18,6 @@ session_start();
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    
     // User Login
     if(isset($_POST['login'])){
 
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">EOP Database</a>
+          <a class="navbar-brand" href="index.php">EOP Database</a>
         </div>
       </div>
     </nav>
@@ -57,8 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+            <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('l')">
                   <div class="form-group">
+                    <span id="emailErr"></span>
                     <label>Email Address</label>
                     <input type="text" class="form-control" name="email" placeholder="Enter Email">
                   </div>
@@ -70,8 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                   <button type="submit" name="login" class="btn btn-default btn-block">Login</button>
                   <br>
                   <p class="text-center"><a href="registration.php">Create Account</a></p>
-                  
-                  
               </form>
           </div>
         </div>
