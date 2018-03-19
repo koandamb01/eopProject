@@ -5,8 +5,8 @@
 
 // Set session variables to be used on profile.php page
 $_SESSION['email'] = $_POST['email'];
-$_SESSION['first_name'] = $_POST['firstname'];
-$_SESSION['last_name'] = $_POST['lastname'];
+$_SESSION['firstname'] = $_POST['firstname'];
+$_SESSION['lastname'] = $_POST['lastname'];
 $_SESSION['title'] = $_POST['title'];
 
 // Escape all $_POST variables to protect against SQL injections
@@ -53,7 +53,7 @@ else { // Email doesn't already exist in a database, proceed...
 
         Please click this link to activate your account:
 
-        http://localhost/verify.php?email='.$email.'&hash='.$hash;
+        http://localhost/eopproject/verify.php?email='.$email.'&hash='.$hash;
 
         mail( $to, $subject, $message_body );
 

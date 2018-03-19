@@ -9,8 +9,8 @@ if ( $_SESSION['logged_in'] != 1 ) {
 }
 else {
     // Makes it easier to read
-    $firstname = $_SESSION['first_name'];
-    $lastname = $_SESSION['last_name'];
+    $firstname = $_SESSION['firstname'];
+    $lastname = $_SESSION['lastname'];
     $email = $_SESSION['email'];
     $active = $_SESSION['active'];
 }

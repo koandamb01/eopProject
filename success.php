@@ -24,24 +24,20 @@ session_start();
 
     <section class="well success-box">
       <h1>Success</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.</p>
-
-      <!--p>
+      <p>
         <?php 
-    /*if( isset($_SESSION['message']) AND !empty($_SESSION['message']) ):
-        echo $_SESSION['message'];    
-    else:
-        header( "location: home.php" );
-    endif;*/
-    ?>
-      </p-->
+        if( isset($_SESSION['message']) AND !empty($_SESSION['message']) ):
+            echo $_SESSION['message'];    
+        else:
+            header( "location: home.php" );
+        endif;
+        ?>
+      </p>
 
-      <a href="#"><button class="btn btn-default btn-block">Home</button></a>
+      <a href="index.php"><button class="btn btn-default btn-block">Home</button></a>
     </section>
     
-
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

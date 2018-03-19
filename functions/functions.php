@@ -1,8 +1,7 @@
 <?php 
-
 include 'vars.php';
 /* -- Start of the header_navigation function -- */
-function header_Nav($page){?>
+function header_Nav($page, $firstname){?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +32,7 @@ function header_Nav($page){?>
                     <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php elseif ($page == 'Students'):?>
@@ -44,6 +44,7 @@ function header_Nav($page){?>
                     <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php elseif($page == 'Sessions'): ?>
@@ -55,6 +56,7 @@ function header_Nav($page){?>
                     <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php elseif($page == 'Mentors'): ?>
@@ -66,6 +68,7 @@ function header_Nav($page){?>
                     <li class="active"><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php elseif($page == 'Reports'): ?>
@@ -77,6 +80,7 @@ function header_Nav($page){?>
                     <li><a href="mentors.php">Mentors</a></li>
                     <li class="active"><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php elseif($page == 'Users'): ?>
@@ -88,6 +92,19 @@ function header_Nav($page){?>
                     <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li class="active"><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
+                </ul>
+
+    <?php elseif($page == 'Upload'): ?>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="home.php">Dashboard</a></li>
+                    <li><a href="students.php">Students</a></li>
+                    <li><a href="sessions.php">Sessions</a></li>
+                    <li><a href="mentors.php">Mentors</a></li>
+                    <li><a href="reports.php">Reports</a></li>
+                    <li><a href="users.php">Users</a></li>
+                    <li class="active"><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php else: ?>
@@ -99,11 +116,12 @@ function header_Nav($page){?>
                     <li><a href="mentors.php">Mentors</a></li>
                     <li><a href="reports.php">Reports</a></li>
                     <li><a href="users.php">Users</a></li>
+                    <li><a href="upload_students.php">Upload</a></li>
                 </ul>
 
     <?php endif; ?>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Welcome, Med</a></li>
+                    <li><a href="#">Welcome, <?php echo $firstname; ?></a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
@@ -122,7 +140,7 @@ function header_Nav($page){?>
             <?php endif ?>
                     
             </div>
-        <?php if ($page == 'Edit Session' OR $page == 'New Session' OR $page == 'New Mentor' OR $page == 'Edit Mentor' OR $page == 'Users'): ?>
+        <?php if ($page == 'Edit Session' OR $page == 'New Session' OR $page == 'New Mentor' OR $page == 'Edit Mentor' OR $page == 'Users' OR $page == 'Upload'): ?>
                 <!-- Nothing -->
         <?php else: ?>
             <div class="col-md-2">
@@ -160,6 +178,9 @@ function header_Nav($page){?>
         <!-- do nothing -->
     <?php else: ?>
                 <li class="active"><?php echo $page; ?></li>
+                <?php if($page == 'Upload'): ?>
+                    <li class="text-danger"><?php echo "*** Uploading new students data will remove all old data form the database ***"; ?></li>
+                 <?php endif; ?>   
     <?php endif; ?>
             </ol>
         </div>

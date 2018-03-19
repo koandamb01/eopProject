@@ -491,6 +491,10 @@ if(x == 'l'){
 	if(!validateEmail()) {error = 1;}
 }
 
+if (x == 'f') {
+	if(!validatePassword()){error = 1;}
+}
+
 if(x == 'm'){
 	if(!validateFirstName()) {error = 1;}
 	if(!validateLastName()) {error = 1;}

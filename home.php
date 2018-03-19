@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
@@ -6,17 +6,23 @@ if ( $_SESSION['logged_in'] != 1 ) {
   header("location: error.php");    
 }
 
+$active = $_SESSION['active'];
+$firstname = $_SESSION['firstname'];
+
+if(!$active){
+    header("location: profile.php");
+}
+
 require 'functions/functions.php';
 /* declare page variable */
 $page = 'Dashboard';
 
 /*start html beginning tags and display page navigation bar */
-header_Nav($page);
+header_Nav($page, $firstname);
 
 /* Display section breadcrumb Side Menu*/
 breadcrumb($page);
 ?>
-
 <!-- body -->
 <section id="main">
     <div class="container">
