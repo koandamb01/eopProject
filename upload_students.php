@@ -14,6 +14,7 @@ if(!$active){
     header("location: profile.php");
 }
 
+
 require 'functions/functions.php';
 /* declare page variable */
 $page = 'Upload';
@@ -24,24 +25,11 @@ header_Nav($page, $firstname);
 /* Display section breadcrumb */
 breadcrumb($page);
 
-// connect to the database
+
 /* Database connection settings */
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'eop';
-$conn = mysqli_connect($host, $user, $pass, $db);
+require 'functions/pdo.php';
 
-if(!$conn) {die ('Failed to connect to MySQL: ' . mysqli_connect_error());}
-// Code for uploading data from Excel to the database
-
-
- /* $sql = "DELETE FROM `tblstudents`";
-         // Execute the sql statment
-        $query = mysqli_query($conn, $sql);
-        if(!$query) {die ('SQL Error: ' . mysqli_error($conn));}
-        */
-       
+// Code for uploading data from Excel to the database      
 $message = '';
 
 if(isset($_POST['upload'])){
@@ -51,25 +39,27 @@ if(isset($_POST['upload'])){
     $filename = explode(".", $_FILES['student_file']['name']);
     if(end($filename) == "csv"){
 
+      // Delete old data from the students table
+      $del = $pdo->prepare('DELETE FROM tblstudents');
+      $del->execute();
+
       $handle = fopen($_FILES['student_file']['tmp_name'], "r");
       while($data = fgetcsv($handle)){
-        $student_id = mysqli_real_escape_string($conn, $data[0]);
-        $firstname = mysqli_real_escape_string($conn, $data[1]);
-        $lastname = mysqli_real_escape_string($conn, $data[2]);
-        $email = mysqli_real_escape_string($conn, $data[3]);
-        $academic_year = mysqli_real_escape_string($conn, $data[4]);
-        $is_eop = mysqli_real_escape_string($conn, $data[5]);
-        $counselor_pin = mysqli_real_escape_string($conn, $data[6]);  
+        $student_id = $data[0];
+        $firstname = $data[1];
+        $lastname = $data[2];
+        $email = $data[3];
+        $academic_year = $data[4];
+        $is_eop = $data[5];
+        $counselor_pin = $data[6];
 
-       
         //Run Query now to insert data
-        $sql = " INSERT INTO `tblstudents` (student_id, firstname, lastname, email, academic_year, is_eop, counselor_pin) VALUES
-                  ('" .$student_id. "', '".$firstname."', '".$lastname."', '".$email."', '".$academic_year."', 
-                    '".$is_eop."', '".$counselor_pin."')";
+        $sql = 'INSERT INTO `tblstudents` (student_id, firstname, lastname, email, academic_year, is_eop, counselor_pin) VALUES
+                                          (:student_id, :firstname, :lastname, :email, :academic_year, :is_eop, :counselor_pin)';
 
-        // Execute the sql statment
-        $query = mysqli_query($conn, $sql);
-        if(!$query) {die ('SQL Error: ' . mysqli_error($conn));}
+        $stmt = $pdo->prepare($sql); // Prepare the SQL statement
+        $stmt->execute(['student_id' => $student_id, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email,
+                        'academic_year' => $academic_year, 'is_eop' => $is_eop, 'counselor_pin' => $counselor_pin]);
       }
       fclose($handle);
       header("location: upload_students.php?updation=1");

@@ -374,9 +374,12 @@ function header_Nav($page, $firstname){?>
                         <select class="form-control" name="counselor">
                             <?php
                                 $counselor_select_option = $formVars['counselor'];
-                                global $counselorsList;
+                                global $counselor_lists;
+                                $counselors = $counselor_lists;
 
-                                 foreach ($counselorsList as $value) {
+                                array_unshift($counselors, '');
+
+                                 foreach ($counselors as $value) {
                                     if ($value == $counselor_select_option) {
                                         $selected = 'selected = "selected"';    
                                     }else{

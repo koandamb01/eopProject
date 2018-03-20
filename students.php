@@ -13,7 +13,9 @@ if(!$active){
     header("location: profile.php");
 }
 
+require 'functions/pdo.php';
 require 'functions/functions.php';
+require 'functions/vars.php';
 /* declare page variable */
 $page = 'Students';
 
@@ -22,6 +24,12 @@ header_Nav($page, $firstname);
 
 /* Display section breadcrumb horizontal small menu*/
 breadcrumb($page);
+
+
+$stmt = $pdo->query('SELECT * FROM tblstudents ORDER BY firstname ASC');
+$rows = $stmt->fetchAll();
+
+
 ?>
 <section id="main">
     <div class="container">
@@ -36,7 +44,7 @@ breadcrumb($page);
                 </div>
                 
                 <div class="col-md-1">
-                    <button class="btn btn-success" name="nameSearch">Search</button>
+                    <button class="btn btn-success" type="submit" name="search">Search</button>
                 </div>
             </div><br>
         <div class="panel panel-default">
@@ -55,27 +63,34 @@ breadcrumb($page);
                     </div>
 
                     <div class="col-md-2 pull-right">
-                        <select class="form-control">
-                            <option value="#">Counselor</option>
-                            <option value="Canestrari">Canestrari</option>
-                            <option value="Jude">Jude</option>
-                            <option value="Maria">Maria</option>
-                            <option value="abdi">Abdi</option>
+                        <select class="form-control" name="counselor">
+                        <?php
+                            $counselor_select_option = 'Counselor';
+                            global $counselor_lists;
+
+                            $counselors = $counselor_lists;
+                            array_unshift($counselors, 'Counselor');
+
+                             foreach ($counselors as $value) {
+                                if ($value == $counselor_select_option) {
+                                    $selected = 'selected = "selected"';    
+                                }else{
+                                    $selected = '';
+                                }
+                                echo "<option value='$value' $selected>$value</option>";
+                            }
+                        ?>
                         </select>
                     </div>
                     <!-- pull right/left align column items to the right/left -->
                     <div class="col-md-2 pull-right">
                         <select class="form-control">
-                            <option value="#">Academic Year</option>
-                            <option value="#">Freshman</option>
-                            <option value="#">Sophomore</option>
-                            <option value="#">Junior</option>
-                            <option value="#">Senior</option>
+                            <option value="">Academic Year</option>
+                            <option value="freshman">Freshman</option>
+                            <option value="sophomore">Sophomore</option>
+                            <option value="junior">Junior</option>
+                            <option value="senior">Senior</option>
                         </select>
-                    </div>
-
-                    <div class="col-md-2 pull-right">
-                        <input type="checkbox" name="isEOP" value="false"> Non-EOP
                     </div>
                 </div>
             </div>
@@ -97,78 +112,37 @@ breadcrumb($page);
                     </thead>
                     
                     <tbody>
-                        <tr>
-                            <td>Jill </td>
-                            <td>Smith</td>
-                            <td>Freshman</td>
-                            <td>jillsmith@gmail.com</td>
-                            <td>Canestrari</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td>
-                            <td>Freshman</td>
-                            <td>ejackson@yahoo.com</td>
-                            <td>Jude</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                        <tr>
-                            <td>John </td>
-                            <td>Doe</td>
-                            <td>Junior</td>
-                            <td>jdoe@gmail.com</td>
-                            <td>Maria</td>
-                            <td>No</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                        <tr>
-                            <td>Stephanie</td>
-                            <td>Landon</td>
-                            <td>Shopomore</td>
-                            <td>landon@yahoo.com</td>
-                            <td>Canestrari</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                         <tr>
-                            <td>Jill </td>
-                            <td>Smith</td>
-                            <td>Freshman</td>
-                            <td>jillsmith@gmail.com</td>
-                            <td>Canestrari</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                        <tr>
-                            <td>Eve</td>
-                            <td>Jackson</td>
-                            <td>Freshman</td>
-                            <td>ejackson@yahoo.com</td>
-                            <td>Jude</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                        <tr>
-                            <td>John </td>
-                            <td>Doe</td>
-                            <td>Junior</td>
-                            <td>jdoe@gmail.com</td>
-                            <td>Maria</td>
-                            <td>No</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
-                        <tr>
-                            <td>Stephanie</td>
-                            <td>Landon</td>
-                            <td>Shopomore</td>
-                            <td>landon@yahoo.com</td>
-                            <td>Canestrari</td>
-                            <td>Yes</td>
-                            <td><a class="btn btn-sm btn-success" href="#">New Session</a></td>
-                        </tr>
+                    <?php
+                        foreach ($rows as $row) {
+                             echo '<tr>
+                                    <td>'. $row->firstname . '</td>
+                                    <td>'. $row->lastname . '</td>
+                                    <td>'. $row->academic_year . '</td>
+                                    <td>'. $row->email . '</td>';
+                                    
+
+                                    //find the counselor associate to that student by pin
+                                    $sql = 'SELECT firstname FROM users WHERE id = :id';
+                                    $stmt = $pdo->prepare($sql);
+                                    $stmt->execute(['id' => $row->counselor_pin]);
+                                    $counselor = $stmt->fetch();
+
+                            echo '<td>'. $counselor->firstname . '</td>';
+                                    
+                                    if($row->is_eop == 1){
+                                        echo '<td>Yes</td>';
+                                    }
+                                    elseif($row->is_eop == 0){
+                                        echo '<td>No</td>';
+                                    }
+                                    else{
+                                        echo '<td>Unknow</td>';
+                                    }
+
+                            echo '<td><a class="btn btn-sm btn-success" href="new_session.php?id=' .$row->student_id. '">New Session</a></td>
+                                  </tr>';
+                         } 
+                     ?>
                     </tbody>
                 </table>
             </div>
