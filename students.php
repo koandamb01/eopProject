@@ -25,26 +25,58 @@ header_Nav($page, $firstname);
 /* Display section breadcrumb horizontal small menu*/
 breadcrumb($page);
 
-
+$firstname = $lastname = $academic_year = $counselor = $c_code = "";
 $stmt = $pdo->query('SELECT * FROM tblstudents ORDER BY firstname ASC');
+
+
+if(isset($_POST['search'])){
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+
+    $sql = 'SELECT * FROM tblstudents WHERE firstname LIKE :firstname OR lastname LIKE :lastname ORDER BY firstname ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname]);
+}
+elseif(isset($_POST['filter'])){
+
+    $academic_year = $_POST['academic_year'];
+    $counselor = $_POST['counselor'];
+
+
+    // convert counselor name to counselor code
+    if(isset($_POST['counselor'])){
+        $sql = 'SELECT c_code FROM users WHERE firstname = :firstname';
+        $c_stmt = $pdo->prepare($sql);
+        $c_stmt->execute(['firstname' => $counselor]);
+        $c_row = $c_stmt->fetch();
+        $c_code = $c_row->c_code;
+    }
+    
+    $sql = 'SELECT * FROM tblstudents WHERE academic_year = :academic_year && c_code = :c_code ORDER BY firstname ASC';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['academic_year' => $academic_year, 'c_code' => $c_code]);
+}
+
+
+
+
+
 $rows = $stmt->fetchAll();
-
-
 ?>
 <section id="main">
     <div class="container">
         <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF']));?>" method="post">
             <div class="row">
                 <div class="col-md-3">
-                    <input class="form-control" type="text" name="firstname" placeholder="First Name..">
+                    <input class="form-control" type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="First Name..">
                 </div>
 
                 <div class="col-md-3">
-                    <input class="form-control" type="text" name="lastname" placeholder="Last Name..">
+                    <input class="form-control" type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="Last Name..">
                 </div>
                 
                 <div class="col-md-1">
-                    <button class="btn btn-success" type="submit" name="search">Search</button>
+                    <button class="btn btn-success" name="search">Search</button>
                 </div>
             </div><br>
         <div class="panel panel-default">
@@ -63,7 +95,7 @@ $rows = $stmt->fetchAll();
                     </div>
 
                     <div class="col-md-2 pull-right">
-                        <select class="form-control" name="counselor">
+                        <select class="form-control" name="counselor" value="<?php echo $counselor; ?>">
                         <?php
                             $counselor_select_option = 'Counselor';
                             global $counselor_lists;
@@ -84,7 +116,7 @@ $rows = $stmt->fetchAll();
                     </div>
                     <!-- pull right/left align column items to the right/left -->
                     <div class="col-md-2 pull-right">
-                        <select class="form-control">
+                        <select class="form-control" name="academic_year">
                             <option value="">Academic Year</option>
                             <option value="freshman">Freshman</option>
                             <option value="sophomore">Sophomore</option>
@@ -106,7 +138,6 @@ $rows = $stmt->fetchAll();
                             <th>AcadYear</th>
                             <th>Email</th>
                             <th>Conselor</th>
-                            <th>IsEOP</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -120,26 +151,15 @@ $rows = $stmt->fetchAll();
                                     <td>'. $row->academic_year . '</td>
                                     <td>'. $row->email . '</td>';
                                     
-
                                     //find the counselor associate to that student by pin
-                                    $sql = 'SELECT firstname FROM users WHERE id = :id';
+                                    $sql = 'SELECT firstname FROM users WHERE c_code = :c_code';
                                     $stmt = $pdo->prepare($sql);
-                                    $stmt->execute(['id' => $row->counselor_pin]);
+                                    $stmt->execute(['c_code' => $row->c_code]);
                                     $counselor = $stmt->fetch();
 
                             echo '<td>'. $counselor->firstname . '</td>';
-                                    
-                                    if($row->is_eop == 1){
-                                        echo '<td>Yes</td>';
-                                    }
-                                    elseif($row->is_eop == 0){
-                                        echo '<td>No</td>';
-                                    }
-                                    else{
-                                        echo '<td>Unknow</td>';
-                                    }
 
-                            echo '<td><a class="btn btn-sm btn-success" href="new_session.php?id=' .$row->student_id. '">New Session</a></td>
+                            echo '<td><a class="btn btn-sm btn-success" href="new_session.php?student_id=' .$row->student_id. '">New Session</a></td>
                                   </tr>';
                          } 
                      ?>

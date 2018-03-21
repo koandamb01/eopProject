@@ -41,7 +41,7 @@ breadcrumb($page);
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Pin</th>
+                                        <th>CC</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
                                         <th>Title</th>
@@ -62,7 +62,7 @@ breadcrumb($page);
 
                                         foreach ($rows as $row) {
                                         echo '<tr>
-                                                <td>'.$row->id.'</td>
+                                                <td>'.$row->c_code.'</td>
                                                 <td>'.$row->firstname.'</td>
                                                 <td>'.$row->lastname.'</td>
                                                 <td>'.$row->title.'</td>
@@ -87,7 +87,7 @@ breadcrumb($page);
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Pin</th>
+                                        <th>CC</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
                                         <th>Title</th>
@@ -108,7 +108,7 @@ breadcrumb($page);
 
                                         foreach ($rows as $row) {
                                         echo '<tr>
-                                                <td>'.$row->id.'</td>
+                                                <td>'.$row->c_code.'</td>
                                                 <td>'.$row->firstname.'</td>
                                                 <td>'.$row->lastname.'</td>
                                                 <td>'.$row->title.'</td>

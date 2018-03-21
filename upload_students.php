@@ -50,16 +50,15 @@ if(isset($_POST['upload'])){
         $lastname = $data[2];
         $email = $data[3];
         $academic_year = $data[4];
-        $is_eop = $data[5];
-        $counselor_pin = $data[6];
+        $c_code = $data[5];
 
         //Run Query now to insert data
-        $sql = 'INSERT INTO `tblstudents` (student_id, firstname, lastname, email, academic_year, is_eop, counselor_pin) VALUES
-                                          (:student_id, :firstname, :lastname, :email, :academic_year, :is_eop, :counselor_pin)';
+        $sql = 'INSERT INTO `tblstudents` (student_id, firstname, lastname, email, academic_year, c_code) VALUES
+                                          (:student_id, :firstname, :lastname, :email, :academic_year, :c_code)';
 
         $stmt = $pdo->prepare($sql); // Prepare the SQL statement
         $stmt->execute(['student_id' => $student_id, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email,
-                        'academic_year' => $academic_year, 'is_eop' => $is_eop, 'counselor_pin' => $counselor_pin]);
+                        'academic_year' => $academic_year, 'c_code' => $c_code]);
       }
       fclose($handle);
       header("location: upload_students.php?updation=1");
