@@ -30,37 +30,78 @@ $stmt = $pdo->query('SELECT * FROM tblstudents ORDER BY firstname ASC');
 
 
 if(isset($_POST['search'])){
+
+    if(empty($_POST['firstname']) AND empty($_POST['lastname'])){
+
+        $stmt = $pdo->query('SELECT * FROM tblstudents ORDER BY firstname ASC');
+    }
+    else{
+         // check if input firstname is empty
+        if(empty($_POST['firstname'])){
+
+        }else{
+            $firstname = '%'.$_POST['firstname'].'%';
+        }
+
+        // check if input lastname is empty
+        if(empty($_POST['lastname'])){
+            
+        }else{
+            $lastname = '%'.$_POST['lastname'].'%';
+        }
+
+        $sql = 'SELECT * FROM tblstudents WHERE firstname LIKE :firstname OR lastname LIKE :lastname ORDER BY firstname ASC';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname]);
+    }
+   
+    // reassign the
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
 
-    $sql = 'SELECT * FROM tblstudents WHERE firstname LIKE :firstname OR lastname LIKE :lastname ORDER BY firstname ASC';
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname]);
 }
 elseif(isset($_POST['filter'])){
-
-    $academic_year = $_POST['academic_year'];
-    $counselor = $_POST['counselor'];
-
-
-    // convert counselor name to counselor code
-    if(isset($_POST['counselor'])){
-        $sql = 'SELECT c_code FROM users WHERE firstname = :firstname';
-        $c_stmt = $pdo->prepare($sql);
-        $c_stmt->execute(['firstname' => $counselor]);
-        $c_row = $c_stmt->fetch();
-        $c_code = $c_row->c_code;
-    }
     
-    $sql = 'SELECT * FROM tblstudents WHERE academic_year = :academic_year && c_code = :c_code ORDER BY firstname ASC';
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['academic_year' => $academic_year, 'c_code' => $c_code]);
+    if(isset($_POST['academic_year'])){
+        $acad_select_option = $_POST['academic_year'];
+        
+        if($_POST['academic_year'] == 'Academic Year'){
+            $academic_year = '';
+        }else{
+            $academic_year = $_POST['academic_year'];
+        }
+    }
+
+    if(isset($_POST['counselor'])){
+        $counselor_select_option = $_POST['counselor'];
+        
+        if($_POST['counselor'] == 'Counselor'){
+            $counselor = '';
+        }else{
+            $counselor = $_POST['counselor'];
+        }
+    }
+
+    if (empty($counselor) AND empty($academic_year)) {
+        # DO NOTHING
+    }
+    else{
+        // convert counselor name to code
+        if(!empty($counselor)){
+            $sql = 'SELECT c_code FROM users WHERE firstname = :firstname';
+            $c_stmt = $pdo->prepare($sql);
+            $c_stmt->execute(['firstname' => $counselor]);
+            $row = $c_stmt->fetch();
+            $c_code = $row->c_code;
+        }
+
+        $sql = 'SELECT * FROM tblstudents WHERE academic_year = :academic_year OR c_code = :c_code ORDER BY firstname ASC';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['academic_year' => $academic_year, 'c_code' => $c_code]);
+    }    
 }
 
-
-
-
-
+// Fecth all result after the search
 $rows = $stmt->fetchAll();
 ?>
 <section id="main">
@@ -97,7 +138,6 @@ $rows = $stmt->fetchAll();
                     <div class="col-md-2 pull-right">
                         <select class="form-control" name="counselor" value="<?php echo $counselor; ?>">
                         <?php
-                            $counselor_select_option = 'Counselor';
                             global $counselor_lists;
 
                             $counselors = $counselor_lists;
@@ -116,12 +156,23 @@ $rows = $stmt->fetchAll();
                     </div>
                     <!-- pull right/left align column items to the right/left -->
                     <div class="col-md-2 pull-right">
+                        
                         <select class="form-control" name="academic_year">
-                            <option value="">Academic Year</option>
-                            <option value="freshman">Freshman</option>
-                            <option value="sophomore">Sophomore</option>
-                            <option value="junior">Junior</option>
-                            <option value="senior">Senior</option>
+                            <?php
+                                global $academicYear;
+                                $academic = $academicYear;
+                                
+                                array_unshift($academic, 'Academic Year');
+
+                                foreach ($academic as $value) {
+                                    if ($value == $acad_select_option) {
+                                        $selected = 'selected = "selected"';
+                                    }else{
+                                        $selected = '';
+                                    }
+                                    echo "<option value='$value' $selected>$value</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                 </div>

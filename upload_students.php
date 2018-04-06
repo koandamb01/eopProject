@@ -31,6 +31,7 @@ require 'functions/pdo.php';
 
 // Code for uploading data from Excel to the database      
 $message = '';
+$data_insert = $data_update = 0;
 
 if(isset($_POST['upload'])){
 
@@ -39,27 +40,59 @@ if(isset($_POST['upload'])){
     $filename = explode(".", $_FILES['student_file']['name']);
     if(end($filename) == "csv"){
 
-      // Delete old data from the students table
+      /* Delete old data from the students table
       $del = $pdo->prepare('DELETE FROM tblstudents');
       $del->execute();
-
+      */
+  
       $handle = fopen($_FILES['student_file']['tmp_name'], "r");
       while($data = fgetcsv($handle)){
-        $student_id = $data[0];
-        $firstname = $data[1];
-        $lastname = $data[2];
-        $email = $data[3];
-        $academic_year = $data[4];
-        $c_code = $data[5];
 
-        //Run Query now to insert data
-        $sql = 'INSERT INTO `tblstudents` (student_id, firstname, lastname, email, academic_year, c_code) VALUES
-                                          (:student_id, :firstname, :lastname, :email, :academic_year, :c_code)';
+        $firstname = $data[0];
+        $lastname = $data[1];
+        $email = $data[2];
+        $academic_year = $data[3];
+        $c_code = $data[4];
 
-        $stmt = $pdo->prepare($sql); // Prepare the SQL statement
-        $stmt->execute(['student_id' => $student_id, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email,
-                        'academic_year' => $academic_year, 'c_code' => $c_code]);
+        // check someone with this email exist
+        $stmt = $pdo->prepare('SELECT * FROM tblstudents WHERE email = ?');
+        $stmt->execute([$email]);
+        $row = $stmt->rowCount();
+        
+        if($row == 0){ // Insert new data
+          //Run Query now to insert data
+          $sql = 'INSERT INTO `tblstudents` (firstname, lastname, email, academic_year, c_code) VALUES
+                                            (:firstname, :lastname, :email, :academic_year, :c_code)';
+
+          $stmt = $pdo->prepare($sql); // Prepare the SQL statement
+          $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email,
+                          'academic_year' => $academic_year, 'c_code' => $c_code]);
+
+          $data_insert += 1; // count the number of data insert
+        }
+        else{
+            
+            // Get the id of the students record that need to be updates
+            $stmt = $pdo->prepare('SELECT student_id FROM tblstudents WHERE email = ?');
+            $stmt->execute([$email]);
+            $row = $stmt->fetch();
+          //Run Query now to insert data
+          $sql = 'UPDATE`tblstudents` SET firstname = :firstname, 
+                                          lastname = :lastname,
+                                          academic_year = :academic_year, 
+                                          c_code = :c_code WHERE student_id = :student_id';
+
+          $stmt = $pdo->prepare($sql); // Prepare the SQL statement
+          $stmt->execute(['firstname' => $firstname, 'lastname' => $lastname,
+                          'academic_year' => $academic_year, 'c_code' => $c_code, 'student_id' => $row->student_id]);
+          
+          $data_update += 1; // count the number of data update
+        }
       }
+
+      $_SESSION['insert'] = $data_insert;
+      $_SESSION['update'] = $data_update;
+
       fclose($handle);
       header("location: upload_students.php?updation=1");
     }
@@ -73,7 +106,11 @@ if(isset($_POST['upload'])){
 }
 
 if(isset($_GET['updation'])){
-  $message = "Student Information update Done";
+  
+  $data_update = $_SESSION['update'];
+  $data_insert = $_SESSION['insert'];
+
+  $message = $data_insert . " new records insert and ". $data_update . " records update";
 }
 ?>
 

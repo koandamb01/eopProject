@@ -179,7 +179,7 @@ function header_Nav($page, $firstname){?>
     <?php else: ?>
                 <li class="active"><?php echo $page; ?></li>
                 <?php if($page == 'Upload'): ?>
-                    <li class="text-danger"><?php echo "*** Uploading new students data will remove all old data form the database ***"; ?></li>
+                    <li class="text-danger"><?php echo "*** Before uploading any data make sure all excel columns are in the right place ***"; ?></li>
                  <?php endif; ?>   
     <?php endif; ?>
             </ol>
@@ -241,6 +241,16 @@ function header_Nav($page, $firstname){?>
 <?php } ?>
 <!-- End of footer function -->
 
+
+
+<?php
+    function test_input($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+?>
 
 
 <!-- Begin of Side Menu function -->
@@ -334,11 +344,13 @@ function header_Nav($page, $firstname){?>
                         <span id="academicErr"></span>
                         <select class="form-control" name="academic">
                         <?php
-
                             $acad_select_option = $formVars['academic'];
                             global $academicYear;
-   
-                            foreach ($academicYear as $value) {
+                            $academic = $academicYear;
+                            
+                            array_unshift($academic, '');
+
+                            foreach ($academic as $value) {
                                 if ($value == $acad_select_option) {
                                     $selected = 'selected = "selected"';
                                 }else{
@@ -346,7 +358,7 @@ function header_Nav($page, $firstname){?>
                                 }
                                 echo "<option value='$value' $selected>$value</option>";
                             }
-                         ?>
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -521,21 +533,6 @@ function header_Nav($page, $firstname){?>
 <?php function mentorForm($formVars){?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('m')">
     <div class="modal-body">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Date</label>
-                    <input type="date" class="form-control" name="date" value="<?php echo $formVars['date'];?>" placeholder="Page Title">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <br>
-                    <h4 class="bg-danger">*Secretary name here!</h4>
-                </div>
-            </div>
-        </div>
         <!-- Student Info -->
         <div class="row">
             <div class="col-md-6">
@@ -570,8 +567,11 @@ function header_Nav($page, $firstname){?>
                     <?php
                         $acad_select_option = $formVars['academic'];
                         global $academicYear;
+                        $academic = $academicYear;
+                        
+                        array_unshift($academic, '');
 
-                        foreach ($academicYear as $value) {
+                        foreach ($academic as $value) {
                             if ($value == $acad_select_option) {
                                 $selected = 'selected = "selected"';
                             }else{
@@ -579,7 +579,7 @@ function header_Nav($page, $firstname){?>
                             }
                             echo "<option value='$value' $selected>$value</option>";
                         }
-                     ?>
+                    ?>
                     </select>
                 </div>
             </div>
@@ -601,7 +601,7 @@ function header_Nav($page, $firstname){?>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tuesday</label><br>
-                        FROM<input type="time" class="form-control" name="TuesFrom1">
+                        FROM<input type="time" class="form-control" name="TueFrom1">
                         TO<input type="time" class="form-control" name="TueTo1">
                     </div>
                 </div>
@@ -648,37 +648,36 @@ function header_Nav($page, $firstname){?>
         <label>Mentor Courses Tutor</label>
         <span id="CourseErr"></span>
         <div class="well">
-                <div class="row" id="fields">
-                    <div class="col-md-3" id="field1">
-                        <div class="form-group">
-                            <label>Course 1</label>
-                            <input type="text" class="form-control" name="course1" placeholder="CRS 101...">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3" id="field2">
-                        <div class="form-group">
-                            <label>Course 2</label>
-                            <input type="text" class="form-control" name="course2" placeholder="CRS 101...">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3" id="field3">
-                        <div class="form-group">
-                            <label>Course 3</label>
-                            <input type="text" class="form-control" name="course3" placeholder="CRS 101...">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group" id="field4">
-                            <label>Course 4</label>
-                            <input type="text" class="form-control" name="course4" placeholder="CRS 101...">
-                        </div>
+            <div class="row" id="fields">
+                <div class="col-md-3" id="field1">
+                    <div class="form-group">
+                        <label>Course 1</label>
+                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>
 
+                <div class="col-md-3" id="field2">
+                    <div class="form-group">
+                        <label>Course 2</label>
+                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                    </div>
+                </div>
 
+                <div class="col-md-3" id="field3">
+                    <div class="form-group">
+                        <label>Course 3</label>
+                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group" id="field4">
+                        <label>Course 4</label>
+                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                    </div>
+                </div>
+            </div>
+            
             <div class="row">
                 <div class="col-md-6">
                     <a class="glyphicon glyphicon-minus" onclick="removefields()"></a>

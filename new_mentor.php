@@ -39,6 +39,26 @@ $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $las
     </div>
 </section>
 
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $firstname = test_input($_POST['firstname']);
+    $lastname = test_input($_POST['lastname']);
+    $email = $_POST['email'];
+    $academic_year = $_POST['academic'];
+    $day = array(1, 2, 3, 4, 5);
+
+    echo print_r($_POST['course']);
+
+
+
+
+  }
+
+
+
+
+ ?>
+
 <section id="main">
     <div class="container">
       <div class="row">

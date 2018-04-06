@@ -19,7 +19,7 @@ function addHours(){
                     <div class="col-md-2" id="2">
                         <div class="form-group">
                             <label>Tuesday</label><br>
-                            FROM<input type="time" class="form-control" name="TuesFrom2">
+                            FROM<input type="time" class="form-control" name="TueFrom2">
                             TO<input type="time" class="form-control" name="TueTo2">
                         </div>
                     </div>
@@ -72,11 +72,6 @@ function removeHours(){
 }
 
 
-
-
-
-
-
 // function to add new course if the user press the plus button
 function addfields(){
 	var x = document.getElementById("fields").childElementCount; // get the number of the element in this section
@@ -88,7 +83,7 @@ function addfields(){
 	newfield = `<div class="col-md-3" id="field`+x+`">
                     <div class="form-group">
                         <label>Course `+x+`</label>
-                        <input type="text" class="form-control" name="course`+x+`" placeholder="CRS 101...">
+                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>`;
     document.getElementById("fields").innerHTML += newfield;
@@ -109,6 +104,6 @@ function removefields(){
     else{
         field = document.getElementById("field"+y);
         field.remove();
-    }  
+    }
 }
 
