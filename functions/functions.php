@@ -630,8 +630,54 @@ function header_Nav($page, $firstname){?>
                     </div>
                 </div>
             </div>
-            <hr>
-            <div class="row" id="secondHours"></div>
+            <h4 class="text-danger text-center">Second hours sections </h4>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Monday</label><br>
+                        FROM<input type="time" class="form-control" name="MonFrom2">
+                        TO<input type="time" class="form-control" name="MonTo2">
+                    </div>
+
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Tuesday</label><br>
+                        FROM<input type="time" class="form-control" name="TueFrom2">
+                        TO<input type="time" class="form-control" name="TueTo2">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Wednesday</label><br>
+                        FROM<input type="time" class="form-control" name="WedFrom2">
+                        TO<input type="time" class="form-control" name="WedTo2">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Thursday</label><br>
+                        FROM<input type="time" class="form-control" name="ThuFrom2">
+                        TO<input type="time" class="form-control" name="ThuTo2">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Friday</label><br>
+                        FROM<input type="time" class="form-control" name="FriFrom2">
+                        TO<input type="time" class="form-control" name="FriTo2">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!--div class="row" id="secondHours"></div>
 
             <div class="row">
                 <div class="col-md-6">
@@ -641,7 +687,7 @@ function header_Nav($page, $firstname){?>
                 <div class="col-md-6">
                     <a class="glyphicon glyphicon-plus pull-right" onclick="addHours()"></a>
                 </div>
-            </div>
+            </div-->
         </div><br>
 
         
@@ -690,10 +736,10 @@ function header_Nav($page, $firstname){?>
              
         </div>
 
-        <div class="form-group">
+        <!--div class="form-group">
             <label>Notes</label>
             <textarea class="form-control" rows="3" cols="50" name="notes" placeholder="Page Body"></textarea>
-        </div>
+        </div-->
     </div>
 
     <div class="modal-footer">

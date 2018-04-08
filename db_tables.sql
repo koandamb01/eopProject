@@ -44,6 +44,6 @@ CREATE TABLE `eop`.`tblschedule` (
 CREATE TABLE `eop`.`tblcourses` ( 
 	`course_id` INT(11) NOT NULL AUTO_INCREMENT, 
 	`mentor_id` INT(11) NOT NULL,
-	`course_name` VARCHAR(3) NOT NULL,
+	`course_name` VARCHAR(8) NOT NULL,
     PRIMARY KEY (`course_id`),
  	FOREIGN KEY (`mentor_id`) REFERENCES `tblmentors`(`mentor_id`)) ENGINE = MyISAM;
