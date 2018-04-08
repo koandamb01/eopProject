@@ -22,7 +22,7 @@ header_Nav($page, $firstname);
 
 /* Declarer form variables */
 $firstname = $lastname = $user = $academic = $iseop = $email = $counselor = "";
-$mentor = $sessionType = $sessionStart = $sessionEnd = $sessionCourse = $sessionNotes = "";
+$mentor = $sessionType = $sessionStart = $sessionEnd = $course = $sessionNotes = "";
 
 $timestamp = time();
 $date = date('Y-m-d', $timestamp);
@@ -30,7 +30,7 @@ $date = date('Y-m-d', $timestamp);
 // declare an array to record the form value
 $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic,
                   'iseop' => $iseop, 'email' => $email, 'counselor' => $counselor, 'mentor' => $mentor,
-                  'sessionType' => $sessionType, 'sessionStart' => $sessionStart, 'sessionEnd' => $sessionEnd, 'sessionCourse' => $sessionCourse, 'sessionNotes' => $sessionNotes);
+                  'sessionType' => $sessionType, 'sessionStart' => $sessionStart, 'sessionEnd' => $sessionEnd, 'course' => $course, 'sessionNotes' => $sessionNotes);
 ?>
 <section id="breadcrumb">
     <div class="container">
@@ -45,7 +45,7 @@ $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $las
 <section id="main">
     <div class="container">
       <div class="row">
-        <?php sideMenu();?>
+        <?php sideMenu(0);?>
         <div class="col-md-9">
           <!-- Websitte overview -->
             <div class="panel panel-default">

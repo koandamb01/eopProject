@@ -83,7 +83,7 @@ function addfields(){
 	newfield = `<div class="col-md-3" id="field`+x+`">
                     <div class="form-group">
                         <label>Course `+x+`</label>
-                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                        <input type="text" class="courses form-control" class="courses" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>`;
     document.getElementById("fields").innerHTML += newfield;

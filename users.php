@@ -29,7 +29,7 @@ breadcrumb($page);
 <section id="main">
     <div class="container">
         <div class="row">
-            <?php sideMenu();?>
+            <?php sideMenu(0);?>
             <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF']));?>" method="post">
             <div class="col-md-9">
                     <!-- Deactive Accounts -->

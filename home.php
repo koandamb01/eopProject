@@ -27,7 +27,7 @@ breadcrumb($page);
 <section id="main">
     <div class="container">
         <div class="row">
-        <?php sideMenu();?>
+        <?php sideMenu(0);?>
             <div class="col-md-9">
                 <!-- Websitte overview -->
                 <div class="panel panel-default">

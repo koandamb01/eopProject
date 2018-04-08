@@ -254,8 +254,13 @@ function header_Nav($page, $firstname){?>
 
 
 <!-- Begin of Side Menu function -->
-<?php function sideMenu(){?>
-<div class="col-md-3">
+<?php function sideMenu($x){?>
+
+<?php if($x == 1):?>
+    <div class="col-md-2">
+<?php else: ?>
+    <div class="col-md-3">
+<?php endif; ?>
     <div class="list-group">
         <a href="home.php" class="list-group-item active main-color-bg">Dashboard</a>
         <a href="students.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Students <span class="badge">208</span> </a>
@@ -475,7 +480,7 @@ function header_Nav($page, $firstname){?>
         <div class="form-group">
             <label>Course Name</label>
             <span id="sessionCourseErr"></span>
-            <input type="text" class="form-control" name="sessionCourse" value="<?php echo $formVars['sessionCourse'];?>" placeholder="Example: CIS101">
+            <input type="text" class="form-control" name="course" value="<?php echo $formVars['course'];?>" placeholder="Example: CIS101">
         </div>
        
 
@@ -692,34 +697,34 @@ function header_Nav($page, $firstname){?>
 
         
         <label>Mentor Courses Tutor</label>
-        <span id="CourseErr"></span>
+        <span id="sessionCourseErr"></span>
         <div class="well">
             <div class="row" id="fields">
                 <div class="col-md-3" id="field1">
                     <div class="form-group">
                         <label>Course 1</label>
-                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3" id="field2">
                     <div class="form-group">
                         <label>Course 2</label>
-                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3" id="field3">
                     <div class="form-group">
                         <label>Course 3</label>
-                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group" id="field4">
                         <label>Course 4</label>
-                        <input type="text" class="form-control" name="course[]" placeholder="CRS 101...">
+                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
                     </div>
                 </div>
             </div>

@@ -39,11 +39,6 @@ if(isset($_POST['upload'])){
 
     $filename = explode(".", $_FILES['student_file']['name']);
     if(end($filename) == "csv"){
-
-      /* Delete old data from the students table
-      $del = $pdo->prepare('DELETE FROM tblstudents');
-      $del->execute();
-      */
   
       $handle = fopen($_FILES['student_file']['tmp_name'], "r");
       while($data = fgetcsv($handle)){

@@ -398,13 +398,13 @@ function validateSessionEnd(){
 // Validating the Session Course Name
 function validateCourse(){
 
-	var course = document.forms['myForm']['sessionCourse'].value.toUpperCase();
+	var course = document.forms['myForm']['course'].value.toUpperCase();
 
 	var courseFormat = /^[A-Za-z]{3}[0-9]{3}/;
 
 	if(course.length == 0){
-		document.forms['myForm']['sessionCourse'].style.border = "1px solid red";
-		document.forms['myForm']['sessionCourse'].focus;
+		document.forms['myForm']['course'].style.border = "1px solid red";
+		document.forms['myForm']['course'].focus;
 		document.getElementById("sessionCourseErr").innerHTML = "* Course Name required";
 		document.getElementById("sessionCourseErr").style.display = 'block';
 		document.getElementById("sessionCourseErr").style.color = 'red';
@@ -416,13 +416,13 @@ function validateCourse(){
 
 		for(let i = 0; i < coursesList.length; i++){
 			if(course == coursesList[i]){
-				document.forms['myForm']['sessionCourse'].style.border = "1px solid #ccc";
+				document.forms['myForm']['course'].style.border = "1px solid #ccc";
 				document.getElementById("sessionCourseErr").style.display = 'none';
 				return true;
 			}
 		}
-		document.forms['myForm']['sessionCourse'].style.border = "1px solid red";
-		document.forms['myForm']['sessionCourse'].focus;
+		document.forms['myForm']['course'].style.border = "1px solid red";
+		document.forms['myForm']['course'].focus;
 		document.getElementById("sessionCourseErr").innerHTML = "* Invalid Course Name!";
 		document.getElementById("sessionCourseErr").style.display = 'block';
 		document.getElementById("sessionCourseErr").style.color = 'red';
@@ -431,8 +431,8 @@ function validateCourse(){
 		return false;
 		
 	}else{
-		document.forms['myForm']['sessionCourse'].style.border = "1px solid red";
-		document.forms['myForm']['sessionCourse'].focus;
+		document.forms['myForm']['course'].style.border = "1px solid red";
+		document.forms['myForm']['course'].focus;
 		document.getElementById("sessionCourseErr").innerHTML = "* Course Must be three letters and Three Numbers code without space: ABC123";
 		document.getElementById("sessionCourseErr").style.display = 'block';
 		document.getElementById("sessionCourseErr").style.color = 'red';
@@ -440,6 +440,57 @@ function validateCourse(){
 		document.getElementById("sessionCourseErr").style.float = 'right';
 		return false;
 	}
+}
+
+
+// Validating the Mentor Course Name
+function validateMCourse(){
+
+	var courses = document.getElementsByClassName("courses");
+
+	var courseFormat = /^[A-Za-z]{3}[0-9]{3}/;
+
+	for(var i = 0; i < courses.length; i++){
+
+		course = courses[i].value.toUpperCase();
+		if(course.length == 0){
+			document.getElementById("sessionCourseErr").innerHTML = "* Course Name required";
+			document.getElementById("sessionCourseErr").style.display = 'block';
+			document.getElementById("sessionCourseErr").style.color = 'red';
+			document.getElementById("sessionCourseErr").style.textAlign = 'right';
+			document.getElementById("sessionCourseErr").style.float = 'right';
+			return false;
+		}
+		else if(course.match(courseFormat)){
+
+			for(let i = 0; i < coursesList.length; i++){
+				if(course == coursesList[i]){
+					document.getElementById("sessionCourseErr").style.display = 'none';
+					let match = true;
+					continue;
+				}
+			}
+
+			if(match == true){
+				continue;
+			}
+			document.getElementById("sessionCourseErr").innerHTML = "* Invalid Course Name!";
+			document.getElementById("sessionCourseErr").style.display = 'block';
+			document.getElementById("sessionCourseErr").style.color = 'red';
+			document.getElementById("sessionCourseErr").style.textAlign = 'right';
+			document.getElementById("sessionCourseErr").style.float = 'right';
+			return false;
+			
+		}else{
+			document.getElementById("sessionCourseErr").innerHTML = "* Course Must be three letters and Three Numbers code without space: ABC123";
+			document.getElementById("sessionCourseErr").style.display = 'block';
+			document.getElementById("sessionCourseErr").style.color = 'red';
+			document.getElementById("sessionCourseErr").style.textAlign = 'right';
+			document.getElementById("sessionCourseErr").style.float = 'right';
+			return false;
+		}
+	}
+	return true;
 }
 
 
@@ -500,6 +551,7 @@ if(x == 'm'){
 	if(!validateLastName()) {error = 1;}
 	if(!validateAcademic()) {error = 1;}
 	if(!validateEmail()) {error = 1;}
+	if(!validateMCourse()) {error = 1;}
 }
 
 if(x == 's'){
