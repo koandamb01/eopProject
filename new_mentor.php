@@ -26,13 +26,10 @@ header_Nav($page, $firstname);
 
 
 /* Declarer form variables */
-$message = $date = $firstname = $lastname = $user = $academic = $email = "";
-
-$timestamp = time();
-$date = date('Y-m-d', $timestamp);
+$message = "";
 
 // declare an array to record the form value
-$formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic, 'email' => $email);
+//$formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic, 'email' => $email);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
@@ -60,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       header("location: new_mentor.php?updation=1");
     }
     else{
-      $_SESSION['message'] = "This mentor already exist. Please go to the mentor page to update their information";
+      $_SESSION['message'] = "This mentor already exist. Please go to the mentor page to update their informations";
       header("location: new_mentor.php?updation=1");
     }
 }
@@ -93,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                   <h3 class="panel-title">New Mentor</h3>
                 </div>
                 <div class="panel-body">
-                  <?php mentorForm($formVars);?>
+                  <?php mentorForm();?>
                 </div>
             </div>
         </div>

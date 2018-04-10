@@ -445,7 +445,8 @@ function validateCourse(){
 
 // Validating the Mentor Course Name
 function validateMCourse(){
-
+	let match = false;
+	
 	var courses = document.getElementsByClassName("courses");
 
 	var courseFormat = /^[A-Za-z]{3}[0-9]{3}/;
@@ -454,19 +455,22 @@ function validateMCourse(){
 
 		course = courses[i].value.toUpperCase();
 		if(course.length == 0){
-			document.getElementById("sessionCourseErr").innerHTML = "* Course Name required";
-			document.getElementById("sessionCourseErr").style.display = 'block';
-			document.getElementById("sessionCourseErr").style.color = 'red';
-			document.getElementById("sessionCourseErr").style.textAlign = 'right';
-			document.getElementById("sessionCourseErr").style.float = 'right';
+			courses[i].style.border = "1px solid red";
+			courses[i].focus;
+			document.getElementById("CourseErr").innerHTML = "* Course Name required";
+			document.getElementById("CourseErr").style.display = 'block';
+			document.getElementById("CourseErr").style.color = 'red';
+			document.getElementById("CourseErr").style.textAlign = 'right';
+			document.getElementById("CourseErr").style.float = 'right';
 			return false;
 		}
 		else if(course.match(courseFormat)){
 
-			for(let i = 0; i < coursesList.length; i++){
-				if(course == coursesList[i]){
-					document.getElementById("sessionCourseErr").style.display = 'none';
-					let match = true;
+			for(let x = 0; x < coursesList.length; x++){
+				if(course == coursesList[x]){
+					courses[i].style.border = "1px solid #ccc";
+					document.getElementById("CourseErr").style.display = 'none';
+					match = true;
 					continue;
 				}
 			}
@@ -474,23 +478,120 @@ function validateMCourse(){
 			if(match == true){
 				continue;
 			}
-			document.getElementById("sessionCourseErr").innerHTML = "* Invalid Course Name!";
-			document.getElementById("sessionCourseErr").style.display = 'block';
-			document.getElementById("sessionCourseErr").style.color = 'red';
-			document.getElementById("sessionCourseErr").style.textAlign = 'right';
-			document.getElementById("sessionCourseErr").style.float = 'right';
+			courses[i].style.border = "1px solid red";
+			courses[i].focus;
+			document.getElementById("CourseErr").innerHTML = "* Invalid Course Name!";
+			document.getElementById("CourseErr").style.display = 'block';
+			document.getElementById("CourseErr").style.color = 'red';
+			document.getElementById("CourseErr").style.textAlign = 'right';
+			document.getElementById("CourseErr").style.float = 'right';
 			return false;
 			
 		}else{
-			document.getElementById("sessionCourseErr").innerHTML = "* Course Must be three letters and Three Numbers code without space: ABC123";
-			document.getElementById("sessionCourseErr").style.display = 'block';
-			document.getElementById("sessionCourseErr").style.color = 'red';
-			document.getElementById("sessionCourseErr").style.textAlign = 'right';
-			document.getElementById("sessionCourseErr").style.float = 'right';
+			courses[i].style.border = "1px solid red";
+			courses[i].focus;
+			document.getElementById("CourseErr").innerHTML = "* Course Must be three letters and Three Numbers code without space: ABC123";
+			document.getElementById("CourseErr").style.display = 'block';
+			document.getElementById("CourseErr").style.color = 'red';
+			document.getElementById("CourseErr").style.textAlign = 'right';
+			document.getElementById("CourseErr").style.float = 'right';
 			return false;
 		}
 	}
 	return true;
+}
+
+function validateTime(){
+	var time1from = document.getElementsByClassName("time1From");
+	var time1to = document.getElementsByClassName("time1To");
+
+	//var time2from = document.getElementsByClassName("time2From");
+	//var time2to = document.getElementsByClassName("time2To");
+
+	let match = false;
+
+	for(var i = 0; i < 5; i++){
+		var tf1 = time1from[i].value;
+		var tt1 = time1to[i].value;
+
+		if(tf1.length == 0 && tt1.length == 0){
+			
+			time1from[i].style.border = "1px solid #ccc";
+			time1to[i].style.border = "1px solid #ccc";
+			document.getElementById("TimeErr").style.display = 'none';
+			match = true;
+			continue;
+		}
+		else {
+			if(!(tf1.length == 0) && !(tt1.length == 0)){
+				
+				if( (tf1 >= "10:00" && tf1 <= "16:00") || (tf1 >= "18:00" && tf1 <= "21:00") ){
+
+					if( (tt1 >= "10:00" && tt1 <= "16:00") || (tt1 >= "18:00" && tt1 <= "21:00") ){
+
+						if(tf1 < tt1){
+							// test pass
+							match = true;
+							continue;
+						}
+						else{
+							time1from[i].style.border = "1px solid red";
+							time1from[i].focus;
+							time1to[i].style.border = "1px solid red";
+							time1to[i].focus;
+
+							document.getElementById("TimeErr").innerHTML = "* Time TO cannot be before or equal time From time";
+							document.getElementById("TimeErr").style.display = 'block';
+							document.getElementById("TimeErr").style.color = 'red';
+							document.getElementById("TimeErr").style.textAlign = 'right';
+							document.getElementById("TimeErr").style.float = 'right';
+							return false;
+						}
+
+					}
+					else{
+						time1to[i].style.border = "1px solid red";
+						time1to[i].focus;
+
+						document.getElementById("TimeErr").innerHTML = "* To time is Out of the office hours";
+						document.getElementById("TimeErr").style.display = 'block';
+						document.getElementById("TimeErr").style.color = 'red';
+						document.getElementById("TimeErr").style.textAlign = 'right';
+						document.getElementById("TimeErr").style.float = 'right';
+						return false;
+					}
+				}
+				else{
+					time1from[i].style.border = "1px solid red";
+					time1from[i].focus;
+
+					document.getElementById("TimeErr").innerHTML = "* From time is Out of the office hours";
+					document.getElementById("TimeErr").style.display = 'block';
+					document.getElementById("TimeErr").style.color = 'red';
+					document.getElementById("TimeErr").style.textAlign = 'right';
+					document.getElementById("TimeErr").style.float = 'right';
+					return false;
+				}
+			}
+			else{
+				time1from[i].style.border = "1px solid red";
+				time1from[i].focus;
+				time1to[i].style.border = "1px solid red";
+				time1to[i].focus;
+
+				document.getElementById("TimeErr").innerHTML = "* Both From and TO are required";
+				document.getElementById("TimeErr").style.display = 'block';
+				document.getElementById("TimeErr").style.color = 'red';
+				document.getElementById("TimeErr").style.textAlign = 'right';
+				document.getElementById("TimeErr").style.float = 'right';
+				return false;
+			}
+		}
+	}
+
+	if(match == true){
+		return true;
+	}
 }
 
 
@@ -552,6 +653,7 @@ if(x == 'm'){
 	if(!validateAcademic()) {error = 1;}
 	if(!validateEmail()) {error = 1;}
 	if(!validateMCourse()) {error = 1;}
+	if(!validateTime()) {error = 1;}
 }
 
 if(x == 's'){

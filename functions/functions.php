@@ -535,7 +535,7 @@ function header_Nav($page, $firstname){?>
 
 
 <!-- Begin mentor form function -->
-<?php function mentorForm($formVars){?>
+<?php function mentorForm(){?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('m')">
     <div class="modal-body">
         <!-- Student Info -->
@@ -544,14 +544,14 @@ function header_Nav($page, $firstname){?>
                 <div class="form-group">
                     <label>First name</label>
                     <span id="fnameErr"></span>
-                    <input type="text" class="form-control" name="firstname" value="<?php echo $formVars['firstname'];?>" placeholder="First Name">
+                    <input type="text" class="form-control" name="firstname" placeholder="First Name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Last name</label>
                     <span id="lnameErr"></span>
-                    <input type="text" class="form-control" name="lastname" value="<?php echo $formVars['lastname'];?>" placeholder="Last Name">
+                    <input type="text" class="form-control" name="lastname" placeholder="Last Name">
                 </div>
             </div>
         </div>
@@ -561,7 +561,7 @@ function header_Nav($page, $firstname){?>
                 <div class="form-group">
                     <span id="emailErr"></span>
                     <label>Student Buffalo State Email</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
+                    <input type="text" class="form-control" name="email" placeholder="someone@mail.buffalostate.edu...">
                 </div>
             </div>
             <div class="col-md-6">
@@ -570,7 +570,7 @@ function header_Nav($page, $firstname){?>
                     <span id="academicErr"></span>
                     <select class="form-control" name="academic">
                     <?php
-                        $acad_select_option = $formVars['academic'];
+                        $acad_select_option = "";
                         global $academicYear;
                         $academic = $academicYear;
                         
@@ -591,14 +591,14 @@ function header_Nav($page, $firstname){?>
         </div><br>
         
         <label>Mentor Weekly Schedule</label>
-        <span id="hoursErr"></span>
+        <span id="TimeErr"></span>
         <div class="well">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Monday</label><br>
-                        FROM<input type="time" class="form-control" name="MonFrom1">
-                        TO<input type="time" class="form-control" name="MonTo1">
+                        FROM<input type="time" class="time1From form-control" name="MonFrom1">
+                        TO<input type="time" class="time1To form-control" name="MonTo1">
                     </div>
 
                 </div>
@@ -606,32 +606,32 @@ function header_Nav($page, $firstname){?>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tuesday</label><br>
-                        FROM<input type="time" class="form-control" name="TueFrom1">
-                        TO<input type="time" class="form-control" name="TueTo1">
+                        FROM<input type="time" class="time1From form-control" name="TueFrom1">
+                        TO<input type="time" class="time1To form-control" name="TueTo1">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Wednesday</label><br>
-                        FROM<input type="time" class="form-control" name="WedFrom1">
-                        TO<input type="time" class="form-control" name="WedTo1">
+                        FROM<input type="time" class="time1From form-control" name="WedFrom1">
+                        TO<input type="time" class="time1To form-control" name="WedTo1">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Thursday</label><br>
-                        FROM<input type="time" class="form-control" name="ThuFrom1">
-                        TO<input type="time" class="form-control" name="ThuTo1">
+                        FROM<input type="time" class="time1From form-control" name="ThuFrom1">
+                        TO<input type="time" class="time1To form-control" name="ThuTo1">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Friday</label><br>
-                        FROM<input type="time" class="form-control" name="FriFrom1">
-                        TO<input type="time" class="form-control" name="FriTo1">
+                        FROM<input type="time" class="time1From form-control" name="FriFrom1">
+                        TO<input type="time" class="time1To form-control" name="FriTo1">
                     </div>
                 </div>
             </div>
@@ -640,8 +640,8 @@ function header_Nav($page, $firstname){?>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Monday</label><br>
-                        FROM<input type="time" class="form-control" name="MonFrom2">
-                        TO<input type="time" class="form-control" name="MonTo2">
+                        FROM<input type="time" class="time2From form-control" name="MonFrom2">
+                        TO<input type="time" class="time2To form-control" name="MonTo2">
                     </div>
 
                 </div>
@@ -649,31 +649,31 @@ function header_Nav($page, $firstname){?>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tuesday</label><br>
-                        FROM<input type="time" class="form-control" name="TueFrom2">
-                        TO<input type="time" class="form-control" name="TueTo2">
+                        FROM<input type="time" class="time2From form-control" name="TueFrom2">
+                        TO<input type="time" class="time2To form-control" name="TueTo2">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Wednesday</label><br>
-                        FROM<input type="time" class="form-control" name="WedFrom2">
-                        TO<input type="time" class="form-control" name="WedTo2">
+                        FROM<input type="time" class="time2From form-control" name="WedFrom2">
+                        TO<input type="time" class="time2To form-control" name="WedTo2">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Thursday</label><br>
-                        FROM<input type="time" class="form-control" name="ThuFrom2">
-                        TO<input type="time" class="form-control" name="ThuTo2">
+                        FROM<input type="time" class="time2From form-control" name="ThuFrom2">
+                        TO<input type="time" class="time2To form-control" name="ThuTo2">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Friday</label><br>
-                        FROM<input type="time" class="form-control" name="FriFrom2">
+                        FROM<input type="time" class="time2From form-control" name="FriFrom2">
                         TO<input type="time" class="form-control" name="FriTo2">
                     </div>
                 </div>
@@ -697,7 +697,7 @@ function header_Nav($page, $firstname){?>
 
         
         <label>Mentor Courses Tutor</label>
-        <span id="sessionCourseErr"></span>
+        <span id="CourseErr"></span>
         <div class="well">
             <div class="row" id="fields">
                 <div class="col-md-3" id="field1">
