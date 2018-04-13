@@ -505,9 +505,10 @@ function validateTime(){
 	var time1from = document.getElementsByClassName("time1From");
 	var time1to = document.getElementsByClassName("time1To");
 
-	//var time2from = document.getElementsByClassName("time2From");
-	//var time2to = document.getElementsByClassName("time2To");
+	var time2from = document.getElementsByClassName("time2From");
+	var time2to = document.getElementsByClassName("time2To");
 
+	var timeErr = document.getElementById("TimeErr");
 	let match = false;
 
 	for(var i = 0; i < 5; i++){
@@ -518,7 +519,7 @@ function validateTime(){
 			
 			time1from[i].style.border = "1px solid #ccc";
 			time1to[i].style.border = "1px solid #ccc";
-			document.getElementById("TimeErr").style.display = 'none';
+			timeErr.style.display = 'none';
 			match = true;
 			continue;
 		}
@@ -530,7 +531,9 @@ function validateTime(){
 					if( (tt1 >= "10:00" && tt1 <= "16:00") || (tt1 >= "18:00" && tt1 <= "21:00") ){
 
 						if(tf1 < tt1){
-							// test pass
+							time1from[i].style.border = "1px solid #ccc";
+							time1to[i].style.border = "1px solid #ccc";
+							timeErr.style.display = 'none';
 							match = true;
 							continue;
 						}
@@ -540,11 +543,11 @@ function validateTime(){
 							time1to[i].style.border = "1px solid red";
 							time1to[i].focus;
 
-							document.getElementById("TimeErr").innerHTML = "* Time TO cannot be before or equal time From time";
-							document.getElementById("TimeErr").style.display = 'block';
-							document.getElementById("TimeErr").style.color = 'red';
-							document.getElementById("TimeErr").style.textAlign = 'right';
-							document.getElementById("TimeErr").style.float = 'right';
+							timeErr.innerHTML = "* Time TO cannot be before or equal time From time";
+							timeErr.style.display = 'block';
+							timeErr.style.color = 'red';
+							timeErr.style.textAlign = 'right';
+							timeErr.style.float = 'right';
 							return false;
 						}
 
@@ -553,11 +556,11 @@ function validateTime(){
 						time1to[i].style.border = "1px solid red";
 						time1to[i].focus;
 
-						document.getElementById("TimeErr").innerHTML = "* To time is Out of the office hours";
-						document.getElementById("TimeErr").style.display = 'block';
-						document.getElementById("TimeErr").style.color = 'red';
-						document.getElementById("TimeErr").style.textAlign = 'right';
-						document.getElementById("TimeErr").style.float = 'right';
+						timeErr.innerHTML = "* To time is Out of the office hours";
+						timeErr.style.display = 'block';
+						timeErr.style.color = 'red';
+						timeErr.style.textAlign = 'right';
+						timeErr.style.float = 'right';
 						return false;
 					}
 				}
@@ -565,11 +568,11 @@ function validateTime(){
 					time1from[i].style.border = "1px solid red";
 					time1from[i].focus;
 
-					document.getElementById("TimeErr").innerHTML = "* From time is Out of the office hours";
-					document.getElementById("TimeErr").style.display = 'block';
-					document.getElementById("TimeErr").style.color = 'red';
-					document.getElementById("TimeErr").style.textAlign = 'right';
-					document.getElementById("TimeErr").style.float = 'right';
+					timeErr.innerHTML = "* From time is Out of the office hours";
+					timeErr.style.display = 'block';
+					timeErr.style.color = 'red';
+					timeErr.style.textAlign = 'right';
+					timeErr.style.float = 'right';
 					return false;
 				}
 			}
@@ -579,11 +582,93 @@ function validateTime(){
 				time1to[i].style.border = "1px solid red";
 				time1to[i].focus;
 
-				document.getElementById("TimeErr").innerHTML = "* Both From and TO are required";
-				document.getElementById("TimeErr").style.display = 'block';
-				document.getElementById("TimeErr").style.color = 'red';
-				document.getElementById("TimeErr").style.textAlign = 'right';
-				document.getElementById("TimeErr").style.float = 'right';
+				timeErr.innerHTML = "* Both From and TO are required";
+				timeErr.style.display = 'block';
+				timeErr.style.color = 'red';
+				timeErr.style.textAlign = 'right';
+				timeErr.style.float = 'right';
+				return false;
+			}
+		}
+	}
+
+
+	for(var i = 0; i < 5; i++){
+		var tf2 = time2from[i].value;
+		var tt2 = time2to[i].value;
+
+		if(tf2.length == 0 && tt2.length == 0){
+			
+			time2from[i].style.border = "1px solid #ccc";
+			time2to[i].style.border = "1px solid #ccc";
+			timeErr.style.display = 'none';
+			match = true;
+			continue;
+		}
+		else {
+			if(!(tf2.length == 0) && !(tt2.length == 0)){
+				
+				if( (tf2 >= "10:00" && tf2 <= "16:00") || (tf2 >= "18:00" && tf2 <= "21:00") ){
+
+					if( (tt2 >= "10:00" && tt2 <= "16:00") || (tt2 >= "18:00" && tt2 <= "21:00") ){
+
+						if(tf2 < tt2){
+							time2from[i].style.border = "1px solid #ccc";
+							time2to[i].style.border = "1px solid #ccc";
+							timeErr.style.display = 'none';
+							match = true;
+							continue;
+						}
+						else{
+							time2from[i].style.border = "1px solid red";
+							time2from[i].focus;
+							time2to[i].style.border = "1px solid red";
+							time2to[i].focus;
+
+							timeErr.innerHTML = "* Time TO cannot be before or equal time From time";
+							timeErr.style.display = 'block';
+							timeErr.style.color = 'red';
+							timeErr.style.textAlign = 'right';
+							timeErr.style.float = 'right';
+							return false;
+						}
+
+					}
+					else{
+						time2to[i].style.border = "1px solid red";
+						time2to[i].focus;
+
+						timeErr.innerHTML = "* To time is Out of the office hours";
+						timeErr.style.display = 'block';
+						timeErr.style.color = 'red';
+						timeErr.style.textAlign = 'right';
+						timeErr.style.float = 'right';
+						return false;
+					}
+				}
+				else{
+					time2from[i].style.border = "1px solid red";
+					time2from[i].focus;
+
+					timeErr.innerHTML = "* From time is Out of the office hours";
+					timeErr.style.display = 'block';
+					timeErr.style.color = 'red';
+					timeErr.style.textAlign = 'right';
+					timeErr.style.float = 'right';
+					return false;
+				}
+			}
+			else{
+				time2from[i].style.border = "1px solid red";
+				time2from[i].focus;
+				time2to[i].style.border = "1px solid red";
+				time2to[i].focus;
+
+				timeErr.innerHTML = "* Both From and TO are required";
+				timeErr.style.display = 'block';
+				timeErr.style.color = 'red';
+				timeErr.style.textAlign = 'right';
+				timeErr.style.float = 'right';
 				return false;
 			}
 		}

@@ -533,7 +533,6 @@ function header_Nav($page, $firstname){?>
 <!-- End of sessionForm function -->
 
 
-
 <!-- Begin mentor form function -->
 <?php function mentorForm(){?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('m')">
@@ -635,7 +634,7 @@ function header_Nav($page, $firstname){?>
                     </div>
                 </div>
             </div>
-            <h4 class="text-danger text-center">Second hours sections </h4>
+            <h4 class="text-danger text-center">Second hours sections</h4>
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
@@ -674,7 +673,7 @@ function header_Nav($page, $firstname){?>
                     <div class="form-group">
                         <label>Friday</label><br>
                         FROM<input type="time" class="time2From form-control" name="FriFrom2">
-                        TO<input type="time" class="form-control" name="FriTo2">
+                        TO<input type="time" class="time2To form-control" name="FriTo2">
                     </div>
                 </div>
             </div>
