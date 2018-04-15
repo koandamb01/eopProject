@@ -73,6 +73,7 @@ echo date("l F jS\, Y h:i:s A") . "<br>";
                 </div>
             </div>
         </form>
+
             <div class="panel-body">
                 <br>
                 <table class="table table-striped table-hover table-height">
@@ -108,8 +109,6 @@ echo date("l F jS\, Y h:i:s A") . "<br>";
                                 }else{
                                     echo '<td>Yes<td>';
                                 }
-
-
                                     echo '<td><a class="btn btn-sm btn-success" href="mentors.php?mentor_id=' .$row->mentor_id. '">Schedule</a></td>';
                                         
                                 } 
@@ -127,25 +126,15 @@ if(isset($_GET['mentor_id'])):?>
 <?php 
     $mentor_id = $_GET['mentor_id'];
 
-    $sql = 'SELECT * FROM tblschedule WHERE mentor_id = :mentor_id';
+    $sql = 'SELECT * FROM tblschedule WHERE mentor_id = :mentor_id AND period = :period ORDER BY day ASC';
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['mentor_id' => $mentor_id]);
-    $row = $stmt->fetchAll();
+    $stmt->execute(['mentor_id' => $mentor_id, 'period' => 1]);
+    $rows1 = $stmt->fetchAll();
 
-    
-
-
-
+    $stmt->execute(['mentor_id' => $mentor_id, 'period' => 2]);
+    $rows2 = $stmt->fetchAll();
 ?>
-
-
     
-
-
-
-<?php endif; ?>
-
-
 
 <script>
    window.onload = function() {
@@ -159,16 +148,85 @@ if(isset($_GET['mentor_id'])):?>
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Reports</h4>
+            <?php 
+                $sql = 'SELECT firstname, lastname FROM tblmentors WHERE mentor_id = :mentor_id';
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(['mentor_id' => $mentor_id]);
+                $row = $stmt->fetch();
+            ?>
+            <h4 class="modal-title" id="myModalLabel"><?php echo $row->firstname. ' ' .$row->lastname . '<h6>Latest Schedule</h6>'?></h4>
         </div>
 
         <div class="modal-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div class="row">
+                <div class="col-md-2">
+                    Period\Day
+                </div>
+
+                <div class="col-md-2">
+                    Monday
+                </div>
+                <div class="col-md-2">
+                    Tuesday
+                </div>
+                <div class="col-md-2">
+                    Wednesday
+                </div>
+                <div class="col-md-2">
+                    Thursday
+                </div>
+                <div class="col-md-2">
+                    Friday
+                </div>
+            </div>
+                <div class="row">
+                    <hr>
+                    <div class="col-md-2">1</div>
+                <?php
+                    foreach ($rows1 as $row) {
+    
+                        if($row->day == 1){
+                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        }
+
+
+                        elseif ($row->day == 2){
+                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        }
+
+
+                        elseif ($row->day == 3){
+                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        }
+
+
+                        elseif ($row->day == 4){
+                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        }
+
+                        elseif ($row->day == 5){
+                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        }
+
+                    }
+                        
+                ?>
+            </div><br>
+
+            <?php
+                $sql = 'SELECT course_name FROM tblcourses WHERE mentor_id = :mentor_id ORDER BY course_name ASC';
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(['mentor_id' => $mentor_id]);
+                $rows = $stmt->fetchAll();
+             ?>
+             <div class="well">
+                 <div class="row">
+                    <?php foreach ($rows as $row): ?>
+                        <div class="col-md-2"><?php echo $row->course_name; ?></div>
+                    <?php endforeach ?>
+                </div>
+             </div>
+            
         </div>
 
         <div class="modal-footer">
@@ -178,5 +236,10 @@ if(isset($_GET['mentor_id'])):?>
     </div>
   </div>
 </div>
+
+
+<?php endif; ?>
+
+
 <!-- Footer -->
 <?php footer(); ?>
