@@ -25,13 +25,40 @@ header_Nav($page, $firstname);
 /* Display section breadcrumb */
 breadcrumb($page);
 
-$stmt = $pdo->query('SELECT * FROM tblmentors ORDER BY firstname ASC');
+$course_name = '';
 
-//if(isset($_POST['search'])){
+if(isset($_POST['search'])){
 
+    if(empty($_POST['course'])){
+        $stmt = $pdo->query('SELECT * FROM tblmentors ORDER BY firstname ASC');
+        $rows = $stmt->fetchAll();
+    }
+    else{
 
-// Fecth all result after the search
-$rows = $stmt->fetchAll();
+        $course_name = $_POST['course'];
+
+        $sql = 'SELECT DISTINCT mentor_id FROM tblcourses WHERE course_name = :course_name ORDER BY mentor_id ASC';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['course_name' => $course_name]);
+        $row_ids = $stmt->fetchAll();
+
+        $rows = new ArrayObject();
+        foreach ($row_ids as $row_id) {
+            $sql = 'SELECT * FROM tblmentors WHERE mentor_id = :mentor_id';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['mentor_id' => $row_id->mentor_id]);
+            $row = $stmt->fetch();
+
+            $rows->append($row);
+        }
+    }
+}
+else{
+    $stmt = $pdo->query('SELECT * FROM tblmentors ORDER BY firstname ASC');
+    // Fecth all result after the search
+    $rows = $stmt->fetchAll();
+}
+
 
 
 $today = date("l");
@@ -47,7 +74,7 @@ foreach ($days as $key => $value) {
 }
 
 // Prints the day, date, month, year, time, AM or PM
-echo date("l F jS\, Y h:i:s A") . "<br>";
+//echo date("l F jS\, Y h:i:s A") . "<br>";
 ?>
 <section id="main">
     <div class="container">
@@ -64,11 +91,11 @@ echo date("l F jS\, Y h:i:s A") . "<br>";
                     </div>
 
                     <div class="col-md-1 pull-right">
-                        <button class="btn btn-success" name="CRSsearch">Search</button>
+                        <button class="btn btn-success" name="search">Search</button>
                     </div>
 
                     <div class="col-md-3 pull-right">
-                        <input class="form-control" type="text" name="searchInput" placeholder="CRS101...">
+                        <input class="form-control" type="text" name="course" value="<?php echo $course_name; ?>" pattern="[A-Za-z]{3}[0-9]{3}" title="Invalid Course Name!" placeholder="CRS101...">
                     </div>
                 </div>
             </div>
@@ -92,26 +119,26 @@ echo date("l F jS\, Y h:i:s A") . "<br>";
                     <tbody>
                         <?php
                         foreach ($rows as $row) {
-                                echo '<tr>
+                            echo '<tr>
                                     <td><a class="btn btn-sm btn-danger" href="edit_mentor.php?mentor_id=' .$row->mentor_id. '">Edit Mentor</a></td>
                                     <td>'. $row->firstname . '</td>
                                     <td>'. $row->lastname . '</td>
                                     <td>'. $row->academic_year . '</td>
                                     <td>'. $row->email . '</td>';
 
-                                $sql = 'SELECT * FROM tblschedule WHERE mentor_id = :mentor_id AND day = :day';
-                                $stmt = $pdo->prepare($sql);
-                                $stmt->execute(['mentor_id' => $row->mentor_id, 'day' => $today]);
-                                $count = $stmt->rowCount();
+                            $sql = 'SELECT * FROM tblschedule WHERE mentor_id = :mentor_id AND day = :day';
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->execute(['mentor_id' => $row->mentor_id, 'day' => $today]);
+                            $count = $stmt->rowCount();
 
-                                if($count == 0){
-                                    echo '<td>No<td>';
-                                }else{
-                                    echo '<td>Yes<td>';
-                                }
-                                    echo '<td><a class="btn btn-sm btn-success" href="mentors.php?mentor_id=' .$row->mentor_id. '">Schedule</a></td>';
-                                        
-                                } 
+                            if($count == 0){
+                                echo '<td>No<td>';
+                            }else{
+                                echo '<td>Yes<td>';
+                            }
+                                echo '<td><a class="btn btn-sm btn-success" href="mentors.php?mentor_id=' .$row->mentor_id. '">Schedule</a></td>
+                                </tr>';
+                            }
                         ?>
                     </tbody>
                 </table>
@@ -122,7 +149,6 @@ echo date("l F jS\, Y h:i:s A") . "<br>";
 <?php 
     
 if(isset($_GET['mentor_id'])):?>
-
 <?php 
     $mentor_id = $_GET['mentor_id'];
 
@@ -133,6 +159,44 @@ if(isset($_GET['mentor_id'])):?>
 
     $stmt->execute(['mentor_id' => $mentor_id, 'period' => 2]);
     $rows2 = $stmt->fetchAll();
+
+    $Schedule_1 = array();
+    $Schedule_2 = array();
+
+
+    for ($i=1; $i <= 5; $i++) { 
+    
+        $check = false;
+        foreach ($rows1 as $row) {
+            
+            if($row->day == $i){
+                $Schedule_1[$i] = array($row->start_at, $row->end_at);
+                $check = true;
+            }
+        }
+
+        if($check == false){
+            $Schedule_1[$i] = 0;
+        }
+    }
+
+
+    for ($i=1; $i <= 5; $i++) { 
+    
+        $check = false;
+        foreach ($rows2 as $row) {
+            
+            if($row->day == $i){
+                $Schedule_2[$i] = array($row->start_at, $row->end_at);
+                $check = true;
+            }
+        }
+
+        if($check == false){
+            $Schedule_2[$i] = 0;
+        }
+    }
+    
 ?>
     
 
@@ -158,60 +222,64 @@ if(isset($_GET['mentor_id'])):?>
         </div>
 
         <div class="modal-body">
-            <div class="row">
-                <div class="col-md-2">
-                    Period\Day
-                </div>
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-2 text-primary">
+                        Period\Day
+                    </div>
 
-                <div class="col-md-2">
-                    Monday
+                    <div class="col-md-2">
+                        Monday
+                    </div>
+                    <div class="col-md-2">
+                        Tuesday
+                    </div>
+                    <div class="col-md-2">
+                        Wednesday
+                    </div>
+                    <div class="col-md-2">
+                        Thursday
+                    </div>
+                    <div class="col-md-2">
+                        Friday
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    Tuesday
-                </div>
-                <div class="col-md-2">
-                    Wednesday
-                </div>
-                <div class="col-md-2">
-                    Thursday
-                </div>
-                <div class="col-md-2">
-                    Friday
-                </div>
-            </div>
+        
+                <!-- Morning Schedule -->
                 <div class="row">
                     <hr>
-                    <div class="col-md-2">1</div>
+                    <div class="col-md-2">Morning</div>
                 <?php
-                    foreach ($rows1 as $row) {
+                    foreach ($Schedule_1 as $key => $value) {
     
-                        if($row->day == 1){
-                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        if($value == 0){
+                            echo '<div class="col-md-2 bg-danger"><br><br><br></div>';
                         }
-
-
-                        elseif ($row->day == 2){
-                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
+                        else{
+                            echo '<div class="col-md-2">' . $value[0] . '<br> TO <br>'. $value[1] . '</div>';
                         }
-
-
-                        elseif ($row->day == 3){
-                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
-                        }
-
-
-                        elseif ($row->day == 4){
-                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
-                        }
-
-                        elseif ($row->day == 5){
-                            echo '<div class="col-md-2">' . $row->start_at . '<br> TO <br>'. $row->end_at . '</div>';
-                        }
-
-                    }
-                        
+                    }    
                 ?>
-            </div><br>
+                </div>
+                
+                <!-- Evening Schedule -->
+                <div class="row">
+                    <hr>
+                    <div class="col-md-2">Evening</div>
+                <?php
+                    foreach ($Schedule_2 as $key => $value) {
+    
+                        if($value == 0){
+                            echo '<div class="col-md-2 bg-danger"><br><br><br></div>';
+                        }
+                        else{
+                            echo '<div class="col-md-2">' . $value[0] . '<br> TO <br>'. $value[1] . '</div>';
+                        }
+                    }     
+                ?>
+                </div>
+            </div>
+            <br>
 
             <?php
                 $sql = 'SELECT course_name FROM tblcourses WHERE mentor_id = :mentor_id ORDER BY course_name ASC';
@@ -219,6 +287,7 @@ if(isset($_GET['mentor_id'])):?>
                 $stmt->execute(['mentor_id' => $mentor_id]);
                 $rows = $stmt->fetchAll();
              ?>
+             <h6>Mentor Courses</h6>
              <div class="well">
                  <div class="row">
                     <?php foreach ($rows as $row): ?>
@@ -226,7 +295,6 @@ if(isset($_GET['mentor_id'])):?>
                     <?php endforeach ?>
                 </div>
              </div>
-            
         </div>
 
         <div class="modal-footer">
