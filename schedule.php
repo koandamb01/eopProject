@@ -79,8 +79,6 @@
        }
 
 
-
-
         // record Wednesday data
        if(isset($_POST['WedFrom2'])){
           
@@ -117,7 +115,6 @@
        else{
           //echo "Both Wednesdays are EMPTY";
        }
-
 
 
        // record Thursdays data
@@ -286,7 +283,4 @@
           $stmt = $pdo->prepare($sql); // Prepare the SQL statement
           $stmt->execute(['mentor_id' => $mentor_id, 'course_name' => $course]);
       }
-
-
-
  ?>

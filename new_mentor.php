@@ -14,7 +14,6 @@ if(!$active){
 }
 
 require 'functions/functions.php';
-
 /* Database connection settings */
 require 'functions/pdo.php';
 
@@ -24,12 +23,11 @@ $page = 'New Mentor';
 /*start html beginning tags and display page navigation bar */
 header_Nav($page, $firstname);
 
-
 /* Declarer form variables */
-$message = "";
+$message = $firstname = $lastname = $email = $academic_year = "";
 
 // declare an array to record the form value
-//$formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic, 'email' => $email);
+$formVars = array('firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'academic' => $academic_year);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
@@ -64,9 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($_GET['updation'])){
       $message = $_SESSION['message'];
-    }
-  
-     
+    } 
 ?>
 
 <section id="breadcrumb">
@@ -90,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                   <h3 class="panel-title">New Mentor</h3>
                 </div>
                 <div class="panel-body">
-                  <?php mentorForm();?>
+                  <?php mentorForm(0, $formVars);?>
                 </div>
             </div>
         </div>

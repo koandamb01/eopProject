@@ -14,7 +14,7 @@ function header_Nav($page, $firstname){?>
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="showshedule()">
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -534,7 +534,7 @@ function header_Nav($page, $firstname){?>
 
 
 <!-- Begin mentor form function -->
-<?php function mentorForm(){?>
+<?php function mentorForm($x, $formVars){?>
 <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" onsubmit="return validateForms('m')">
     <div class="modal-body">
         <!-- Student Info -->
@@ -543,14 +543,14 @@ function header_Nav($page, $firstname){?>
                 <div class="form-group">
                     <label>First name</label>
                     <span id="fnameErr"></span>
-                    <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                    <input type="text" class="form-control" name="firstname" value="<?php echo $formVars['firstname']; ?>" placeholder="First Name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Last name</label>
                     <span id="lnameErr"></span>
-                    <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                    <input type="text" class="form-control" name="lastname" value="<?php echo $formVars['lastname']; ?>" placeholder="Last Name">
                 </div>
             </div>
         </div>
@@ -560,7 +560,7 @@ function header_Nav($page, $firstname){?>
                 <div class="form-group">
                     <span id="emailErr"></span>
                     <label>Student Buffalo State Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="someone@mail.buffalostate.edu...">
+                    <input type="text" class="form-control" name="email" value="<?php echo $formVars['email']; ?>" placeholder="someone@mail.buffalostate.edu...">
                 </div>
             </div>
             <div class="col-md-6">
@@ -569,7 +569,7 @@ function header_Nav($page, $firstname){?>
                     <span id="academicErr"></span>
                     <select class="form-control" name="academic">
                     <?php
-                        $acad_select_option = "";
+                        $acad_select_option = $formVars['academic_year'];
                         global $academicYear;
                         $academic = $academicYear;
                         
@@ -679,10 +679,7 @@ function header_Nav($page, $firstname){?>
             </div>
 
 
-
-
             <!--div class="row" id="secondHours"></div>
-
             <div class="row">
                 <div class="col-md-6">
                     <a class="glyphicon glyphicon-minus" onclick="removeHours()"></a>
@@ -695,58 +692,77 @@ function header_Nav($page, $firstname){?>
         </div><br>
 
         
-        <label>Mentor Courses Tutor</label>
-        <span id="CourseErr"></span>
-        <div class="well">
-            <div class="row" id="fields">
-                <div class="col-md-3" id="field1">
-                    <div class="form-group">
-                        <label>Course 1</label>
-                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+        
+        <?php if ($x == 0): ?>
+            <label>Mentor Courses Tutor</label>
+            <span id="CourseErr"></span>
+            <div class="well">
+                <div class="row" id="fields">
+                    <div class="col-md-3" id="field1">
+                        <div class="form-group">
+                            <label>Course 1</label>
+                            <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="field2">
+                        <div class="form-group">
+                            <label>Course 2</label>
+                            <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" id="field3">
+                        <div class="form-group">
+                            <label>Course 3</label>
+                            <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group" id="field4">
+                            <label>Course 4</label>
+                            <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-md-3" id="field2">
-                    <div class="form-group">
-                        <label>Course 2</label>
-                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <a class="glyphicon glyphicon-minus" onclick="removefields()"></a>
                     </div>
-                </div>
 
-                <div class="col-md-3" id="field3">
-                    <div class="form-group">
-                        <label>Course 3</label>
-                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group" id="field4">
-                        <label>Course 4</label>
-                        <input type="text" class="courses form-control" name="course[]" placeholder="CRS 101...">
+                    <div class="col-md-6">
+                        <a class="glyphicon glyphicon-plus pull-right" onclick="addfields()"></a>
                     </div>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <a class="glyphicon glyphicon-minus" onclick="removefields()"></a>
-                </div>
 
-                <div class="col-md-6">
-                    <a class="glyphicon glyphicon-plus pull-right" onclick="addfields()"></a>
+        <?php else: ?>
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-warning pull-left" onclick="showfields()">Remove a course</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" id="crs" class="courses form-control hide" name="course[]" placeholder="CRS 101...">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" id="btn-crs" class="btn btn-danger hide pull-left" onclick="RemoveCourse()">Delete</button>
+                    </div>
+
+                    <div class="col-md-5" id="result"></div>
                 </div>
+                
             </div>
-             
-        </div>
+        <?php endif ?>
 
-        <!--div class="form-group">
-            <label>Notes</label>
-            <textarea class="form-control" rows="3" cols="50" name="notes" placeholder="Page Body"></textarea>
-        </div-->
     </div>
 
     <div class="modal-footer">
+        <button class="btn btn-success pull-left" type="button" data-toggle="modal" data-target="#MySchedule">Show Schedule</button>
         <button type="submit" name="saveChanges" class="btn btn-primary">Save changes</button>
     </div>
 </form>

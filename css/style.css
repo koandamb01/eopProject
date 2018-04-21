@@ -191,3 +191,25 @@ table tbody{
 .success-box h1, .success-box p{
   padding: 10px;
 }
+
+/* CSS media queries for Printing modals */
+@media screen {
+    #printSection {
+        display: none;
+    }
+}
+
+@media print {
+    body * {
+        visibility:hidden;
+    }
+
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+}
