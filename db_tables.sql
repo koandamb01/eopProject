@@ -47,3 +47,23 @@ CREATE TABLE `eop`.`tblcourses` (
 	`course_name` VARCHAR(8) NOT NULL,
     PRIMARY KEY (`course_id`),
  	FOREIGN KEY (`mentor_id`) REFERENCES `tblmentors`(`mentor_id`)) ENGINE = MyISAM;
+
+
+CREATE TABLE `eop`.`tblsessions` ( 
+	`session_id` INT(15) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `student_id` INT(11) NOT NULL,
+    `mentor_id` INT(11) NOT NULL,
+    `course` VARCHAR(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, 
+	`session_type` VARCHAR(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, 
+	`semester` VARCHAR(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, 
+    `session_start` time,
+	`session_end` time,
+    `session_time` time,
+    `notes` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+    PRIMARY KEY (`session_id`),
+    FOREIGN KEY (`student_id`) REFERENCES `tblstudents`(`student_id`),
+    FOREIGN KEY (`mentor_id`) REFERENCES `tblmentors`(`mentor_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`mentor_id`) REFERENCES `tblmentors`(`mentor_id`)) ENGINE = MyISAM;
+

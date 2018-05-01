@@ -22,16 +22,18 @@ $mentor_id = intval($_GET['mentor_id']);
 $course_name = $_GET['crs'];
 
 
-$sql = 'DELETE FROM tblcourses WHERE mentor_id = :mentor_id AND course_name = :course_name';
-$del = $pdo->prepare($sql);
-$del->execute(['mentor_id' => $mentor_id, 'course_name' => $course_name]);
-$count = $del->rowCount();
+//Mentor course database setup
+$sql = 'INSERT INTO `tblcourses` (mentor_id, course_name) VALUES (:mentor_id, :course_name)';
+$add = $pdo->prepare($sql); // Prepare the SQL statement
+$add->execute(['mentor_id' => $mentor_id, 'course_name' => $course_name]);
+$check = $pdo->lastInsertId();
 
-if($count > 0){
-	echo '<p class="text text-success">'.$course_name. ' was removed from mentor profile</p>';
+
+if($check){
+	echo '<p class="text text-success">'.$course_name. ' was add to mentor profile</p>';
 }
 else{
-	echo '<p class="text text-danger">'.$course_name.' does not exist</p>';
+	echo '<p class="text text-danger">'.$course_name.' failed to add</p>';
 }
 
 ?>

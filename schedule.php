@@ -40,7 +40,6 @@
 
        
 
-
       // record tuesday data
        if(isset($_POST['TueFrom2'])){
           

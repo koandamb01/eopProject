@@ -122,20 +122,30 @@ function showshedule(){
 
 
 // JS function to show fields for removing course.
-function showfields(){
+function showfields(x){
   var crs = document.getElementById('crs');
   var btn = document.getElementById('btn-crs');
+  var addbtn = document.getElementById('addbtn');
+  var addcourse = document.getElementById('addcourse');
 
-  crs.classList.remove('hide');
-  btn.classList.remove('hide');
+  if(x == 1){
+    crs.classList.remove('hide');
+    btn.classList.remove('hide');
+  }
+  else{
+    addbtn.classList.remove('hide');
+    addcourse.classList.remove('hide');
+  }
 }
+
+
+
 
 function RemoveCourse(){
 
   var crs = document.getElementById('crs').value;
-
   if(crs.length == 0){
-    document.getElementById("result").innerHTML = "";
+    document.getElementById("Removeresult").innerHTML = "";
     return;
   }else{
 
@@ -151,7 +161,7 @@ function RemoveCourse(){
       
       if(this.readyState == 4 && this.status == 200){
           
-        document.getElementById("result").innerHTML = this.responseText;
+        document.getElementById("Removeresult").innerHTML = this.responseText;
       }
 
     };
@@ -159,9 +169,38 @@ function RemoveCourse(){
     xmlhttp.open("GET", "removecourse.php?mentor_id="+mentor_id+"&crs="+crs, true);
     xmlhttp.send();
   }
-
 }
 
+
+function AddCourse(){
+
+  var crs = document.getElementById('addcourse').value;
+  if(crs.length == 0){
+    document.getElementById("Addresult").innerHTML = "";
+    return;
+  }else{
+
+    if(window.XMLHttpRequest){
+      // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    }else{
+      // code for IE6+, IE5+
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function(){
+      
+      if(this.readyState == 4 && this.status == 200){
+          
+        document.getElementById("Addresult").innerHTML = this.responseText;
+      }
+
+    };
+
+    xmlhttp.open("GET", "addcourse.php?mentor_id="+mentor_id+"&crs="+crs, true);
+    xmlhttp.send();
+  }
+}
 
 </script>
 

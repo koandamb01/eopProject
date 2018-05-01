@@ -14,7 +14,8 @@ function header_Nav($page, $firstname){?>
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body onload="showshedule()">
+<!-- onload="showshedule()" -->
+<body>
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -318,7 +319,7 @@ function header_Nav($page, $firstname){?>
 
             <div class="col-md-6">
                 <div class="form-group"><br>
-                    <h4 class="bg-danger">*Secretary name here!</h4>
+                    <h4 class="bg-danger"><?php echo '*'.$formVars['user']; ?></h4>
                 </div>
             </div>
         </div>
@@ -367,45 +368,12 @@ function header_Nav($page, $firstname){?>
                         </select>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="checkbox"><br>
-                        <label><input type="checkbox" name="iseop" value="<?php echo $formVars['iseop'];?>" <?php if($formVars['iseop'] == 'yes'){echo "checked";} ?> > Checked If Non-EOP</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
+                
                 <div class="col-md-6">
                     <div class="form-group">
                         <span id="emailErr"></span>
                         <label>Student Buffalo State Email</label>
                         <input type="text" class="form-control" name="email" value="<?php echo $formVars['email'];?>" placeholder="someone@mail.buffalostate.edu...">
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Counselor</label>
-                        <span id="counselorErr"></span>
-                        <select class="form-control" name="counselor">
-                            <?php
-                                $counselor_select_option = $formVars['counselor'];
-                                global $counselor_lists;
-                                $counselors = $counselor_lists;
-
-                                array_unshift($counselors, '');
-
-                                 foreach ($counselors as $value) {
-                                    if ($value == $counselor_select_option) {
-                                        $selected = 'selected = "selected"';    
-                                    }else{
-                                        $selected = '';
-                                    }
-                                    echo "<option value='$value' $selected>$value</option>";
-                                }
-                            ?>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -514,7 +482,7 @@ function header_Nav($page, $firstname){?>
     </div>
 </form>
 
-<script type="text/javascript">
+<!--script type="text/javascript">
     // event lister to the checkbox IsEOP
     // Disabled the Counselor dropdown menu if Iseop checkbox is check
 
@@ -528,7 +496,7 @@ function header_Nav($page, $firstname){?>
             document.forms['myForm']['counselor'].disabled = false;
         }
     });
-</script>
+</script-->
 <?php }?>
 <!-- End of sessionForm function -->
 
@@ -742,7 +710,7 @@ function header_Nav($page, $firstname){?>
             <div class="well">
                 <div class="row">
                     <div class="col-md-3">
-                        <button type="button" class="btn btn-warning pull-left" onclick="showfields()">Remove a course</button>
+                        <button type="button" class="btn btn-warning pull-left" onclick="showfields(1)">Remove a course</button>
                     </div>
 
                     <div class="col-md-2">
@@ -753,9 +721,27 @@ function header_Nav($page, $firstname){?>
                         <button type="button" id="btn-crs" class="btn btn-danger hide pull-left" onclick="RemoveCourse()">Delete</button>
                     </div>
 
-                    <div class="col-md-5" id="result"></div>
+                    <div class="col-md-5" id="Removeresult"></div>
                 </div>
-                
+            </div>
+            
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-warning pull-left" onclick="showfields(0)">Add Course</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" id="addcourse" class="courses form-control hide" placeholder="CRS 101...">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" id="addbtn" class="btn btn-danger hide pull-left" onclick="AddCourse()">Add</button>
+                    </div>
+
+                    <div class="col-md-5" id="Addresult"></div>
+                </div>
+
             </div>
         <?php endif ?>
 
