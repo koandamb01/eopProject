@@ -680,84 +680,51 @@ function validateTime(){
 }
 
 
-
-
-
-
-
 function validateSessionTime(){
-	var sessionStart = document.getElementById("sessionStart");
-	var sessionEnd = document.getElementById("sessionEnd");
+	var start = document.forms['myForm']['sessionStart'].value;
+	var end = document.forms['myForm']['sessionEnd'].value;
+	
+	var sessionStart = document.forms['myForm']['sessionStart'];
+	var sessionEnd = document.forms['myForm']['sessionEnd'];
+
 	var sessionStartErr = document.getElementById("sessionStartErr");
 	var sessionEndErr = document.getElementById("sessionEndErr");
-	let match = false;
-
 	
-		if(sessionStart.length == 0 ){
-			sessionStart.style.border = "1px solid #ccc";
-			sessionStart.style.border = "1px solid #ccc";
-			sessionStart.style.display = 'none';
-			return false;
-		}
+	if(start.length == 0 ){
+		sessionStartErr.innerHTML = "*Start Time is required";
+		sessionStartErr.style.display = 'block';
+		sessionStartErr.style.color = 'red';
+		sessionStartErr.style.textAlign = 'right';
+		sessionStartErr.style.float = 'right';
 
-		if(sessionEnd.length == 0 ){
-			sessionEnd.style.border = "1px solid #ccc";
-			sessionEnd.style.border = "1px solid #ccc";
-			sessionEnd.style.display = 'none';
-			return false;
-		}
+		sessionEnd.style.border = "1px solid #ccc";
+		sessionEndErr.style.display = 'none';
+		return false;
+	}
 
-			
-	
+	if(end.length == 0 ){
+		sessionEndErr.innerHTML = "*End Time is required";
+		sessionEndErr.style.display = 'block';
+		sessionEndErr.style.color = 'red';
+		sessionEndErr.style.textAlign = 'right';
+		sessionEndErr.style.float = 'right';
+
+		sessionStart.style.border = "1px solid #ccc";
+		sessionStartErr.style.display = 'none';
+		return false;
+	}
+
+	if( (start >= "10:00" && start <= "16:00") || (start >= "18:00" && start <= "21:00") ){
+
+		if( (end >= "10:00" && end <= "16:00") || (end >= "18:00" && end <= "21:00") ){
+
+			if(start < end){
+				sessionStart.style.border = "1px solid #ccc";
+				sessionEnd.style.border = "1px solid #ccc";
 				
-				if( (sessionStart >= "10:00" && sessionStart <= "16:00") || (sessionStart >= "18:00" && sessionStart <= "21:00") ){
-
-					if( (sessionEnd >= "10:00" && sessionEnd <= "16:00") || (sessionEnd >= "18:00" && sessionEnd <= "21:00") ){
-
-						if(sessionStart < sessionEnd){
-							sessionStart.style.border = "1px solid #ccc";
-							sessionEnd.style.border = "1px solid #ccc";
-							//timeErr.style.display = 'none';
-							return true;
-						}
-						else{
-							sessionStart.style.border = "1px solid red";
-							sessionStart.focus;
-							sessionEnd.style.border = "1px solid red";
-							sessionEnd.focus;
-
-							sessionStartErr.innerHTML = "*Start cannot after End time";
-							sessionStartErr.style.display = 'block';
-							sessionStartErr.style.color = 'red';
-							sessionStartErr.style.textAlign = 'right';
-							sessionStartErr.style.float = 'right';
-							return false;
-						}
-
-					}
-					else{
-						sessionEnd.style.border = "1px solid red";
-						sessionEnd.focus;
-
-						sessionEndErr.innerHTML = "*End time is Out of the office hours";
-						sessionEndErr.style.display = 'block';
-						sessionEndErr.style.color = 'red';
-						sessionEndErr.style.textAlign = 'right';
-						sessionEndErr.style.float = 'right';
-						return false;
-					}
-				}
-				else{
-					sessionStart.style.border = "1px solid red";
-					sessionStart.focus;
-
-					sessionStartErr.innerHTML = "*Start time is Out of the office hours";
-					sessionStartErr.style.display = 'block';
-					sessionStartErr.style.color = 'red';
-					sessionStartErr.style.textAlign = 'right';
-					sessionStartErr.style.float = 'right';
-					return false;
-				}
+				sessionStartErr.style.display = 'none';
+				sessionEndErr.style.display = 'none';
+				return true;
 			}
 			else{
 				sessionStart.style.border = "1px solid red";
@@ -765,113 +732,39 @@ function validateSessionTime(){
 				sessionEnd.style.border = "1px solid red";
 				sessionEnd.focus;
 
-				sessionStartErr.innerHTML = "* Both From and TO are required";
-				
+				sessionStartErr.innerHTML = "*Start cannot after End time";
 				sessionStartErr.style.display = 'block';
 				sessionStartErr.style.color = 'red';
 				sessionStartErr.style.textAlign = 'right';
 				sessionStartErr.style.float = 'right';
-				
-				sessionEndErr.style.display = 'block';
-				sessionEndErr.style.color = 'red';
-				sessionEndErr.style.textAlign = 'right';
-				sessionEndErr.style.float = 'right';
-
-
 				return false;
 			}
+
+		}
+		else{
+			sessionEnd.style.border = "1px solid red";
+			sessionEnd.focus;
+
+			sessionEndErr.innerHTML = "*End time is Out of the office hours";
+			sessionEndErr.style.display = 'block';
+			sessionEndErr.style.color = 'red';
+			sessionEndErr.style.textAlign = 'right';
+			sessionEndErr.style.float = 'right';
+			return false;
 		}
 	}
+	else{
+		sessionStart.style.border = "1px solid red";
+		sessionStart.focus;
 
-
-	for(var i = 0; i < 5; i++){
-		var tf2 = time2from[i].value;
-		var tt2 = time2to[i].value;
-
-		if(tf2.length == 0 && tt2.length == 0){
-			
-			time2from[i].style.border = "1px solid #ccc";
-			time2to[i].style.border = "1px solid #ccc";
-			timeErr.style.display = 'none';
-			match = true;
-			continue;
-		}
-		else {
-			if(!(tf2.length == 0) && !(tt2.length == 0)){
-				
-				if( (tf2 >= "10:00" && tf2 <= "16:00") || (tf2 >= "18:00" && tf2 <= "21:00") ){
-
-					if( (tt2 >= "10:00" && tt2 <= "16:00") || (tt2 >= "18:00" && tt2 <= "21:00") ){
-
-						if(tf2 < tt2){
-							time2from[i].style.border = "1px solid #ccc";
-							time2to[i].style.border = "1px solid #ccc";
-							timeErr.style.display = 'none';
-							match = true;
-							continue;
-						}
-						else{
-							time2from[i].style.border = "1px solid red";
-							time2from[i].focus;
-							time2to[i].style.border = "1px solid red";
-							time2to[i].focus;
-
-							timeErr.innerHTML = "* Time TO cannot be before or equal time From time";
-							timeErr.style.display = 'block';
-							timeErr.style.color = 'red';
-							timeErr.style.textAlign = 'right';
-							timeErr.style.float = 'right';
-							return false;
-						}
-
-					}
-					else{
-						time2to[i].style.border = "1px solid red";
-						time2to[i].focus;
-
-						timeErr.innerHTML = "* To time is Out of the office hours";
-						timeErr.style.display = 'block';
-						timeErr.style.color = 'red';
-						timeErr.style.textAlign = 'right';
-						timeErr.style.float = 'right';
-						return false;
-					}
-				}
-				else{
-					time2from[i].style.border = "1px solid red";
-					time2from[i].focus;
-
-					timeErr.innerHTML = "* From time is Out of the office hours";
-					timeErr.style.display = 'block';
-					timeErr.style.color = 'red';
-					timeErr.style.textAlign = 'right';
-					timeErr.style.float = 'right';
-					return false;
-				}
-			}
-			else{
-				time2from[i].style.border = "1px solid red";
-				time2from[i].focus;
-				time2to[i].style.border = "1px solid red";
-				time2to[i].focus;
-
-				timeErr.innerHTML = "* Both From and TO are required";
-				timeErr.style.display = 'block';
-				timeErr.style.color = 'red';
-				timeErr.style.textAlign = 'right';
-				timeErr.style.float = 'right';
-				return false;
-			}
-		}
-	}
-
-	if(match == true){
-		return true;
+		sessionStartErr.innerHTML = "*Start time is Out of the office hours";
+		sessionStartErr.style.display = 'block';
+		sessionStartErr.style.color = 'red';
+		sessionStartErr.style.textAlign = 'right';
+		sessionStartErr.style.float = 'right';
+		return false;
 	}
 }
-
-
-
 
 
 // Validating the Title Type dropdown
@@ -943,8 +836,9 @@ if(x == 's'){
 	//if(!validateCounselor()) {error = 1;}
 	if(!validateMentor()) {error = 1;}
 	if(!validateSessionType()) {error = 1;}
-	if(!validateSessionStart()) {error = 1;}
-	if(!validateSessionEnd()) {error = 1;}
+	//if(!validateSessionStart()) {error = 1;}
+	//if(!validateSessionEnd()) {error = 1;}
+	if(!validateSessionTime()) {error = 1;}
 	if(!validateCourse()) {error = 1;}
 	if(!validateSemester()) {error = 1;}
 }

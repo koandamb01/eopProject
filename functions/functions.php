@@ -1,5 +1,6 @@
-<?php 
+<?php
 include 'vars.php';
+
 /* -- Start of the header_navigation function -- */
 function header_Nav($page, $firstname){?>
 <!DOCTYPE html>
@@ -154,7 +155,7 @@ function header_Nav($page, $firstname){?>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a type="button" href="new_session.php">Add Session</a></li>
+                        <!--li><a type="button" href="new_session.php">Add Session</a></li-->
                         <li><a type="button" href="new_mentor.php">Add Mentor</a></li>
                     </ul>
         <?php endif ?>
@@ -242,8 +243,6 @@ function header_Nav($page, $firstname){?>
 <?php } ?>
 <!-- End of footer function -->
 
-
-
 <?php
     function test_input($data){
         $data = trim($data);
@@ -255,8 +254,9 @@ function header_Nav($page, $firstname){?>
 
 
 <!-- Begin of Side Menu function -->
-<?php function sideMenu($x){?>
-
+<?php function sideMenu($x){
+    require 'datasummary.php';
+?>
 <?php if($x == 1):?>
     <div class="col-md-2">
 <?php else: ?>
@@ -264,39 +264,36 @@ function header_Nav($page, $firstname){?>
 <?php endif; ?>
     <div class="list-group">
         <a href="home.php" class="list-group-item active main-color-bg">Dashboard</a>
-        <a href="students.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Students <span class="badge">208</span> </a>
-        <a href="sessions.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Sessions <span class="badge">56</span> </a>
-        <a href="mentors.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mentors <span class="badge">26</span> </a>
-        <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">12</span> </a>
+        <a href="students.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Students <span class="badge"><?php echo $studentCount; ?></span> </a>
+        <a href="sessions.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Sessions <span class="badge"><?php echo $sessionCount;?></span> </a>
+        <a href="mentors.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mentors <span class="badge"><?php echo $mentorCount; ?></span> </a>
+        <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo $userCount; ?></span> </a>
     </div><br>
-
+    <?php
+        $freshmanPercent = round(($freshmanCount / $studentCount) * 100);
+        $sophomorePercent = round(($sophomoreCount / $studentCount) * 100);
+        $juniorPercent = round(($juniorCount / $studentCount) * 100);
+        $seniorPercent = round(($seniorCount / $studentCount) * 100);
+    ?>
     <div class="well">
         <h4>Freshman Attendance</h4>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                60%
-            </div>
+            <?php echo '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:'.$freshmanPercent.'%">'.$freshmanPercent.'%</div>' ?>
         </div>
 
         <h4>Sophomore Attendance</h4>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-                30%
-            </div>
+            <?php echo '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:'.$sophomorePercent.'%">'.$sophomorePercent.'%</div>' ?>
         </div>
 
         <h4>Junior Attendance</h4>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 27%;">
-                27%
-            </div>
+            <?php echo '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:'.$juniorPercent.'%">'.$juniorPercent.'%</div>' ?>
         </div>
 
         <h4>Senior Attendance</h4>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 17%;">
-                17%
-            </div>
+            <?php echo '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:'.$juniorPercent.'%">'.$juniorPercent.'%</div>' ?>
         </div>
     </div>
 </div>

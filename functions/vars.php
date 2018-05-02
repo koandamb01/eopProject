@@ -1,11 +1,11 @@
 <?php
 require 'pdo.php';
 
-$sessionsList = array('','Academic Mentoring', 'AEGIS', 'Peer Mentoring', 'Study Group');// Array for all sessions names
+$sessionsList = array('','Academic Mentoring', 'AEGIS', 'Peer Mentoring');// Array for all sessions names
 
 $semestersList = array('fall', 'spring', 'summer'); // Array for all Semesters names
 
-$academicYear = array('freshman', 'Freshman', 'sophomore', 'Sophomre', 'junior', 'Junior', 'senior', 'Senior', 'graduate', 'Graduate'); // array for the academic dropdown menu options
+$academicYear = array('freshman', 'sophomore', 'junior', 'senior', 'graduate'); // array for the academic dropdown menu options
 
 
 // run query to retrieve all mentors firstname from the database
