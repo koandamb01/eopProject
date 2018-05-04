@@ -26,6 +26,7 @@ header_Nav($page, $firstname);
 /* Display section breadcrumb */
 breadcrumb($page);
 
+$mentor_id = $session = $message = '';
 // run query for session data
 $stmt = $pdo->query('SELECT * FROM tblsessions ORDER BY session_date ASC');
 
@@ -45,7 +46,7 @@ if(isset($_POST['filter'])){
     if(isset($_POST['mentor'])){
         $mentorSelect = $_POST['mentor'];
         
-        if($_POST['mentor'] == 'mentor'){
+        if($_POST['mentor'] == 'Mentor'){
             $mentor = '';
         }else{
             $mentor = $_POST['mentor'];
@@ -70,13 +71,17 @@ if(isset($_POST['filter'])){
         $stmt->execute(['mentor_id' => $mentor_id, 'session_type' => $session]);
     }    
 }
-
 // Fecth all result after the search
 $rows = $stmt->fetchAll();
+
+if(isset($_GET['updation'])){
+  $message = $_SESSION['message'];
+}
 ?>
    
 <section id="main">
     <div class="container">
+        <h4 class="text-center text-primary"><?php echo $message; ?></h4>
         <form action="<?php echo(htmlspecialchars($_SERVER['PHP_SELF']));?>" method="post">
         <div class="panel panel-default">
             <div class="panel-heading main-color-bg">

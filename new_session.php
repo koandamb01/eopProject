@@ -26,7 +26,7 @@ header_Nav($page, $first_name);
 
 /* Declarer form variables */
 $student_id = $message = $firstname = $lastname = $user = $academic = $email = "";
-$mentor = $sessionType = $sessionStart = $sessionEnd = $course = $sessionNotes = "";
+$mentor_id = $mentor = $sessionType = $sessionStart = $sessionEnd = $course = $sessionSemester = $sessionNotes = "";
 
 $timestamp = time();
 $date = date('Y-m-d', $timestamp);
@@ -50,7 +50,7 @@ $user = $_SESSION['firstname'];
 // declare an array to record the form value
 $formVars = array('date' => $date, 'firstname' => $firstname, 'lastname' => $lastname, 'user' => $user, 'academic' => $academic,
                   'email' => $email, 'mentor' => $mentor, 'sessionType' => $sessionType, 'sessionStart' => $sessionStart, 
-                  'sessionEnd' => $sessionEnd, 'course' => $course, 'sessionNotes' => $sessionNotes);
+                  'sessionEnd' => $sessionEnd, 'course' => $course, 'sessionSemester' => $sessionSemester, 'sessionNotes' => $sessionNotes);
 
 
 
@@ -77,29 +77,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $sessionEnd = $_POST['sessionEnd'];
   $sessionDuration = $sessionEnd - $sessionStart;
   $course = $_POST['course'];
-  $semester = $_POST['semester'];
+  $sessionSemester = $_POST['semester'];
   $sessionNotes = test_input($_POST['sessionNotes']);
 
   $student_id = $_SESSION['student_id'];
 
-  /*echo 'From: '.$sessionStart.'<br> TO: '.$sessionEnd.'<br>';
-  //echo $sessionDuration;
-  //echo $sessionDuration->format('%h')." Hours ".$sessionDuration->format('%i')." Minutes";
-
-$datetime1 = new DateTime('2014-02-11 04:04:26 AM');
-$datetime2 = new DateTime('2014-02-11 05:36:56 AM');
-$interval = $datetime1->diff($datetime2);
-echo $interval->format('%h')." Hours ".$interval->format('%i')." Minutes";
-
-
-  //echo 'user id: '.$user_id. '<br> student id: '.$student_id. '<br> Mentor id: '.$mentor_id;;
-  */
   $sql = 'INSERT INTO `tblsessions` (user_id, student_id, mentor_id, course, session_type, semester, session_start, session_end, session_duration, notes, session_date) VALUES 
                                     (:user_id, :student_id, :mentor_id, :course, :session_type, :semester, :session_start, :session_end, :session_duration, :notes, :session_date)';
 
   $stmt = $pdo->prepare($sql);
 
-  $stmt->execute(['user_id' => $user_id, 'student_id' => $student_id, 'mentor_id' => $mentor_id, 'course' => $course, 'session_type' => $sessionType, 'semester' => $semester, 
+  $stmt->execute(['user_id' => $user_id, 'student_id' => $student_id, 'mentor_id' => $mentor_id, 'course' => $course, 'session_type' => $sessionType, 'semester' => $sessionSemester, 
                 'session_start' => $sessionStart, 'session_end' => $sessionEnd, 'session_duration' => $sessionDuration, 'notes' => $sessionNotes, 'session_date' => $date]);
 
   $_SESSION['message'] = "You have successfully inserted a new session!";

@@ -20,10 +20,8 @@ include 'functions/functions.php';
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    
     // User Login
     if(isset($_POST['register'])){ // user registration
-
       require 'register.php';
     }
  } 
@@ -74,15 +72,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                   <input type="text" class="form-control" name="lastname" placeholder="Enter Lastname">
                 </div>
                 
-                <div class="form-group">
-                  <label>Title</label>
-                  <span id="titleErr"></span>
-                  <select class="form-control" name="title">
-                    <option value=""></option>
-                    <option value="counselor">I'm a Counselor</option>
-                    <option value="secretary">I'm a Secretary</option>
-                  </select>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Title</label>
+                      <span id="titleErr"></span>
+                      <select class="form-control" name="title">
+                        <option value=""></option>
+                        <option value="counselor">I'm a Counselor</option>
+                        <option value="secretary">I'm a Secretary</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Code</label>
+                      <span id="counselorCodeErr"></span>
+                      <input type="number" class="form-control" disabled name="counselorCode" placeholder="Enter Counselor Code">
+                    </div>
+                  </div>
                 </div>
+                
     
 
                 <div class="form-group">
@@ -107,4 +118,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
     </section>
 
+<script type="text/javascript">
+    // event lister to the checkbox IsEOP
+    // Disabled the Counselor dropdown menu if Iseop checkbox is check
+    var dropdown = document.querySelector("select[name=title]");
+    dropdown.addEventListener('change', function(){
+      if(this.value == "counselor"){
+        document.forms['myForm']['counselorCode'].disabled = false;
+      }else{
+        document.forms['myForm']['counselorCode'].disabled = true;
+      }
+    })
+</script>
 <?php footer(); ?>

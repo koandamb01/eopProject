@@ -14,6 +14,7 @@ $firstname = $mysqli->escape_string($_POST['firstname']);
 $lastname = $mysqli->escape_string($_POST['lastname']);
 $email = $mysqli->escape_string($_POST['email']);
 $title = $mysqli->escape_string($_POST['title']);
+$code = $mysqli->escape_string($_POST['counselorCode']);
 $password = $mysqli->escape_string(password_hash($_POST['password'], PASSWORD_BCRYPT));
 $hash = $mysqli->escape_string( md5( rand(0,1000) ) );
       
@@ -30,8 +31,8 @@ if ( $result->num_rows > 0 ) {
 else { // Email doesn't already exist in a database, proceed...
 
     // active is 0 by DEFAULT (no need to include it here)
-    $sql = "INSERT INTO users (firstname, lastname, email, title, password, hash) " 
-            . "VALUES ('$firstname','$lastname','$email', '$title', '$password', '$hash')";
+    $sql = "INSERT INTO users (firstname, lastname, email, title, password, hash, c_code) " 
+            . "VALUES ('$firstname','$lastname','$email', '$title', '$password', '$hash', '$code')";
  
     // Add user to the database
     if ($mysqli->query($sql)){

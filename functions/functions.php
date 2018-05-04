@@ -1,6 +1,5 @@
 <?php
 include 'vars.php';
-
 /* -- Start of the header_navigation function -- */
 function header_Nav($page, $firstname){?>
 <!DOCTYPE html>
@@ -16,7 +15,11 @@ function header_Nav($page, $firstname){?>
 </head>
 
 <!-- onload="showshedule()" -->
-<body>
+<?php if ($page == 'Edit Mentor'): ?>
+    <body onload="showshedule()">
+<?php else: ?>
+    <body>
+<?php endif ?>
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -406,10 +409,10 @@ function header_Nav($page, $firstname){?>
                     <span id="sessionTypeErr"></span>
                     <select class="form-control" name="sessionType">
                     <?php
-                        $sessionType_select_option = $formVars['sessionType']; 
+                        $sessionType_select = $formVars['sessionType']; 
                         global $sessionsList;
                         foreach ($sessionsList as $value) {
-                            if ($value == $sessionType_select_option) {
+                            if ($value == $sessionType_select) {
                                 $selected = 'selected = "selected"';
                             }else{
                                 $selected = '';
@@ -441,7 +444,6 @@ function header_Nav($page, $firstname){?>
             </div>
         </div>
         
-
         <div class="form-group">
             <label>Course Name</label>
             <span id="sessionCourseErr"></span>
@@ -454,20 +456,19 @@ function header_Nav($page, $firstname){?>
         <div class="well well-bg">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="radio" name="semester" value="fall"> Fall
+                    <input type="radio" name="semester" <?php if ($formVars['sessionSemester'] == "fall") echo "checked";?>> Fall
                 </div>
 
                 <div class="col-md-4">
-                    <input type="radio" name="semester" value="spring"> Spring
+                    <input type="radio" name="semester" <?php if ($formVars['sessionSemester'] == "spring") echo "checked";?>> Spring
                 </div>
 
                 <div class="col-md-4">
-                    <input type="radio" name="semester" value="summer"> Summer
+                    <input type="radio" name="semester" <?php if ($formVars['sessionSemester'] == "summer") echo "checked";?>> Summer
                 </div>
             </div>
         </div>
         
-
         <div class="form-group">
             <label>Academic Mentor Notes</label>
             <textarea class="form-control" rows="3" cols="50" name="sessionNotes" value="<?php echo $formVars['sessionNotes'];?>" placeholder="Any notes regarding this session"></textarea>
@@ -534,7 +535,7 @@ function header_Nav($page, $firstname){?>
                     <span id="academicErr"></span>
                     <select class="form-control" name="academic">
                     <?php
-                        $acad_select_option = $formVars['academic_year'];
+                        $acad_select_option = $formVars['academic'];
                         global $academicYear;
                         $academic = $academicYear;
                         
@@ -704,6 +705,7 @@ function header_Nav($page, $firstname){?>
             </div>
 
         <?php else: ?>
+            <span id="CourseErr"></span>
             <div class="well">
                 <div class="row">
                     <div class="col-md-3">
@@ -711,7 +713,7 @@ function header_Nav($page, $firstname){?>
                     </div>
 
                     <div class="col-md-2">
-                        <input type="text" id="crs" class="courses form-control hide" name="course[]" placeholder="CRS 101...">
+                        <input type="text" id="crs1" class="courses form-control hide" placeholder="CRS 101...">
                     </div>
 
                     <div class="col-md-2">
@@ -729,7 +731,7 @@ function header_Nav($page, $firstname){?>
                     </div>
 
                     <div class="col-md-2">
-                        <input type="text" id="addcourse" class="courses form-control hide" placeholder="CRS 101...">
+                        <input type="text" id="crs2" class="courses form-control hide" placeholder="CRS 101...">
                     </div>
 
                     <div class="col-md-2">

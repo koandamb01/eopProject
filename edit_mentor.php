@@ -123,10 +123,10 @@ function showshedule(){
 
 // JS function to show fields for removing course.
 function showfields(x){
-  var crs = document.getElementById('crs');
+  var crs = document.getElementById('crs1');
   var btn = document.getElementById('btn-crs');
   var addbtn = document.getElementById('addbtn');
-  var addcourse = document.getElementById('addcourse');
+  var addcourse = document.getElementById('crs2');
 
   if(x == 1){
     crs.classList.remove('hide');
@@ -139,11 +139,56 @@ function showfields(x){
 }
 
 
+// ajax validation courses.
+function validateAjaxCourse(x){
+  var course = document.getElementById('crs'+x).value;
+  var courseElem = document.getElementById('crs'+x);
+  
+  if(x == 1){
+    var resultElem = document.getElementById('Removeresult');
+  }else{
+    var resultElem = document.getElementById('Addresult');
+  }
+  
+  var courseFormat = /^[A-Za-z]{3}[0-9]{3}/;
+
+  if(course.length == 0){
+    courseElem.style.border = "1px solid red";
+    courseElem.focus;
+    resultElem.innerHTML = `<p class="text text-success">* Course Name required</p>`;
+    return false;
+  }
+  else if(course.match(courseFormat)){
+    
+    for(let i = 0; i < coursesList.length; i++){
+      if(course == coursesList[i]){
+        courseElem.style.border = "1px solid #ccc";
+        resultElem.innerHTML = "";
+        return true;
+      }
+    }
+    courseElem.style.border = "1px solid red";
+    courseElem.focus;
+    resultElem.innerHTML = `<p class="text text-success">* Invalid Course Name!</p>`;
+    return false;
+  
+  }else{
+    courseElem.style.border = "1px solid red";
+    courseElem.focus;
+    resultElem.innerHTML = `<p class="text text-success">* 3 letters and 3 Numbers only</p>`;
+    return false;
+  }
+}
+
 
 
 function RemoveCourse(){
+  var error = 0;
+  if(!validateAjaxCourse(1)){error = 1;}
 
-  var crs = document.getElementById('crs').value;
+  if(error == 1){return;}
+
+  var crs = document.getElementById('crs1').value;
   if(crs.length == 0){
     document.getElementById("Removeresult").innerHTML = "";
     return;
@@ -160,7 +205,7 @@ function RemoveCourse(){
     xmlhttp.onreadystatechange = function(){
       
       if(this.readyState == 4 && this.status == 200){
-          
+        document.getElementById("Removeresult").innerHTML = "";
         document.getElementById("Removeresult").innerHTML = this.responseText;
       }
 
@@ -173,8 +218,13 @@ function RemoveCourse(){
 
 
 function AddCourse(){
+  var error = 0;
 
-  var crs = document.getElementById('addcourse').value;
+  if(!validateAjaxCourse(2)){error = 1;}
+
+  if(error == 1){return;}
+
+  var crs = document.getElementById('crs2').value;
   if(crs.length == 0){
     document.getElementById("Addresult").innerHTML = "";
     return;
@@ -191,7 +241,7 @@ function AddCourse(){
     xmlhttp.onreadystatechange = function(){
       
       if(this.readyState == 4 && this.status == 200){
-          
+        document.getElementById("Addresult").innerHTML = "";
         document.getElementById("Addresult").innerHTML = this.responseText;
       }
 

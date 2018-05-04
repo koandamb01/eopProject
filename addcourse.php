@@ -17,10 +17,8 @@ require 'functions/pdo.php';
 require 'functions/functions.php';
 require 'functions/vars.php';
 
-
 $mentor_id = intval($_GET['mentor_id']);
 $course_name = $_GET['crs'];
-
 
 //Mentor course database setup
 $sql = 'INSERT INTO `tblcourses` (mentor_id, course_name) VALUES (:mentor_id, :course_name)';

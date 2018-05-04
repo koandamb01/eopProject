@@ -1,0 +1,3 @@
+# Fix attendance presence to only based on session instead of basing of total students
+# Fix the total hours to include minutes 
+#fix the time range of the session

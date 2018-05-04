@@ -124,6 +124,45 @@ var coursesList = [
 "THA416", "THA418", "THA421", "THA426", "THA435", "THA437", "THA450", "THA459", "THA470", "THA488", "THA495", "THA499", "UNC100", "UNC101", "UNC111", "UNC120", "UNC150", "UNC189", "WGS101", "WGS212",
 "WGS488", "WGS495", "WGS499"]
 
+
+
+// Validating the input Counselor code
+function validateCounselorCode(){
+	var code = document.forms['myForm']['counselorCode'];
+	codeErrElem = document.getElementById("counselorCodeErr");
+	var num = /^[0-9]{1}/;
+
+	if(code.disabled == true){
+		return true;
+	}
+
+	if(code.value.length == 0){
+		document.forms['myForm']['counselorCode'].style.border = "1px solid red";
+		document.forms['myForm']['counselorCode'].focus;
+		codeErrElem.innerHTML = "* Code Name required";
+		codeErrElem.style.display = 'block';
+		codeErrElem.style.color = 'red';
+		codeErrElem.style.textAlign = 'right';
+		codeErrElem.style.float = 'right';
+		return false;
+	}
+	else if(code.value.match(num)){
+		document.forms['myForm']['counselorCode'].style.border = "1px solid #ccc";
+		codeErrElem.style.display = 'none';
+		return true;
+	}else{
+		document.forms['myForm']['counselorCode'].style.border = "1px solid red";
+		document.forms['myForm']['counselorCode'].focus;
+		codeErrElem.innerHTML = "* only one number";
+		codeErrElem.style.display = 'block';
+		codeErrElem.style.color = 'red';
+		codeErrElem.style.textAlign = 'right';
+		codeErrElem.style.float = 'right';
+		return false;
+	}
+}
+
+
 // Validating the input firstname
 function validateFirstName(){
 	var first = document.forms['myForm']['firstname'].value;
@@ -788,7 +827,7 @@ function validateTitle(){
 	}
 }
 
-// Valida
+// Validation for semester
 
 function validateSemester(){
 	var semester = document.forms['myForm']['semester'];
@@ -850,6 +889,7 @@ if(x == 'r'){
 	if(!validateEmail()) {error = 1;}
 	if(!validateTitle()){error = 1;}
 	if(!validatePassword()){error = 1;}
+	if(!validateCounselorCode()){error = 1;}
 }
 	
 	if (error == 1){return false}
