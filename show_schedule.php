@@ -1,5 +1,10 @@
 <?php
-	$sql = 'SELECT * FROM tblschedule WHERE mentor_id = :mentor_id AND period = :period ORDER BY day ASC';
+    require "createpdf/fpdf.php";
+    require 'functions/pdo.php';
+
+
+$mentor_id = 11;
+$sql = 'SELECT * FROM tblschedule WHERE mentor_id = :mentor_id AND period = :period ORDER BY day ASC';
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['mentor_id' => $mentor_id, 'period' => 1]);
     $rows1 = $stmt->fetchAll();
@@ -43,112 +48,102 @@
             $Schedule_2[$i] = 0;
         }
     }
-    
-?>
 
-<script>
-   window.onload = function() {
-    $('#MySchedule').modal('show');
-   };
-</script>
 
-<!-- Modal for Printing  -->
-<div class="modal fade bs-example-modal-lg" id="MySchedule" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php 
-                $sql = 'SELECT firstname, lastname FROM tblmentors WHERE mentor_id = :mentor_id';
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(['mentor_id' => $mentor_id]);
-                $row = $stmt->fetch();
-            ?>
-            <h4 class="modal-title" id="myModalLabel"><?php echo $row->firstname. ' ' .$row->lastname . '<h6>Latest Schedule</h6>'?></h4>
-        </div>
+$sql = 'SELECT course_name FROM tblcourses WHERE mentor_id = :mentor_id ORDER BY course_name ASC';
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['mentor_id' => $mentor_id]);
+$rows = $stmt->fetchAll();
 
-        <div id="printThis" class="modal-body">
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-2 text-primary">
-                        Period\Day<br>
-                    </div>
+class myPDF extends FPDF{
 
-                    <div class="col-md-2">
-                        Monday<br>
-                    </div>
-                    <div class="col-md-2">
-                        Tuesday
-                    </div>
-                    <div class="col-md-2">
-                        Wednesday
-                    </div>
-                    <div class="col-md-2">
-                        Thursday
-                    </div>
-                    <div class="col-md-2">
-                        Friday
-                    </div>
-                    <br>
-                </div>
+     function header(){
+        //$this->image('logo.png',10,6);
+        $this->SetFont('Arial','B',14);
+        $this->Cell(276,5,'EOP ACADEMIC MENTOR SCHEDULE',0,0,'C');
+        $this->Ln();
+        $this->SetFont('Times','',12);
+        $this->Cell(276,10,'Academic Mentor Name Here',0,0,'C');
+        $this->Ln(20);
+    }
+
+    function footer(){
+        $this->SetY(-15);
+        $this->SetFont('Arial','',8);
+        $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+    }
+
+
+    function headerTable(){
+        $this->SetX(13);
+        $this->SetFont('Times','B',12);
+        $this->Cell(45,20,'Period/Day',1,0,'C');
+        $this->Cell(45,20,'Monday',1,0,'C');
+        $this->Cell(45,20,'Tuesday',1,0,'C');
+        $this->Cell(45,20,'Wednesday',1,0,'C');
+        $this->Cell(45,20,'Thursday',1,0,'C');
+        $this->Cell(45,20,'Friday',1,0,'C');
+        $this->Ln();
+    }
+
+    function viewTable($Schedule_1, $Schedule_2, $rows){
+        $this->SetX(13);
+        $this->SetFont('Times','',12);
+            
+        $this->Cell(45,20,'Morning',1,0,'C');
+        foreach($Schedule_1 as $key => $value){
+
+            if($value == 0){
+                $this->Cell(45,20,' ',1,0,'C');
+            }
+            else{
+                $this->Cell(45,20,$value[0]. ' TO ' .$value[1],1,0,'C');
+            }
+        }
+
+        $this->Ln();
+        $this->SetX(13);
+        $this->Cell(45,20,'Evening',1,0,'C');
+        foreach($Schedule_2 as $key => $value){
+
+            if($value == 0){
+                $this->Cell(45,20,' ',1,0,'C');
+            }
+            else{
+                $this->Cell(45,20,$value[0]. ' TO ' .$value[1],1,0,'C');
+            }
+        }
+        $this->Ln();
+        $this->Ln();
+        $this->Cell(276,10,'Mentor Courses',0,0,'C');
+        $this->Ln();
+        $this->SetX(13);
         
-                <!-- Morning Schedule -->
-                <div class="row">
-                    <hr>
-                    <div class="col-md-2">Morning</div>
-                <?php
-                    foreach ($Schedule_1 as $key => $value) {
-    
-                        if($value == 0){
-                            echo '<div class="col-md-2 bg-danger"><br><br><br></div>';
-                        }
-                        else{
-                            echo '<div class="col-md-2">' . $value[0] . '<br> TO <br>'. $value[1] . '</div>';
-                        }
-                    }    
-                ?>
-                </div>
-                
-                <!-- Evening Schedule -->
-                <div class="row">
-                    <hr>
-                    <div class="col-md-2">Evening</div>
-                <?php
-                    foreach ($Schedule_2 as $key => $value) {
-    
-                        if($value == 0){
-                            echo '<div class="col-md-2 bg-danger"><br><br><br></div>';
-                        }
-                        else{
-                            echo '<div class="col-md-2">' . $value[0] . '<br> TO <br>'. $value[1] . '</div>';
-                        }
-                    }     
-                ?>
-                </div>
-            </div>
-            <br>
+        $count = 0;
+        foreach($rows as $row){
+            
+            if($count == 6){
+                $this->Ln();
+                $this->SetX(13);
+                $count = 0;
+            }
+            $this->Cell(45,20,$row->course_name,1,0,'C');
+            $count += 1;
 
-            <?php
-                $sql = 'SELECT course_name FROM tblcourses WHERE mentor_id = :mentor_id ORDER BY course_name ASC';
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(['mentor_id' => $mentor_id]);
-                $rows = $stmt->fetchAll();
-             ?>
-             <h6>Mentor Courses</h6>
-             <div class="well">
-                 <div class="row">
-                    <?php foreach ($rows as $row): ?>
-                        <div class="col-md-2"><?php echo $row->course_name; ?></div>
-                    <?php endforeach ?>
-                </div>
-             </div>
-        </div>
+        }
+    }
+}
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" id="Print" class="btn btn-primary">Print</button>
-      </div>
-    </div>
-  </div>
-</div>
+$pdf = new myPDF();
+$pdf->AliasNbPages();
+$pdf->AddPage('L','A4',0);
+$pdf->headerTable();
+$pdf->viewTable($Schedule_1, $Schedule_2, $rows);
+$pdf->Output();
+
 ?>
+
+
+
+
+

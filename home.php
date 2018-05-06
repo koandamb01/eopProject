@@ -30,7 +30,7 @@ breadcrumb($page);
 require 'datasummary.php';
 
 // run query for session data
-$stmt = $pdo->query('SELECT * FROM tblsessions ORDER BY session_date ASC');
+$stmt = $pdo->query('SELECT * FROM tblsessions ORDER BY session_date DESC');
 // Fecth all result after the search
 $rows = $stmt->fetchAll();
 //$sessionCount = $stmt->rowCount();

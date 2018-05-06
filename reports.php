@@ -13,7 +13,9 @@ if(!$active){
     header("location: profile.php");
 }
 
+require 'functions/pdo.php';
 require 'functions/functions.php';
+require 'functions/vars.php';
 /* declare page variable */
 $page = 'Reports';
 
@@ -23,6 +25,7 @@ header_Nav($page, $firstname);
 /* reports Breadcrumb */
 $menu  = 'All Students';
 reportsBreadcrumb($menu);
+
 ?>
 
 <section id="main">
@@ -45,22 +48,43 @@ reportsBreadcrumb($menu);
     					</div>
 
                         <div class="col-md-2 pull-right">
-                            <select class="form-control">
-                                <option value="#">All Sessions</option>
-                                <option value="#">AEGIS Mentoring</option>
-                                <option value="#">Academic Tutoring</option>
-                          </select>
+                            <select class="form-control" name="session" value="<?php echo $session; ?>"> 
+                            <?php
+                                global $sessionsList;
+
+                                $sessions = $sessionsList;
+                                $sessions[0] = 'Session Type';
+
+                                 foreach ($sessions as $value) {
+                                    if ($value == $sessionSelect) {
+                                        $selected = 'selected = "selected"';    
+                                    }else{
+                                        $selected = '';
+                                    }
+                                    echo "<option value='$value' $selected>$value</option>";
+                                }
+                            ?>
+                        </select>
                         </div>
 
                         <div class="col-md-2 pull-right">
-                            <select class="form-control">
-                            	<option value="#">All Counselor</option>
-                                <option value="#">Counselor</option>
-                                <option value="#">Canestrari</option>
-                                <option value="#">Jude</option>
-                                <option value="#">Maria</option>
-                                <option value="#">Abdi</option>
-                          </select>
+                            <select class="form-control" name="counselor" value="<?php echo $counselor; ?>">
+                            <?php
+                                global $counselor_lists;
+
+                                $counselors = $counselor_lists;
+                                array_unshift($counselors, 'Counselor');
+
+                                 foreach ($counselors as $value) {
+                                    if ($value == $counselor_select_option) {
+                                        $selected = 'selected = "selected"';    
+                                    }else{
+                                        $selected = '';
+                                    }
+                                    echo "<option value='$value' $selected>$value</option>";
+                                }
+                            ?>
+                        </select>
                         </div>
     					
 
@@ -80,11 +104,6 @@ reportsBreadcrumb($menu);
                 </div>
                 
                 <div class="panel-body">
-                    <!--div class="row">
-                        <div class="col-md-12">
-                            <input class="form-control" type="text" placeholder="Filter Sessions...">
-                        </div>
-                    </div -->
                     <br>
                     <table class="table table-striped table-hover table-height">
                         <thead>

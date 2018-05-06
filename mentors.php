@@ -65,7 +65,6 @@ $today = date("l");
 
 $days = array(1 => "Monday", 2 => "Tuesday", 3 => "Wednesday", 4 => "Thursday", 5 => "Friday"); // array the work week days
 
-
 foreach ($days as $key => $value) {
     
     if ($value == $today) {
@@ -153,29 +152,5 @@ foreach ($days as $key => $value) {
         require 'show_schedule.php';
     }
 ?>
-
-<script>
-    // Functions to print modals contents
-document.getElementById("Print").onclick = function () {
-    printElement(document.getElementById("printThis"));
-};
-
-function printElement(elem) {
-    var domClone = elem.cloneNode(true);
-
-    var $printSection = document.getElementById("printSection");
-
-    if (!$printSection) {
-        var $printSection = document.createElement("div");
-        $printSection.id = "printSection";
-        document.body.appendChild($printSection);
-    }
-
-    $printSection.innerHTML = "";
-    $printSection.appendChild(domClone);
-    window.print();
-}
-</script>
-
 <!-- Footer -->
 <?php footer(); ?>

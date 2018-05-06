@@ -67,9 +67,8 @@ breadcrumb($page);
                                                 <td>'.$row->lastname.'</td>
                                                 <td>'.$row->title.'</td>
                                                 <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                                                <td><a class="btn btn-sm btn-warning" href="deactived.php?id=' .$row->id. '">Deactived</a></td>
-                                                <td><a class="btn btn-sm btn-danger" href="delete.php?id=' .$row->id. '">Delete</a></td>';
-
+                                                <td><a type="button" class="btn btn-sm btn-warning" onclick="acticeAndDeactive(0,'.$row->id.')">Deactived</a></td>
+                                                <td><a type="button" class="btn btn-sm btn-danger" onclick="acticeAndDeactive(2,'.$row->id.')">Delete</a></td>';
                                         }
 
                                      ?>
@@ -113,9 +112,8 @@ breadcrumb($page);
                                                 <td>'.$row->lastname.'</td>
                                                 <td>'.$row->title.'</td>
                                                 <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                                                <td><a class="btn btn-sm btn-warning" href="actived.php?id=' .$row->id. '">Actived</a></td>
-                                                <td><a class="btn btn-sm btn-danger" href="delete.php?id=' .$row->id. '">Delete</a></td>';
-
+                                                <td><a type="button" class="btn btn-sm btn-warning" onclick="acticeAndDeactive(1,'.$row->id.')">Actived</a></td>
+                                                <td><a type="button" class="btn btn-sm btn-danger" onclick="acticeAndDeactive(2,'.$row->id.')">Delete</a></td>';
                                         }
 
                                      ?>
@@ -128,6 +126,31 @@ breadcrumb($page);
         </div>
     </div>
 </section>
+
+<script>
+    function acticeAndDeactive(check, id){
+        var elem = document.getElementById('main');
+
+        if(window.XMLHttpRequest){
+            // code IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            // Code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                //elem.innerHMTL = "";
+                elem.innerHMTL = this.responseText;
+                window.location.reload(true);
+            }
+        };
+
+        xmlhttp.open('GET', 'updatedusers.php?id='+id+'&check='+check, true);
+        xmlhttp.send();
+    }
+</script>
 
 <!-- Footer -->
 <?php footer(); ?>

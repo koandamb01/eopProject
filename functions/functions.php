@@ -456,15 +456,15 @@ function header_Nav($page, $firstname){?>
         <div class="well well-bg">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="radio" name="semester" <?php if ($formVars['sessionSemester'] == "fall") echo "checked";?>> Fall
+                    <input type="radio" name="semester" value="fall" <?php if ($formVars['sessionSemester'] == "fall") echo "checked";?>> Fall
                 </div>
 
                 <div class="col-md-4">
-                    <input type="radio" name="semester" <?php if ($formVars['sessionSemester'] == "spring") echo "checked";?>> Spring
+                    <input type="radio" name="semester" value="spring" <?php if ($formVars['sessionSemester'] == "spring") echo "checked";?>> Spring
                 </div>
 
                 <div class="col-md-4">
-                    <input type="radio" name="semester" <?php if ($formVars['sessionSemester'] == "summer") echo "checked";?>> Summer
+                    <input type="radio" name="semester" value="summer" <?php if ($formVars['sessionSemester'] == "summer") echo "checked";?>> Summer
                 </div>
             </div>
         </div>
@@ -657,8 +657,6 @@ function header_Nav($page, $firstname){?>
             </div-->
         </div><br>
 
-        
-        
         <?php if ($x == 0): ?>
             <label>Mentor Courses Tutor</label>
             <span id="CourseErr"></span>
